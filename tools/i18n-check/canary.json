@@ -1,0 +1,8 @@
+{
+  "path": "apps/web/src/locales/tr/common.json",
+  "extra": {
+    "apps/web/src/index.ts": "export const title = t('common:title');"
+  },
+  "bad": "{ \"title\": \"\", \"unused\": \"hidden\u200b\" }",
+  "good": "{ \"title\": \"Başlık\" }"
+}

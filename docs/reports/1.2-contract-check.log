@@ -1,0 +1,4 @@
+$ node scripts/run-check.mjs contract:check
+[scope:contract] files=0 rules=1 candidates=0
+[contract] 0 bulundu; 0 şema, 0 cevap; gerçek sağlayıcı sözleşmesine bakılmadı (2.1); iskelet kanaryayla sınanır
+exit=0

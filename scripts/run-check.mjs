@@ -5,6 +5,12 @@ import { pathToFileURL } from 'node:url';
 import { ESLint } from 'eslint';
 import * as prettier from 'prettier';
 import ts from 'typescript';
+import { check as arch } from '../tools/arch-check/index.mjs';
+import { check as money } from '../tools/money-check/index.mjs';
+import { check as freshness } from '../tools/freshness-check/index.mjs';
+import { check as i18n } from '../tools/i18n-check/index.mjs';
+import { check as contract } from '../tools/contract-check/index.mjs';
+import { report } from '../tools/gate-support.mjs';
 
 const root = resolve(import.meta.dirname, '..');
 const task = process.argv[2];
@@ -55,7 +61,16 @@ function scope(label, paths, ruleCount) {
   for (const path of paths) process.stdout.write(`  ${relativePath(path)}\n`);
 }
 
-if (task === 'typecheck' || task === 'build') {
+const gates = { arch, money, freshness, i18n, contract };
+const gateName = task?.replace(':check', '');
+if (Object.hasOwn(gates, gateName) && task.endsWith(':check')) {
+  try {
+    report(gateName, await gates[gateName](root));
+  } catch (error) {
+    process.stderr.write(`[${gateName}] bakılmadı: ${error.message}\n`);
+    process.exitCode = 1;
+  }
+} else if (task === 'typecheck' || task === 'build') {
   const inputs = new Set();
   for (const config of configs) {
     const loaded = ts.readConfigFile(config, ts.sys.readFile);

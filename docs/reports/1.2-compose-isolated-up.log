@@ -1,0 +1,13 @@
+ Container amisostock-redis-1 Recreate 
+ Container amisostock-postgres-1 Recreate 
+ Container amisostock-redis-1 Recreated 
+ Container amisostock-postgres-1 Recreated 
+ Container amisostock-postgres-1 Starting 
+ Container amisostock-redis-1 Starting 
+ Container amisostock-redis-1 Started 
+ Container amisostock-postgres-1 Started 
+ Container amisostock-redis-1 Waiting 
+ Container amisostock-postgres-1 Waiting 
+ Container amisostock-postgres-1 Healthy 
+ Container amisostock-redis-1 Healthy 
+exit=0

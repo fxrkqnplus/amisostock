@@ -1,0 +1,5 @@
+{
+  "path": "packages/engine/src/canary.ts",
+  "bad": "import { db } from '@amisostock/db'; export const calculate = () => Date.now() + Math.random();",
+  "good": "export const calculate = (left: number, right: number) => left + right;"
+}

@@ -1,0 +1,5 @@
+{
+  "path": "packages/shared/src/canary.ts",
+  "bad": "const price: number = 0.1; const total = price + 0.2; export const invoice = { amount: parseFloat(total.toFixed(2)) };",
+  "good": "export const price = { amount: '0.30', currency: 'TRY' };"
+}

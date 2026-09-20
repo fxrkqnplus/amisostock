@@ -1,0 +1,52 @@
+[
+  {
+    "command": "pnpm typecheck",
+    "exit": 0,
+    "log": "docs/reports/1.2-typecheck.log"
+  },
+  {
+    "command": "pnpm lint",
+    "exit": 0,
+    "log": "docs/reports/1.2-lint.log"
+  },
+  {
+    "command": "pnpm test",
+    "exit": 0,
+    "log": "docs/reports/1.2-test.log"
+  },
+  {
+    "command": "pnpm build",
+    "exit": 0,
+    "log": "docs/reports/1.2-build.log"
+  },
+  {
+    "command": "pnpm arch:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-arch-check.log"
+  },
+  {
+    "command": "pnpm i18n:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-i18n-check.log"
+  },
+  {
+    "command": "pnpm contract:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-contract-check.log"
+  },
+  {
+    "command": "pnpm money:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-money-check.log"
+  },
+  {
+    "command": "pnpm freshness:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-freshness-check.log"
+  },
+  {
+    "command": "pnpm format:check",
+    "exit": 0,
+    "log": "docs/reports/1.2-format-check.log"
+  }
+]

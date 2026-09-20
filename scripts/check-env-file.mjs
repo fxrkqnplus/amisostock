@@ -34,11 +34,8 @@ export function checkEnvFiles(directory = process.cwd()) {
   return { inspected, missing, violations };
 }
 
-if (
-  process.argv[1] &&
-  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
-) {
-  const result = checkEnvFiles();
+export function main(directory = process.cwd()) {
+  const result = checkEnvFiles(directory);
   process.stdout.write(
     `Environment file gate: files=${result.inspected.length}, rules=2, missing=${result.missing.length}, violations=${result.violations.length}\n`,
   );
@@ -64,3 +61,9 @@ if (
     process.exitCode = 1;
   }
 }
+
+if (
+  process.argv[1] &&
+  import.meta.url === pathToFileURL(resolve(process.argv[1])).href
+)
+  main();

@@ -9,5 +9,4 @@ coverage/
 *.sql.gz
 *.bak
 *.yedek
-prompt-*.md
 *.tsbuildinfo

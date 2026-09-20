@@ -16,6 +16,11 @@
     "lint:fix": "node scripts/check-env-file.mjs && node scripts/run-check.mjs lint --fix",
     "test": "node scripts/run-check.mjs test",
     "build": "node scripts/check-env-file.mjs && node scripts/run-check.mjs build",
+    "arch:check": "node scripts/run-check.mjs arch:check",
+    "money:check": "node scripts/run-check.mjs money:check",
+    "freshness:check": "node scripts/run-check.mjs freshness:check",
+    "i18n:check": "node scripts/run-check.mjs i18n:check",
+    "contract:check": "node scripts/run-check.mjs contract:check",
     "format": "node scripts/run-check.mjs format",
     "format:check": "node scripts/run-check.mjs format:check"
   },

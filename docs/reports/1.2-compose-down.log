@@ -1,0 +1,11 @@
+ Container amisostock-postgres-1 Stopping 
+ Container amisostock-redis-1 Stopping 
+ Container amisostock-postgres-1 Stopped 
+ Container amisostock-postgres-1 Removing 
+ Container amisostock-postgres-1 Removed 
+ Container amisostock-redis-1 Stopped 
+ Container amisostock-redis-1 Removing 
+ Container amisostock-redis-1 Removed 
+ Network amisostock_default Removing 
+ Network amisostock_default Removed 
+exit=0

@@ -1,0 +1,7 @@
+{"login":"fxrkqnplus","type":"User"}
+gh: Not Found (HTTP 404)
+{"message":"Not Found","documentation_url":"https://docs.github.com/rest/repos/repos#get-a-repository","status":"404"}
+repository_query_exit=1
+gh: Not Found (HTTP 404)
+{"message":"Not Found","documentation_url":"https://docs.github.com/rest/actions/self-hosted-runners#list-self-hosted-runners-for-a-repository","status":"404"}
+runner_query_exit=1

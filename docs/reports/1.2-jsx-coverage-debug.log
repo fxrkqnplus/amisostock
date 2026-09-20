@@ -1,0 +1,49 @@
+
+ RUN  v5.0.1 C:/Users/fxrkqn/Documents/amisostock
+      Coverage enabled with v8
+
+
+ Test Files  1 passed (1)
+      Tests  46 passed (46)
+   Start at  06:39:18
+   Duration  1.55s (import 78%, tests 18%, transform 2%, worker 2%)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |   10.53 |    12.64 |   10.52 |   11.17 |                   
+ ...ges/shared/src |       0 |        0 |       0 |       0 |                   
+  env.ts           |       0 |        0 |       0 |       0 | 4-115             
+ scripts           |       0 |        0 |       0 |       0 |                   
+  ...-env-file.mjs |       0 |        0 |       0 |       0 | 6-65              
+  ...e-version.mjs |       0 |        0 |       0 |       0 | 5-48              
+  ...fig-types.mjs |       0 |        0 |       0 |       0 | 5-93              
+ tools             |       0 |        0 |       0 |       0 |                   
+  gate-support.mjs |       0 |        0 |       0 |       0 | 7-55              
+ tools/arch-check  |       0 |        0 |       0 |       0 |                   
+  index.mjs        |       0 |        0 |       0 |       0 | 5-91              
+ ...contract-check |       0 |        0 |       0 |       0 |                   
+  index.mjs        |       0 |        0 |       0 |       0 | 7-27              
+ ...nt-local-rules |   84.31 |    75.86 |   57.14 |   82.97 |                   
+  ...-jsx-text.mjs |     100 |    97.77 |     100 |     100 | 61                
+  ...oded-path.mjs |       0 |        0 |       0 |       0 | 2-42              
+ ...reshness-check |       0 |        0 |       0 |       0 |                   
+  index.mjs        |       0 |        0 |       0 |       0 | 3-40              
+ tools/i18n-check  |       0 |        0 |       0 |       0 |                   
+  index.mjs        |       0 |        0 |       0 |       0 | 6-34              
+ tools/money-check |       0 |        0 |       0 |       0 |                   
+  index.mjs        |       0 |        0 |       0 |       0 | 3-61              
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 10.53% ( 43/408 )
+Branches     : 12.64% ( 44/348 )
+Functions    : 10.52% ( 8/76 )
+Lines        : 11.17% ( 39/349 )
+================================================================================
+ERROR: Coverage for lines (11.17%) does not meet global threshold (70%)
+ERROR: Coverage for functions (10.52%) does not meet global threshold (70%)
+ERROR: Coverage for statements (10.53%) does not meet global threshold (70%)
+ERROR: Coverage for branches (12.64%) does not meet global threshold (70%)
+ERROR: Coverage for lines (0%) does not meet "scripts/check-env-file.mjs" threshold (80%)

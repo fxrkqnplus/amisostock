@@ -30,7 +30,7 @@
 | Ç4  | Gecikmeli veri ↔ alarm                    | G-09: bildirimde gecikme ve değerin ait olduğu an yazılır                                                                                                  |
 | Ç5  | Public repo + AGPL ↔ sağlayıcı sözleşmesi | B-02: türetilmiş çıktı kapalı devrede kalır                                                                                                                |
 | Ç6  | Analist tahminleri ↔ ücretsiz erişim yok  | C-08 + artık kendi hedef fiyatımızı üretiyoruz (K11)                                                                                                       |
-| Ç7  | Konum                                     | **ÇÖZÜLDÜ** — proje C:\Users\fxrkqn\Documents\amisostock altında, fms ile ilgisi yok                                                                       |
+| Ç7  | Konum                                     | **ÇÖZÜLDÜ** — proje C:\Users\fxrkqn\Documents\amisostock altında; başka hiçbir depoyla ilgisi yok                                                          |
 
 ## A — Ürün kimliği ve kapsam
 
@@ -43,7 +43,7 @@ Projenin ne olduğu, kimin için olduğu ve neyin v1'de olmadığı. Bu bölüm 
 | `A-03` | Kimler kullanacak?                                                     | **Davetli — izin listesindeki hesaplar**                                                                        |
 | `A-04` | Sistem kaç kullanıcıya kadar bozulmadan çalışacak şekilde tasarlansın? | **200'e kadar**                                                                                                 |
 | `A-05` | Ticari bir taraf olacak mı?                                            | **Hayır — ücretsiz, reklamsız, kapalı devre**                                                                   |
-| `A-06` | Lisans ne olacak?                                                      | **AGPL-3.0 — fms ile aynı**                                                                                     |
+| `A-06` | Lisans ne olacak?                                                      | **AGPL-3.0**                                                                                                    |
 | `A-07` | Depo düzeni ve görünürlüğü?                                            | **Ayrı repo, public**                                                                                           |
 | `A-08` | v1'de hangi varlık sınıfları olacak?                                   | **BIST hisseleri** · **Kripto paralar** · **Döviz kurları** · **Makro göstergeler (enflasyon, faiz, işsizlik)** |
 | `A-09` | Öncelik sırası nedir?                                                  | **1) Veri doğruluğu 2) Hatasızlık 3) Grafik/analiz araçları 4) AI yorumu 5) Görsellik**                         |
@@ -97,12 +97,12 @@ Verinin sağlayıcıdan ekrana hangi yoldan geldiği, projenin performansını v
 | `D-03` | Sağlayıcıya kim bağlanır?                           | **Yalnız sunucu (worker) bağlanır; tüm istemciler tek kanaldan beslenir**                        |
 | `D-04` | Zaman serisi nerede saklanacak?                     | **PostgreSQL + zaman bazlı bölümlenmiş (partitioned) tablolar + toplulaştırma**                  |
 | `D-05` | Önbellek katmanı?                                   | **Redis — sağlayıcı cevapları, hesaplanmış göstergeler ve yayın kanalları için**                 |
-| `D-06` | Zamanlanmış işler ve kuyruk?                        | **BullMQ + Redis (fms ile aynı), ayrı worker uygulaması**                                        |
-| `D-07` | Repo yapısı fms ile aynı mı?                        | **Aynı yapı, aynı katman kuralları, aynı arch:check denetimi**                                   |
+| `D-06` | Zamanlanmış işler ve kuyruk?                        | **BullMQ + Redis, ayrı worker uygulaması**                                                       |
+| `D-07` | Repo yapısı ne olacak?                              | **Aynı yapı, aynı katman kuralları, aynı arch:check denetimi**                                   |
 | `D-08` | Saf hesaplama motoru (packages/engine) ne içerecek? | **Teknik göstergeler + portföy/kâr-zarar + risk metrikleri + geri test — hepsi saf**             |
 | `D-09` | Hesaplar deterministik olmak zorunda mı?            | **Geri test ve senaryo üretiminde determinizm zorunlu (tohumlu üreteç); gerisi serbest**         |
 | `D-10` | Para ve portföy hesapları nerede yapılacak?         | **Para, maliyet ve kâr-zarar hesapları yalnız sunucuda; istemci yalnız gösterir**                |
-| `D-11` | API biçimi?                                         | **REST + Zod şemaları (fms ile aynı)**                                                           |
+| `D-11` | API biçimi?                                         | **REST + Zod şemaları**                                                                          |
 | `D-12` | Kullanıcı verisi izolasyonu?                        | **Depo katmanında zorunlu kullanıcı filtresi + tip düzeyinde koruma + sızıntı testi**            |
 
 ## E — Yapay zeka katmanı
@@ -130,8 +130,8 @@ Giriş yapılmadan kullanılamayan bir ürün istedin; bu, hesap güvenliğini �
 
 | #      | Karar                                        | Kabul edilen                                                                                   |
 | ------ | -------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `F-01` | Kayıt modeli?                                | **Kayıt açık, erişim izin listesiyle sınırlı (fms modeli)**                                    |
-| `F-02` | E-posta doğrulama ve bildirim gönderimi?     | **Resend (fms ile aynı hesap/alan adı doğrulaması)**                                           |
+| `F-01` | Kayıt modeli?                                | **Kayıt açık, erişim izin listesiyle sınırlı**                                                 |
+| `F-02` | E-posta doğrulama ve bildirim gönderimi?     | **Resend (alan adı doğrulamasıyla)**                                                           |
 | `F-03` | İki adımlı doğrulama (2FA)?                  | **TOTP desteği v1'de, isteğe bağlı**                                                           |
 | `F-04` | Dış kimlik sağlayıcı (Google ile giriş vb.)? | **v1'de yok, yalnız e-posta + parola**                                                         |
 | `F-05` | Oturum yönetimi?                             | **Kısa ömürlü erişim jetonu + httpOnly çerezde yenileme jetonu + jeton iptali**                |
@@ -193,29 +193,29 @@ Arayüz Türkçe, mimari çok dilli. Para birimi ise finansal doğruluğun parç
 
 Bu bölüm, ürünün gerçekten yayına çıkıp çıkamayacağını belirliyor.
 
-| #      | Karar                               | Kabul edilen                                                                                             |
-| ------ | ----------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `J-01` | Nerede barınacak?                   | **Aynı Oracle Always Free hesabı**                                                                       |
-| `J-02` | fms ile aynı makinede mi çalışacak? | **Aynı makine ama kaynak sınırlı konteynerler (bellek/CPU limiti) + öncelik kuralı yazılı**              |
-| `J-03` | Veritabanı paylaşımı?               | **Aynı PostgreSQL örneği, ayrı veritabanı ve ayrı kullanıcı; yedekler ayrı alınır**                      |
-| `J-04` | Toplam aylık maliyet tavanı?        | **DEĞİŞTİ — /bin/bash hedefi geri geldi**                                                                |
-| `J-05` | Yedekleme ve geri yükleme?          | **Günlük otomatik yedek + nesne depolamaya (R2 vb.) gönderim + belgelenmiş geri yükleme tatbikatı**      |
-| `J-06` | İzleme ve uyarı?                    | **Sentry (hata) + sağlık uç noktası + veri tazelik nöbetçisi (veri N dakikadır güncellenmediyse uyarı)** |
-| `J-07` | CI ve dağıtım?                      | **Aynı düzen: GitHub Actions + çok mimarili imaj + Docker Compose**                                      |
+| #      | Karar                                      | Kabul edilen                                                                                             |
+| ------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `J-01` | Nerede barınacak?                          | **Aynı Oracle Always Free hesabı**                                                                       |
+| `J-02` | Sunucu başka bir projeyle paylaşılacak mı? | **Aynı makine ama kaynak sınırlı konteynerler (bellek/CPU limiti) + öncelik kuralı yazılı**              |
+| `J-03` | Veritabanı paylaşımı?                      | **Aynı PostgreSQL örneği, ayrı veritabanı ve ayrı kullanıcı; yedekler ayrı alınır**                      |
+| `J-04` | Toplam aylık maliyet tavanı?               | **DEĞİŞTİ — /bin/bash hedefi geri geldi**                                                                |
+| `J-05` | Yedekleme ve geri yükleme?                 | **Günlük otomatik yedek + nesne depolamaya (R2 vb.) gönderim + belgelenmiş geri yükleme tatbikatı**      |
+| `J-06` | İzleme ve uyarı?                           | **Sentry (hata) + sağlık uç noktası + veri tazelik nöbetçisi (veri N dakikadır güncellenmediyse uyarı)** |
+| `J-07` | CI ve dağıtım?                             | **Aynı düzen: GitHub Actions + çok mimarili imaj + Docker Compose**                                      |
 
 ## K — Süreç, kalite ve belgeler
 
-fms'te işleyen protokolün bu projeye ne kadarının taşınacağı. Bu bölüm cevaplanmadan faz listesi çıkarılamaz.
+Devralınan çalışma protokolünün bu projeye ne kadarının taşınacağı. Bu bölüm cevaplanmadan faz listesi çıkarılamaz.
 
 | #      | Karar                                               | Kabul edilen                                                                                                                                                                                                                                                                                                       |
 | ------ | --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `K-01` | fms protokolü aynen uygulanacak mı?                 | **DEĞİŞTİ — Hafifletilmiş protokol**                                                                                                                                                                                                                                                                               |
+| `K-01` | Devralınan protokol aynen uygulanacak mı?           | **DEĞİŞTİ — Hafifletilmiş protokol**                                                                                                                                                                                                                                                                               |
 | `K-02` | Bu projenin değişmez kuralları (K1, K2…) ne olacak? | **Ben taslağı hazırlayayım, sen onaylayasın**                                                                                                                                                                                                                                                                      |
 | `K-03` | Test kapsam eşikleri?                               | **Aynı eşikler; saf motor (göstergeler, kâr-zarar) ≥%85**                                                                                                                                                                                                                                                          |
 | `K-04` | Bu projeye özel hangi kalite kapıları eklenecek?    | **Veri sağlayıcı sözleşme testi (sağlayıcı cevabı şemadan saparsa CI kırılır)** · **Veri tazelik nöbetçisi** · **Para/biçim nöbetçisi (yuvarlama, para birimi karıştırma, tabular rakam)** · **AI çıktı şeması nöbetçisi (şemaya uymayan çıktı reddedilir)** · **Sır tarama ve istemci paketinde anahtar araması** |
 | `K-05` | Belge seti ne kadar geniş olacak?                   | **DEĞİŞTİ — Yalın belge seti (6 dosya)**                                                                                                                                                                                                                                                                           |
 | `K-06` | Bu oturumdaki rolüm ne olsun?                       | **Danışman — spesifikasyonu ve faz promptlarını ben üretirim, kodu Claude Code yazar**                                                                                                                                                                                                                             |
-| `K-07` | Geliştirme ortamı fms ile aynı mı?                  | **Aynı — sürümler fms'ten devralınır, faz başında DEPENDENCY-WATCH ile doğrulanır**                                                                                                                                                                                                                                |
+| `K-07` | Geliştirme ortamı nasıl sabitlenecek?               | **Sürümler faz başında npm registry'den ölçülerek sabitlenir**                                                                                                                                                                                                                                                     |
 
 ## L — Sınır durumları
 

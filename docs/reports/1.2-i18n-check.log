@@ -1,0 +1,14 @@
+$ node scripts/run-check.mjs i18n:check
+[scope:i18n] files=10 rules=4 candidates=0
+  apps/api/src/index.ts
+  apps/web/src/index.ts
+  apps/worker/src/index.ts
+  packages/ai/src/index.ts
+  packages/data/src/index.ts
+  packages/db/src/index.ts
+  packages/engine/src/index.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/ui/src/index.ts
+[i18n] 0 bulundu; 0 anahtar tarandı; yerel dosya bulunamadı; çeviri içeriklerine bakılmadı; kullanımlar=0
+exit=0

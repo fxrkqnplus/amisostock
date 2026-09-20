@@ -232,10 +232,10 @@ koruması açık. Lisans **AGPL-3.0** + `NOTICE` (üçüncü taraf veri atıflar
 ```
 
 **Npm dışı:** PostgreSQL için resmi sürüm tablosunda en yeni kararlı sürüm **18.6**
-ölçüldü ([kaynak](https://www.postgresql.org/support/versioning/)); sunucu kurulmadı
-ve çalıştırılmadı. Container seçimi/kurulumu **1.2** kapsamındadır, kullanılacağı gün
-yeniden ölçülür. Yerel Docker istemcisi `29.7.2`; daemon bağlantısı başarısız,
-sunucu sürümü **ÖLÇÜLEMEDİ**. `shadcn/ui` için ölçülen npm aracı `shadcn`dir;
+ölçüldü ([kaynak](https://www.postgresql.org/support/versioning/)); 1.2'de PostgreSQL
+`18.6` ve Redis `8.10.1` konteynerleri çalıştırıldı, sağlık yanıtları doğrulandı.
+Docker istemcisi ve daemon `29.7.2`; Docker Desktop `4.89.0`. Port çakışması nedeniyle
+yalıtılmış ölçüm ayrıntıları `docs/reports/1.2-kapilar.md` içindedir. `shadcn/ui` için ölçülen npm aracı `shadcn`dir;
 bileşen üretilmedi. TanStack Virtual'ın React paketi `@tanstack/react-virtual`dır.
 
 **Yasaklı:** moment.js (→ `date-fns`), lodash tamamı, jQuery, ücretli SDK,
@@ -284,7 +284,7 @@ API_PORT=3011
 WEB_PORT=3010
 
 DATABASE_URL=postgresql://amisostock:password@localhost:5432/amisostock
-REDIS_URL=redis://localhost:6379/1            # fms ile aynı örnek, ayrı indeks [J-03]
+REDIS_URL=redis://localhost:6379/1            # ayrı Redis veritabanı indeksi [J-03]
 
 JWT_SECRET=<32+ karakter rastgele>
 JWT_ACCESS_TTL=15m
@@ -580,7 +580,7 @@ vergi hesabı `[G-04]` · ekstre/PDF okuma `[G-06]` · ayrı mobil uygulama `[H-
 
 # 9. SÜREÇ DEĞİŞMEZLERİ
 
-> fms deposunda altı fazın ölçülmüş bedelinden doğdular. Hiçbir fazın kapsamı onları
+> Her biri, bedeli bir kez ödenmiş bir yanlışın reçetesidir. Hiçbir fazın kapsamı onları
 > askıya alamaz.
 
 | # | Değişmez |

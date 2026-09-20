@@ -1,0 +1,148 @@
+ Image redis:8 Pulling 
+ a7abbb3aa6cf Pulling fs layer 0B
+ 6b37362b3da7 Pulling fs layer 0B
+ cd2a24b5fb25 Pulling fs layer 0B
+ 4f4fb700ef54 Pulling fs layer 0B
+ 090bdb3db9ca Pulling fs layer 0B
+ 916bd9c149a3 Pulling fs layer 0B
+ 325b1e560d63 Pulling fs layer 0B
+ 4f4fb700ef54 Already exists 0B
+ 6b37362b3da7 Downloading 1.049MB
+ a7abbb3aa6cf Download complete 0B
+ cd2a24b5fb25 Download complete 0B
+ 6b37362b3da7 Downloading 2.097MB
+ 090bdb3db9ca Download complete 0B
+ 6b37362b3da7 Downloading 3.146MB
+ 325b1e560d63 Download complete 0B
+ 6b37362b3da7 Downloading 4.194MB
+ 6b37362b3da7 Downloading 5.243MB
+ 6b37362b3da7 Downloading 6.291MB
+ 6b37362b3da7 Downloading 7.34MB
+ 6b37362b3da7 Downloading 7.34MB
+ 6b37362b3da7 Downloading 8.389MB
+ 916bd9c149a3 Downloading 1.049MB
+ 6b37362b3da7 Downloading 9.437MB
+ 916bd9c149a3 Downloading 1.049MB
+ 916bd9c149a3 Downloading 2.097MB
+ 6b37362b3da7 Downloading 9.437MB
+ 6b37362b3da7 Downloading 10.49MB
+ 916bd9c149a3 Downloading 2.097MB
+ 6b37362b3da7 Downloading 10.49MB
+ 916bd9c149a3 Downloading 2.097MB
+ 6b37362b3da7 Downloading 11.53MB
+ 916bd9c149a3 Downloading 3.146MB
+ 6b37362b3da7 Downloading 12.58MB
+ 916bd9c149a3 Downloading 3.146MB
+ 6b37362b3da7 Downloading 12.58MB
+ 916bd9c149a3 Downloading 4.194MB
+ 6b37362b3da7 Downloading 13.63MB
+ 916bd9c149a3 Downloading 4.194MB
+ 916bd9c149a3 Downloading 5.243MB
+ 6b37362b3da7 Downloading 14.68MB
+ 6b37362b3da7 Downloading 14.68MB
+ 916bd9c149a3 Downloading 5.243MB
+ 6b37362b3da7 Downloading 15.73MB
+ 916bd9c149a3 Downloading 6.291MB
+ 916bd9c149a3 Downloading 6.291MB
+ 6b37362b3da7 Downloading 16.78MB
+ 6b37362b3da7 Downloading 16.78MB
+ 916bd9c149a3 Downloading 7.34MB
+ 6b37362b3da7 Downloading 17.83MB
+ 916bd9c149a3 Downloading 7.34MB
+ 6b37362b3da7 Downloading 17.83MB
+ 916bd9c149a3 Downloading 7.34MB
+ 1fd5ba77311d Downloading 1.049MB
+ 6b37362b3da7 Downloading 17.83MB
+ 916bd9c149a3 Downloading 8.389MB
+ 6b37362b3da7 Downloading 17.83MB
+ 916bd9c149a3 Downloading 8.389MB
+ 1fd5ba77311d Downloading 1.986MB
+ 916bd9c149a3 Downloading 8.389MB
+ 1fd5ba77311d Download complete 0B
+ 6b37362b3da7 Downloading 18.87MB
+ 916bd9c149a3 Downloading 9.437MB
+ 6b37362b3da7 Downloading 19.92MB
+ 6b37362b3da7 Downloading 19.92MB
+ 916bd9c149a3 Downloading 9.437MB
+ 916bd9c149a3 Downloading 10.49MB
+ 6b37362b3da7 Downloading 20.97MB
+ 7650bbe44224 Download complete 0B
+ 6b37362b3da7 Downloading 20.97MB
+ 916bd9c149a3 Downloading 10.49MB
+ 916bd9c149a3 Downloading 11.53MB
+ 6b37362b3da7 Downloading 22.02MB
+ 916bd9c149a3 Downloading 11.53MB
+ 6b37362b3da7 Downloading 23.07MB
+ 6b37362b3da7 Downloading 23.07MB
+ 916bd9c149a3 Downloading 12.58MB
+ 916bd9c149a3 Downloading 12.58MB
+ 6b37362b3da7 Downloading 24.12MB
+ 6b37362b3da7 Downloading 24.12MB
+ 916bd9c149a3 Downloading 13.63MB
+ 916bd9c149a3 Downloading 13.63MB
+ 6b37362b3da7 Downloading 25.17MB
+ 6b37362b3da7 Downloading 26.21MB
+ 916bd9c149a3 Downloading 14.68MB
+ 6b37362b3da7 Downloading 26.21MB
+ 916bd9c149a3 Downloading 15.73MB
+ 6b37362b3da7 Downloading 27.26MB
+ 916bd9c149a3 Downloading 15.73MB
+ 6b37362b3da7 Downloading 27.26MB
+ 916bd9c149a3 Downloading 16.78MB
+ 6b37362b3da7 Downloading 28.31MB
+ 916bd9c149a3 Downloading 16.78MB
+ 6b37362b3da7 Downloading 28.31MB
+ 916bd9c149a3 Downloading 17.83MB
+ 6b37362b3da7 Downloading 29.36MB
+ 916bd9c149a3 Downloading 17.83MB
+ 6b37362b3da7 Download complete 0B
+ 916bd9c149a3 Downloading 18.87MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 19.92MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 20.97MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 22.02MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 23.07MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 24.12MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Downloading 25.64MB
+ 6b37362b3da7 Extracting 1B
+ 916bd9c149a3 Download complete 0B
+ 6b37362b3da7 Extracting 1B
+ 6b37362b3da7 Extracting 1B
+ 6b37362b3da7 Extracting 1B
+ cd2a24b5fb25 Pull complete 0B
+ 090bdb3db9ca Pull complete 0B
+ 6b37362b3da7 Pull complete 0B
+ 916bd9c149a3 Extracting 1B
+ 916bd9c149a3 Extracting 1B
+ 916bd9c149a3 Extracting 1B
+ 4f4fb700ef54 Pull complete 0B
+ a7abbb3aa6cf Extracting 1B
+ 325b1e560d63 Pull complete 0B
+ 916bd9c149a3 Pull complete 0B
+ a7abbb3aa6cf Pull complete 0B
+ Image redis:8 Pulled 
+ Volume amisostock_postgres-data Creating 
+ Network amisostock_default Creating 
+ Volume amisostock_redis-data Creating 
+ Volume amisostock_redis-data Creating 
+ Volume amisostock_postgres-data Creating 
+ Network amisostock_default Creating 
+ Volume amisostock_redis-data Created 
+ Volume amisostock_redis-data Created 
+ Volume amisostock_postgres-data Created 
+ Volume amisostock_postgres-data Created 
+ Network amisostock_default Created 
+ Network amisostock_default Created 
+ Container amisostock-redis-1 Creating 
+ Container amisostock-postgres-1 Creating 
+ Container amisostock-redis-1 Created 
+ Container amisostock-postgres-1 Created 
+ Container amisostock-redis-1 Starting 
+ Container amisostock-postgres-1 Starting 
+Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint amisostock-redis-1 (bd4820b4e25ad2e773029cf06c4fc37fa57610809d27bd0c3b016ced3e024422): Bind for 0.0.0.0:6379 failed: port is already allocated
+exit=1

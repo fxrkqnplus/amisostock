@@ -13,15 +13,15 @@
 ```
 Tarih          : 20.09.2026
 Faz            : 1 — Temel
-Alt görev      : 1.1 — İskelet (KAPANDI)
+Alt görev      : 1.2 — Kapılar ve CI (yerel tamam; uzak CI ölçülecek)
 Dal            : develop
-Taban commit   : yok — 1.1 başlangıcında HEAD henüz oluşmamıştı
+Taban commit   : 423c2cc0c1e747888a4cc40470b8e86532eae49d
 Son tag        : —
-Ağaç           : temiz; develop üzerinde tek kök commit (teslim ref'i HEAD)
-Kapı tabanı    : install/typecheck/lint/test/build/format:check geçti; 1.2 kapıları yok
-Biten          : 9 paket · 52 sürüm kaydı · 162 test · iki ESLint kuralı · ortam/Node/types kapıları · rapor
-Yarım kalan    : yok
-Sıradaki komut : DUR; 1.2 için kullanıcı talimatı bekle
+Ağaç           : 1.2 teslim commit'i hazırlanıyor
+Kapı tabanı    : install ve on kapı geçti; 206 test, global satır %95,09
+Biten          : beş kanaryalı kapı, CI matrisi/kablolama testi, çalışan veri katmanı, güvenlik ayarları
+Yarım kalan    : push sonrası CI ve uzak dal ölçümü
+Sıradaki komut : commit, push, CI işlerini ölç; sonra DUR
 Açık karar     : yok
 ```
 
@@ -99,6 +99,11 @@ Bilinçli ertelenen teknik borç. Her satırın **hedef alt görevi** olmak zoru
 ---
 
 ## Faz kayıtları
+
+1.2 yerel ölçümü: `docs/reports/1.2-kapilar.md`. Env kapısı satır %96,55;
+JSX metin kuralı %100. Docker daemon 29.7.2 ölçüldü. Postgres 18.6 ve Redis 8.10.1
+sağlık yanıtı verdi ve kapatıldı; host portları başka servislerce tutulduğu için
+yalnız ölçümde ports override kullanıldı. Ürün kodu veya bağımlılık eklenmedi.
 
 > Her faz sonunda, aşağıdaki başlıklarla eklenir. Faz kaydı yazılmadan faz kapanmaz.
 >

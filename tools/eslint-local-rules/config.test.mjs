@@ -4,6 +4,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ESLint } from 'eslint';
 import { describe, expect, it } from 'vitest';
+import config from '../../eslint.config.mjs';
 
 const projectRoot = fileURLToPath(new URL('../../', import.meta.url));
 
@@ -17,7 +18,12 @@ async function lintCanary(code) {
   await writeFile(file, code, { encoding: 'utf8', flag: 'wx' });
 
   try {
-    const eslint = new ESLint({ cwd: projectRoot, cache: false });
+    const eslint = new ESLint({
+      cwd: projectRoot,
+      cache: false,
+      overrideConfigFile: true,
+      overrideConfig: config,
+    });
     const results = await eslint.lintFiles([file]);
     expect(results).toHaveLength(1);
     return results[0];

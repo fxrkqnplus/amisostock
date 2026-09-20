@@ -3,9 +3,10 @@
 > **Bu dosya, geçmişi olmayan yeni bir oturuma yapıştırılmak için yazıldı.**
 > Okuduğun anda bu projenin neyi, neden, nasıl yaptığını; nerede durduğunu; hangi
 > kararların neden verildiğini ve sıradaki adımın ne olduğunu biliyor olacaksın.
-> Hiçbir şeyi tahmin etmen gerekmiyor — gerekirse §19'daki soruları sor.
+> Hiçbir şeyi tahmin etmen gerekmiyor — gerekirse §18'deki soruları sor.
 >
-> Hazırlanma tarihi: **19 Eylül 2026** · Hazırlayan: önceki Cowork danışman oturumu
+> Son güncelleme: **20 Eylül 2026** · Hazırlayan: önceki Cowork danışman oturumu
+> Durum: **Faz 1.1 kapandı**, sırada Faz 1.2 var.
 
 ---
 
@@ -32,32 +33,32 @@ yeniden ölçülür.
 
 Bu projede **iki ayrı oturum** çalışıyor:
 
-| Rol            | Nerede                        | Ne yapar                                                                                                                   |
-| -------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| **Danışman**   | Cowork (burası, sen)          | Ölçer, değerlendirir, kararı verir, bir sonraki alt görevin **tek parça promptunu** üretir. Ürün kodu yazmaz, commit atmaz |
-| **Uygulayıcı** | Claude Code, proje klasöründe | Promptu alır, alt görevi yapar, kapıları koşturur, rapor döner, commit atar                                                |
+| Rol            | Nerede                                                   | Ne yapar                                                                                                                   |
+| -------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| **Danışman**   | Cowork (burası, sen)                                     | Ölçer, değerlendirir, kararı verir, bir sonraki alt görevin **tek parça promptunu** üretir. Ürün kodu yazmaz, commit atmaz |
+| **Uygulayıcı** | **GPT-6 Astra**, proje klasöründe açılan kodlama oturumu | Promptu alır, alt görevi yapar, kapıları koşturur, rapor döner, commit atar                                                |
 
-Sen **danışmansın**. Kullanıcı bu ayrımı bilinçli kurdu: Claude Code'un hafızası
+Sen **danışmansın**. Kullanıcı bu ayrımı bilinçli kurdu: uygulayıcının hafızası
 oturumla biter, danışmanın hafızası **depodur**.
 
 **Her turda yaptığın beş şey** (sırayla, atlanmaz):
 
-1. **Ölç.** Claude Code'un raporundaki her sayı bir iddiadır. Depodan yeniden üret:
+1. **Ölç.** Uygulayıcının raporundaki her sayı bir iddiadır. Depodan yeniden üret:
    `git log --oneline -3`, `git status --porcelain`, `pnpm test`, `pnpm build`,
    kapıların kapsam satırları, `gh run list`. Ölçemediğini **ölçemedim** diye yaz.
 2. **Değerlendir.** Raporu üç listeye ayır: kabul edilen iddialar (ölçümle),
    çürüyen iddialar (ölçümle), karar isteyen maddeler. Cevapsız bırakılan bir
    madde bir karar değil, bir **eksikliktir**.
 3. **Tek parça prompt üret.** Bir sonraki oturumun bağlamı yoktur; prompt onun
-   **tamamıdır**. Şekli §17'de.
+   **tamamıdır**. Şekli §16'da.
 4. **Kararı ver.** Kullanıcı adına değil kullanıcıyla: karar metni promptta
    _"kullanıcı kararı, &lt;tarih&gt;"_ etiketiyle ve **gerekçesiyle** yazılır.
 5. **Kendi hatanı sahiplen.** Senin ölçümün de yanılabilir. Bir sonraki promptun
    "ÖLÇÜLMÜŞ TUZAKLAR" bölümü **senin** hatalarını da adıyla taşır.
 
-**Yasak:** bir sayıyı kopyalamak. Ne Claude Code'un raporundan, ne `ROADMAP.md`'den,
+**Yasak:** bir sayıyı kopyalamak. Ne uygulayıcının raporundan, ne `ROADMAP.md`'den,
 ne `PROJECT_MEMORY.md`'den, ne **kendi bir önceki ölçümünden**. Kopyalanmış bir sayı
-"DOĞRULANMIŞ" diye verilirse Claude Code onu yeniden ölçmez ve zincirin iki halkası
+"DOĞRULANMIŞ" diye verilirse uygulayıcı onu yeniden ölçmez ve zincirin iki halkası
 aynı yanlışı taşır. Ölçülmemiş sayı `RAPORUN İDDİASI, SEN YENİDEN ÖLÇ` sınıfına düşer.
 
 ---
@@ -78,8 +79,6 @@ aynı yanlışı taşır. Ölçülmemiş sayı `RAPORUN İDDİASI, SEN YENİDEN 
 - **Kendi çalışma kuralları var** (kişisel tercihlerinde duruyor): PRD üretimi,
   PRD'den görev listesi çıkarma ve görev listesini tek tek yürütme protokolleri.
   Ortak paydaları: **tek seferde tek alt görev, her birinden sonra onay bekle.**
-- Başka bir projesi daha var: **fms** (Football Management Simulator). Bu projenin
-  çalışma protokolü oradan devralındı — ayrıntı §15.
 - Yanlış bir şey söylersen düzeltir ve düzeltmesi genellikle haklıdır. Ama **maddi
   bir hata yaptığında da söylemeni bekliyor**: bu oturumda "ChatGPT/Gemini
   aboneliklerimi kullanalım" dedi, ben "o abonelikler API erişimi içermiyor" diye
@@ -100,7 +99,14 @@ aynı yanlışı taşır. Ölçülmemiş sayı `RAPORUN İDDİASI, SEN YENİDEN 
   `/mnt/user-data/outputs/` altına yaz, sonra commit et.
 - ⚠️ `device_list_dir` bir klasörü `recursive: true` ile listelerken `node_modules`
   varsa çıktı taşıyor. Bağımlılıklar kurulduktan sonra **hedefe özel yollar** kullan.
-- Kullanıcının bilgisayarında Claude Code ayrı çalışıyor; kod orada yazılıyor.
+- Kod, kullanıcının bilgisayarında **GPT-6 Astra · High** ile yazılıyor; bu oturum
+  kod yazmaz.
+- ⚠️ **`device_commit_files` "written" dediği hâlde değişiklik cihaza geçmeyebiliyor.**
+  20.09'da iki kez ölçüldü. Her yazımdan sonra dosyayı `device_stage_files` ile
+  **geri oku ve doğrula**; "written" tek başına kanıt değildir.
+- **Alt ajan gerekirse: GPT 5.6 · Luna · effort = Max.** Promptta bunu belirt.
+- Her prompt, uygulayıcıya **kalan 5 saatlik limiti görüntülemesini** ve iş sırasını
+  ona göre sığdırmasını söyler; limit yetmezse commit'li temiz bir noktada durulur.
 - Bu oturumun ürettiği her dosya `device_commit_files` ile klasöre yazıldı; sohbete
   bırakılan kopya **teslimat değildir**.
 
@@ -155,11 +161,9 @@ panel, çok dillilik altyapısı, güvenlik, erişilebilirlik, mimari ölçeklen
 Sonunda **kritik bir talimat** vardı: _"kod yazmadan önce sonucu etkileyebilecek her
 soruyu, belirsizliği ve kararı çıkar; ben cevaplamadan geliştirmeye başlama."_
 
-**2. Bağlı klasör yanlış anlaşıldı — düzeltildi.** İlk bağlı klasör `C:\fms` idi ve
-ben onu bu projenin deposu sandım; **değildi**, başka bir proje (fms). Kullanıcı
-sonradan `Documents\amisostock` klasörünü bağladı ve _"Sana C:/fms'i değil şu anda
-eklediğim amisostock projesi dosyasını kullan"_ dedi. fms'ten **yalnızca çalışma
-protokolü** alındı (§15).
+**2. Bağlı klasör yanlış anlaşıldı — düzeltildi.** İlk bağlı klasör bu projenin
+deposu değildi; ben onu proje sandım. Kullanıcı düzeltti ve
+`Documents\amisostock` klasörünü bağladı. Projenin yeri **yalnızca** orasıdır.
 
 **3. Araştırma yapıldı** (aşağıda §10) ve **131 maddelik karar kütüğü** üretildi:
 14 bölüm, her maddede gerekçe ve önerilen cevap. İşaretlenebilir bir artifact olarak
@@ -172,7 +176,7 @@ tamamı öneriyle dolduruldu ve `KARARLAR.md` yazıldı.
 
 - AI sağlayıcısı ücretsiz olsun → Gemini ücretsiz kademe, bütçe `$0`
 - **al/sat/tut ve hedef fiyat eklensin** → `B-03` tersine çevrildi, K11 yazıldı
-- fms değil amisostock klasörü kullanılsın + marka yazım kuralı
+- Proje klasörü `Documents\amisostock` + marka yazım kuralı
 
 **6. Belgeler yazıldı:** `CLAUDE.md` (anayasa), `KARARLAR.md`, `docs/SPEC.md`,
 `docs/ROADMAP.md`.
@@ -188,20 +192,26 @@ Protokol de hafifletildi: kapı zinciri kaldı, altı ajanlı orkestrasyon çık
 
 ## §7 — MEVCUT DURUM: DEPODAKİ DOSYALAR
 
-`C:\Users\fxrkqn\Documents\amisostock` (19.09.2026 itibarıyla ölçüldü):
+`C:\Users\fxrkqn\Documents\amisostock` — **20.09.2026'da ölçüldü.**
 
-| Dosya                | Boyut   | İçerik                                                                                                                                                                                                                                                                                               |
-| -------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `CLAUDE.md`          | ~27 KB  | **Anayasa.** 18 değişmez kural (K1–K18), kod standartları, git akışı, teknoloji yığını, repo yapısı, ortam değişkenleri, katman kuralları, veri sözleşmesi, sinyal sözleşmesi, AI sözleşmesi, hukuki sınırlar, ~90 satırlık TR/EN terim sözlüğü, kapsam sınırları, başarı tanımı, süreç değişmezleri |
-| `KARARLAR.md`        | ~24 KB  | **131 kararın kütüğü.** 14 bölüm (A–N). Değiştirilen 9 madde ayrı tabloda. Yedi çelişkinin son durumu                                                                                                                                                                                                |
-| `docs/SPEC.md`       | ~25 KB  | **Spesifikasyon, 10 bölüm.** Veri modeli (tablo ve kolonlar) · sağlayıcı sözleşmesi · piyasa takvimi ve sınır durumları · gösterge formülleri ve düzeltilmiş seri · **sinyal ve hedef fiyat** · portföy/alarm/arama · tasarım jetonları · AI şeması · kalite/güvenlik/hukuk · v2 kasası              |
-| `docs/ROADMAP.md`    | ~9 KB   | **6 faz, 18 alt görev.** Kapsam, kabul kriterleri, kapı zinciri                                                                                                                                                                                                                                      |
-| `PROJECT_MEMORY.md`  | ~3 KB   | ANLIK DURUM · kararların özeti · açık belirsizlikler · SAPMA kütüğü (3 kayıt) · BORÇ kütüğü (boş) · faz kaydı şablonu                                                                                                                                                                                |
-| `docs/CHECKPOINT.md` | ~1,5 KB | Makine için sabit şekilli durum (yaml) + `olculmemis` listesi                                                                                                                                                                                                                                        |
-| `prompt-faz-1.1.md`  | ~10 KB  | Faz 1.1 için Claude Code'a yapıştırılacak tek parça prompt                                                                                                                                                                                                                                           |
+| Yol                      | İçerik                                                                                                                                                                                                                               |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `CLAUDE.md`              | **Anayasa.** K1–K18, kod standartları, git akışı, **ölçülmüş sürüm bloğu (§2.1)**, repo yapısı, ortam değişkenleri, katman kuralları, veri/sinyal/AI sözleşmesi, hukuki sınırlar, TR/EN sözlük, başarı tanımı, süreç değişmezleri    |
+| `KARARLAR.md`            | 131 kararın kütüğü, 14 bölüm (A–N). Değiştirilen 9 madde ayrı tabloda                                                                                                                                                                |
+| `docs/SPEC.md`           | Spesifikasyon, 10 bölüm — veri modeli · sağlayıcı sözleşmesi · takvim ve sınır durumları · gösterge formülleri · **sinyal ve hedef fiyat** · portföy/alarm/arama · tasarım jetonları · AI şeması · kalite/güvenlik/hukuk · v2 kasası |
+| `docs/ROADMAP.md`        | 6 faz, 18 alt görev                                                                                                                                                                                                                  |
+| `PROJECT_MEMORY.md`      | ANLIK DURUM · açık belirsizlikler · SAPMA kütüğü (SAPMA-001…004) · BORÇ kütüğü                                                                                                                                                       |
+| `docs/CHECKPOINT.md`     | Makine için sabit şekilli durum (yaml) + `olculmemis` listesi                                                                                                                                                                        |
+| `docs/reports/`          | `1.1-iskelet.md` + 24 ham ölçüm dosyası (log ve JSON)                                                                                                                                                                                |
+| `prompts/`               | `SABLON.md` (prompt iskeleti) · `faz-1.1.md` · `faz-1.1-devam.md` · `faz-1.2.md`                                                                                                                                                     |
+| `PROJE-DEVIR-PROMPTU.md` | Bu dosya                                                                                                                                                                                                                             |
 
-**Depo durumu:** git deposu **henüz yok**, bağımlılık kurulu değil, hiçbir kapı yok.
-Bunların hepsini Faz 1.1 kuruyor.
+**Kod tarafı:** 9 paket (`apps/{api,web,worker}` + `packages/{ai,data,db,engine,shared,ui}`),
+`scripts/` altında üç kapı betiği + `run-check.mjs`, `tools/eslint-local-rules/` altında
+iki yerel ESLint kuralı, `packages/shared/src/env.ts` (Zod ortam şeması).
+
+**Depo durumu (ölçüldü):** `develop` dalında **tek commit — `423c2cc`**.
+Altı kapı geçiyor, 162 test yeşil, kapsam satır %81,76 · dal %77,16 (eşik %70).
 
 **Canlı karar kütüğü (artifact):** `https://claude.ai/artifact/X2sWDRXcPyUTXAkmdZCHdF`
 — işaretlenebilir, `db` yeteneği açık, cevaplar `kararlar/secimler` belgesinde.
@@ -358,7 +368,7 @@ Gerekçe: isabeti ölçülmeyen sinyal, ölçülmemiş bir iddiadır. Bir modeli
 
 ## §12 — SÜREÇ DEĞİŞMEZLERİ (DZ)
 
-fms deposunda altı fazın **ölçülmüş bedelinden** doğdular. Hiçbir fazın kapsamı
+Her biri, bedeli bir kez ödenmiş bir yanlışın reçetesidir. Hiçbir fazın kapsamı
 onları askıya alamaz. Tam liste `CLAUDE.md` §9'da; en çok işine yarayacak altısı:
 
 - **DZ-01** — Sayı ölçüm çıktısından kopyalanır. Ölçülmemiş alan `ÖLÇÜLECEK` kalır ve
@@ -417,51 +427,30 @@ doldurulmadı; sen de doldurma.
 | 5   | Tarihsel düzeltme (bedelsiz/bölünme) verisinin kalitesi             | 3.1                  |
 | 6   | Çizim araçlarının emek maliyeti                                     | 4.2                  |
 
-**Ayrıca ölçülmemiş:** `CLAUDE.md` §2.1'deki tüm sürüm numaraları (fms'ten devralınan
+**Ayrıca ölçülmemiş:** `CLAUDE.md` §2.1'deki tüm sürüm numaraları (devralınan
 hipotez) ve bu makinedeki node/pnpm/docker sürümleri. İkisi de Faz 1.1'in işi.
 
 ---
 
-## §15 — EMSAL PROJE: fms
+## §15 — SIRADAKİ ADIM
 
-`C:\fms` klasöründe kullanıcının **başka bir projesi** var: Football Management
-Simulator. **Bu projenin kodu, verisi veya kararlarıyla hiçbir ilgisi yok.**
-Alınan tek şey **çalışma protokolü**:
+**Faz 1.2 — Kapılar ve CI.** Prompt hazır: `prompts/faz-1.2.md`.
 
-- `CLAUDE.md` anayasası (K kuralları), `PROJECT_MEMORY.md`, `docs/CHECKPOINT.md`
-- Kapı zinciri ve nöbetçi mantığı (`arch-check`, `i18n-check` vb.)
-- **Hata kataloğu** (D1–D7, F1–F5) ve ondan doğan **süreç değişmezleri** (DZ-01…)
-- Cowork **danışman protokolü** — §1'de anlattığım beş adım
+Kullanıcı bu dosyayı proje klasöründe açılmış yeni bir GPT-6 Astra (High) oturumuna
+yapıştıracak. Kapsam: beş nöbetçi (`arch-check` · `money-check` · `freshness-check` ·
+`i18n-check` · `contract-check` iskeleti), hepsinin CI'da **maskesiz** koşması,
+`docker-compose` ile Postgres + Redis'in **gerçekten ayağa kaldırılması**, ve 1.1'de
+düşük ölçülen iki nöbetçi kapsamının ≥%80'e çıkarılması.
 
-Neden emsal: o depo altı faz boyunca bu hataları **ölçtü ve bedelini ödedi**.
-Örneğin `.env` içindeki `NODE_ENV`'in React'in geliştirme sürümünü üretim paketine
-sokması orada ölçüldü (228 kB → 429 kB) ve bir kapıyla kapatıldı. Aynı kapı burada
-Faz 1.1'de kuruluyor.
-
-fms'e **dokunma**. Yalnızca bir protokol sorusunda örnek aramak için okunabilir.
-
----
-
-## §16 — SIRADAKİ ADIM
-
-**Faz 1.1 — İskelet.** Prompt hazır: `prompt-faz-1.1.md`.
-
-Kullanıcı bu dosyayı proje klasöründe açılmış yeni bir Claude Code oturumuna
-yapıştıracak. Promptun yaptığı:
-
-- Neyin **doğrulanmış**, neyin **Claude Code'un ölçeceği iddia** olduğunu ayırıyor —
-  sürüm bloğunun tamamı ikinci kategoride
-- fms'te bedeli ödenmiş altı tuzağı ölçümüyle veriyor
-- Kabul kriterlerini **kanıtlanabilir** yazıyor: ESLint kurallarının bilinen ihlalde
-  öttüğü ve temiz kodda sustuğu gösterilecek; ortam kapısının `NODE_ENV` eklendiğinde
-  exit 1 verdiği gösterilip geri alınacak
+**Ağaç şu an kirli** ve sebebi danışmandır: belgelerden emsal proje atıfları
+kaldırıldı, devir belgesinden bir bölüm çıkarılıp numaralar düzeltildi, `prompts/`
+klasörü eklendi. Bu değişiklikler 1.2 commit'ine dahil edilecek — prompt bunu söylüyor.
 
 **Rapor geldiğinde senin işin:** §1'deki beş adım. Ölç, değerlendir, kararları ver,
-1.2'nin promptunu üret, kendi hatanı da tuzak listesine koy.
+1.3'ün promptunu `prompts/SABLON.md` iskeletiyle üret, kendi hatanı da tuzak
+listesine koy.
 
----
-
-## §17 — PROMPT ŞEKLİ (Claude Code'a giden)
+## §16 — PROMPT ŞEKLİ (uygulayıcıya giden)
 
 Tek mesaj. Parçalı prompt bağlamı böler. Sabit şekil:
 
@@ -489,7 +478,7 @@ Bitince DUR. <sıradakine> geçme.
 **Kendi kapıların** (prompt gitmeden önce):
 
 - Her sayının yanında onu üreten komut var mı? Yoksa sayıyı sil ya da sınıfını değiştir.
-- Ağaç kirliyse prompt sebebini ve sahibini söylüyor mu? Söylemezse Claude Code onu
+- Ağaç kirliyse prompt sebebini ve sahibini söylüyor mu? Söylemezse uygulayıcı onu
   anomali sanar ve ya geri alır ya görmezden gelir — ikisi de yanlış.
 - Kapsam tek oturuma sığıyor mu? Sığmıyorsa alt görevi böl.
 - Bir kriter daraltılıyor/siliniyorsa işlevi yerine kondu mu? (DZ-15)
@@ -498,19 +487,19 @@ Bitince DUR. <sıradakine> geçme.
 
 ---
 
-## §18 — BU OTURUMDA ÖĞRENİLEN TUZAKLAR
+## §17 — BU OTURUMDA ÖĞRENİLEN TUZAKLAR
 
 > Danışman da yanılır. Bunlar **benim** bu oturumda yaptığım ya da ucundan döndüğüm
 > hatalar; saklansaydı sen aynılarını yapardın.
 
-1. **Bağlı klasörü proje sandım.** `C:\fms` bağlıydı ve içinde olgun bir monorepo
-   vardı; bu projenin deposu olduğunu varsaydım. Değildi. → **Klasörün hangi proje
-   olduğunu README/package.json ile doğrula**, bağlı olduğu için proje sanma.
+1. **Bağlı klasörü proje sandım.** Bağlı klasörde olgun bir monorepo vardı ve onu
+   bu projenin deposu sandım. Değildi. → **Klasörün hangi proje olduğunu
+   README/package.json ile doğrula**, bağlı olduğu için proje sanma.
 2. **`device_bash`'i denedim, çalışmıyor.** Hata mesajı bir Windows güncellemesini
    işaret ediyor. Tekrar tekrar denemek vakit kaybı.
 3. **`device_list_dir` recursive çıktısı taştı** (187 KB, `node_modules` yüzünden).
    Hedefe özel yol kullan.
-4. **Sürüm numaralarını doğrulanmış gibi yazacaktım.** fms'ten geliyorlardı ve bu
+4. **Sürüm numaralarını doğrulanmış gibi yazacaktım.** Devralınmışlardı ve bu
    proje için hiç ölçülmemişlerdi. "Devralınmış başlangıç hipotezi" diye işaretledim
    ve doğrulamayı Faz 1.1'e koydum. Aynı refleksi koru.
 5. **Kullanıcının abonelik varsayımını düzeltmek gerekti.** "ChatGPT/Gemini
@@ -519,13 +508,20 @@ Bitince DUR. <sıradakine> geçme.
 6. **İlk yol haritası çok uzundu** (9 faz / 57 alt görev) ve reddedildi. Bu kullanıcı
    için **plan uzunluğu bir maliyet kalemi**. Kapsamı bölmeden önce birleştirebilir
    miyim diye sor.
-7. **Ç3'te hukuki sınırı tek seferde söyleyip geçtim** — doğrusu buydu. Tekrar tekrar
+7. **`device_commit_files` "written" dedi ama yazmadı.** İki dosyada oldu; ilkinde
+   suçu uygulayıcıya yükledim (_"bayat kopyadan yazmış"_), sonra aynı şey onun yalnız
+   biçimlendirdiği bir dosyada da olunca yanıldığım anlaşıldı. → **Her yazımdan sonra
+   geri oku ve doğrula**; ve bir hatayı karşı tarafa yüklemeden önce kendi halkanı ölç.
+8. **Prompt dosyaları kökte dağınık duruyordu.** Kullanıcı uyardı; `prompts/` klasörü
+   ve `SABLON.md` kuruldu. Her prompt `prompts/faz-X.Y.md`, her rapor
+   `docs/reports/X.Y-<slug>.md` — ikisi eşleşir.
+9. **Ç3'te hukuki sınırı tek seferde söyleyip geçtim** — doğrusu buydu. Tekrar tekrar
    uyarmak vaaz olur; hiç söylememek ise kullanıcıyı bilmediği bir riske sokar.
    Bir kez, net, sonra tasarımla çöz.
 
 ---
 
-## §19 — EMİN OLAMAZSAN SORACAKLARIN
+## §18 — EMİN OLAMAZSAN SORACAKLARIN
 
 Aşağıdakiler bu devirde **kesin olarak yazılı değil**. Gerekirse sor, tahmin etme:
 
@@ -539,7 +535,7 @@ Aşağıdakiler bu devirde **kesin olarak yazılı değil**. Gerekirse sor, tahm
 
 ---
 
-## §20 — İLK MESAJINDA NE YAPACAKSIN
+## §19 — İLK MESAJINDA NE YAPACAKSIN
 
 1. Proje klasörünü listele ve §7'deki dosyaların **hâlâ orada ve hangi boyutta**
    olduğunu **ölç** — bu dosyadaki boyutları kopyalama (DZ-01).

@@ -1,14 +1,15 @@
 import { spawnSync } from 'node:child_process';
-import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { afterEach, describe, expect, it } from 'vitest';
-import { checkEnvFiles } from './check-env-file.mjs';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { checkEnvFiles, main } from './check-env-file.mjs';
 
 const temporaryDirectories = [];
 const temporaryRoot = resolve(tmpdir());
 const command = fileURLToPath(new URL('./check-env-file.mjs', import.meta.url));
+const initialExitCode = process.exitCode;
 
 function fixture(files) {
   const directory = mkdtempSync(join(temporaryRoot, 'amisostock-env-gate-'));
@@ -20,6 +21,8 @@ function fixture(files) {
 }
 
 afterEach(() => {
+  vi.restoreAllMocks();
+  process.exitCode = initialExitCode;
   for (const directory of temporaryDirectories.splice(0)) {
     const target = resolve(directory);
     if (
@@ -35,6 +38,24 @@ afterEach(() => {
 });
 
 describe('environment file gate', () => {
+  it.each([
+    [{ '.env.example': 'SERVER_MODE=private\n' }, 0, 'files=1'],
+    [{ '.env': '', '.env.example': '' }, 0, 'missing=0'],
+    [{ '.env.example': 'NODE_ENV=production\n' }, 1, 'violations=1'],
+    [{}, 1, 'files=0'],
+  ])('reports real CLI branches in process (%#)', (files, exit, scope) => {
+    const stdout = vi.spyOn(process.stdout, 'write').mockReturnValue(true);
+    const stderr = vi.spyOn(process.stderr, 'write').mockReturnValue(true);
+    main(fixture(files));
+    expect(process.exitCode ?? 0).toBe(exit);
+    expect(stdout.mock.calls.flat().join('')).toContain(scope);
+    expect(stderr.mock.calls.length > 0).toBe(exit === 1);
+  });
+  it('propagates unreadable paths instead of claiming they were inspected', () => {
+    const root = fixture({});
+    mkdirSync(join(root, '.env.example'));
+    expect(() => checkEnvFiles(root)).toThrow();
+  });
   it('passes a clean example and reports the absent optional local file', () => {
     const directory = fixture({ '.env.example': 'SERVER_MODE=private\n' });
     expect(checkEnvFiles(directory)).toEqual({

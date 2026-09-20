@@ -1,0 +1,5 @@
+{
+  "path": "packages/data/contracts/canary.contract.mjs",
+  "bad": "export default z => ({ schema: z.object({ value: z.string(), source: z.string() }).strict(), samples: [{ value: 12 }] });",
+  "good": "export default z => ({ schema: z.object({ value: z.string(), source: z.string() }).strict(), samples: [{ value: '12', source: 'canary' }] });"
+}
