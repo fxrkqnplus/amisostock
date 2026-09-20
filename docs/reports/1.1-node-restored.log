@@ -1,0 +1,4 @@
+$ node scripts/check-node-version.mjs
+[node-version] scope: files=1, rules=1 (exact-node-version)
+[node-version] files: .nvmrc
+[node-version] PASS required=24.19.0, actual=24.19.0

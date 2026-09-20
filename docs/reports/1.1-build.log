@@ -1,0 +1,56 @@
+$ node scripts/check-env-file.mjs && node scripts/run-check.mjs build
+Environment file gate: files=1, rules=2, missing=1, violations=0
+Rules: no NODE_ENV assignments; .env.example must be inspected
+Inspected: .env.example
+Missing: .env
+[scope:build] files=10 rules=1 (TypeScript compilation)
+  apps/api/src/index.ts
+  apps/web/src/index.ts
+  apps/worker/src/index.ts
+  packages/ai/src/index.ts
+  packages/data/src/index.ts
+  packages/db/src/index.ts
+  packages/engine/src/index.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/ui/src/index.ts
+[scope:build] packages=9; dependency declarations checked; tests run separately
+• turbo 2.11.2
+
+   • Packages in scope: @amisostock/ai, @amisostock/api, @amisostock/data, @amisostock/db, @amisostock/engine, @amisostock/shared, @amisostock/ui, @amisostock/web, @amisostock/worker
+   • Running build in 9 packages
+   • Remote caching disabled
+
+@amisostock/shared:build: cache bypass, force executing 6a2f286d7d96b353
+@amisostock/shared:build: $ tsc --project tsconfig.json
+@amisostock/engine:build: cache bypass, force executing edf8853335cf3f1d
+@amisostock/db:build: cache bypass, force executing 6b583749b7ebb75e
+@amisostock/ui:build: cache bypass, force executing fcbb6fbdc7eb4d59
+@amisostock/ai:build: cache bypass, force executing 068194c24eaae37e
+@amisostock/data:build: cache bypass, force executing 080de7a534b9e950
+@amisostock/engine:build: $ tsc --project tsconfig.json
+@amisostock/db:build: $ tsc --project tsconfig.json
+@amisostock/ui:build: $ tsc --project tsconfig.json
+@amisostock/ai:build: $ tsc --project tsconfig.json
+@amisostock/data:build: $ tsc --project tsconfig.json
+@amisostock/worker:build: cache bypass, force executing 94af8f88dabc2f73
+@amisostock/api:build: cache bypass, force executing d54f40b97d6794d8
+@amisostock/web:build: cache bypass, force executing d0d5ec77ff203bbc
+@amisostock/worker:build: $ tsc --project tsconfig.json
+@amisostock/api:build: $ tsc --project tsconfig.json
+@amisostock/web:build: $ tsc --project tsconfig.json
+
+ Tasks:    9 successful, 9 total
+Cached:    0 cached, 9 total
+  Time:    7.459s 
+
+[build:smoke] @amisostock/api: compiled ESM loaded
+[build:smoke] @amisostock/web: compiled ESM loaded
+[build:smoke] @amisostock/worker: compiled ESM loaded
+[build:smoke] @amisostock/ai: compiled ESM loaded
+[build:smoke] @amisostock/data: compiled ESM loaded
+[build:smoke] @amisostock/db: compiled ESM loaded
+[build:smoke] @amisostock/engine: compiled ESM loaded
+[build:smoke] @amisostock/shared: compiled ESM loaded
+[build:smoke] @amisostock/ui: compiled ESM loaded
+[scope:build:smoke] modules=9; product servers=0; browser bundles=0

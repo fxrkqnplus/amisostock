@@ -1,0 +1,53 @@
+$ node scripts/check-tsconfig-types.mjs && node scripts/run-check.mjs typecheck
+[tsconfig-types] scope: files=9, rules=1 (explicit-types)
+[tsconfig-types] file: apps/api/tsconfig.json
+[tsconfig-types] file: apps/web/tsconfig.json
+[tsconfig-types] file: apps/worker/tsconfig.json
+[tsconfig-types] file: packages/ai/tsconfig.json
+[tsconfig-types] file: packages/data/tsconfig.json
+[tsconfig-types] file: packages/db/tsconfig.json
+[tsconfig-types] file: packages/engine/tsconfig.json
+[tsconfig-types] file: packages/shared/tsconfig.json
+[tsconfig-types] file: packages/ui/tsconfig.json
+[tsconfig-types] PASS packages=9, violations=0
+[scope:typecheck] files=10 rules=1 (TypeScript compilation)
+  apps/api/src/index.ts
+  apps/web/src/index.ts
+  apps/worker/src/index.ts
+  packages/ai/src/index.ts
+  packages/data/src/index.ts
+  packages/db/src/index.ts
+  packages/engine/src/index.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/ui/src/index.ts
+[scope:typecheck] packages=9; dependency declarations checked; tests run separately
+• turbo 2.11.2
+
+   • Packages in scope: @amisostock/ai, @amisostock/api, @amisostock/data, @amisostock/db, @amisostock/engine, @amisostock/shared, @amisostock/ui, @amisostock/web, @amisostock/worker
+   • Running typecheck in 9 packages
+   • Remote caching disabled
+
+@amisostock/shared:typecheck: cache bypass, force executing 1dec3bc3279e6c35
+@amisostock/shared:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/db:typecheck: cache bypass, force executing 22ebef3b1cba6350
+@amisostock/ai:typecheck: cache bypass, force executing c52a2c96c0865e50
+@amisostock/data:typecheck: cache bypass, force executing 5779998fd5a43d4f
+@amisostock/ui:typecheck: cache bypass, force executing e92f56d6a61558ac
+@amisostock/engine:typecheck: cache bypass, force executing 657ce6c5a9ffe21b
+@amisostock/db:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/ai:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/data:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/ui:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/engine:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/worker:typecheck: cache bypass, force executing fa036b751d422dc9
+@amisostock/api:typecheck: cache bypass, force executing d83d2ec567b96b72
+@amisostock/web:typecheck: cache bypass, force executing bcfaf8bdce326bb3
+@amisostock/worker:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/api:typecheck: $ tsc --project tsconfig.json --noEmit
+@amisostock/web:typecheck: $ tsc --project tsconfig.json --noEmit
+
+ Tasks:    9 successful, 9 total
+Cached:    0 cached, 9 total
+  Time:    7.474s 
+

@@ -1,0 +1,13 @@
+.env*
+!.env.example
+node_modules/
+dist/
+.turbo/
+coverage/
+/data/cache/
+*.dump
+*.sql.gz
+*.bak
+*.yedek
+prompt-*.md
+*.tsbuildinfo

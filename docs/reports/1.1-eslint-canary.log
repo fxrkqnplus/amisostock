@@ -1,0 +1,13 @@
+
+ RUN  v5.0.1 C:/Users/fxrkqn/Documents/amisostock
+
+[scope:eslint-canary:violation] files=1 rules=2 errors=2 ruleIds=local/no-bare-jsx-text,local/no-hardcoded-path
+ ✓ tools/eslint-local-rules/config.test.mjs > root ESLint flat config applies K5 and K6 to an actual app source file > reports both configured rules for a known path and text violation 1359ms
+[scope:eslint-canary:clean] files=1 rules=2 errors=0 warnings=0
+ ✓ tools/eslint-local-rules/config.test.mjs > root ESLint flat config applies K5 and K6 to an actual app source file > accepts basePath() and t() with no messages 81ms
+
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  05:49:10
+   Duration  1.78s (tests 88%, import 11%, transform 1%)
+

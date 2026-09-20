@@ -1,0 +1,88 @@
+$ node scripts/run-check.mjs format:check
+[scope:format:check] files=56 rules=1 (Prettier format)
+  .prettierrc.json
+  apps/api/package.json
+  apps/api/src/index.ts
+  apps/api/tsconfig.json
+  apps/web/package.json
+  apps/web/src/index.ts
+  apps/web/tsconfig.json
+  apps/worker/package.json
+  apps/worker/src/index.ts
+  apps/worker/tsconfig.json
+  CLAUDE.md
+  docs/CHECKPOINT.md
+  docs/ROADMAP.md
+  docs/SPEC.md
+  eslint.config.mjs
+  KARARLAR.md
+  package.json
+  packages/ai/package.json
+  packages/ai/src/index.ts
+  packages/ai/tsconfig.json
+  packages/data/package.json
+  packages/data/src/index.ts
+  packages/data/tsconfig.json
+  packages/db/package.json
+  packages/db/src/index.ts
+  packages/db/tsconfig.json
+  packages/engine/package.json
+  packages/engine/src/index.ts
+  packages/engine/tsconfig.json
+  packages/shared/package.json
+  packages/shared/src/env.test.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/shared/tsconfig.json
+  packages/ui/package.json
+  packages/ui/src/index.ts
+  packages/ui/tsconfig.json
+  pnpm-workspace.yaml
+  PROJE-DEVIR-PROMPTU.md
+  PROJECT_MEMORY.md
+  scripts/check-env-file.mjs
+  scripts/check-env-file.test.mjs
+  scripts/check-node-version.mjs
+  scripts/check-node-version.test.mjs
+  scripts/check-tsconfig-types.mjs
+  scripts/check-tsconfig-types.test.mjs
+  scripts/run-check.mjs
+  tools/eslint-local-rules/config.test.mjs
+  tools/eslint-local-rules/index.mjs
+  tools/eslint-local-rules/no-bare-jsx-text.mjs
+  tools/eslint-local-rules/no-bare-jsx-text.test.mjs
+  tools/eslint-local-rules/no-hardcoded-path.mjs
+  tools/eslint-local-rules/no-hardcoded-path.test.mjs
+  tsconfig.base.json
+  turbo.json
+  vitest.config.mjs
+[format:check] FAIL apps/api/tsconfig.json
+[format:check] FAIL apps/web/tsconfig.json
+[format:check] FAIL apps/worker/tsconfig.json
+[format:check] FAIL CLAUDE.md
+[format:check] FAIL docs/CHECKPOINT.md
+[format:check] FAIL docs/SPEC.md
+[format:check] FAIL eslint.config.mjs
+[format:check] FAIL KARARLAR.md
+[format:check] FAIL packages/ai/tsconfig.json
+[format:check] FAIL packages/data/tsconfig.json
+[format:check] FAIL packages/db/tsconfig.json
+[format:check] FAIL packages/engine/tsconfig.json
+[format:check] FAIL packages/shared/tsconfig.json
+[format:check] FAIL packages/ui/tsconfig.json
+[format:check] FAIL PROJE-DEVIR-PROMPTU.md
+[format:check] FAIL PROJECT_MEMORY.md
+[format:check] FAIL scripts/check-env-file.test.mjs
+[format:check] FAIL scripts/check-node-version.mjs
+[format:check] FAIL scripts/check-node-version.test.mjs
+[format:check] FAIL scripts/check-tsconfig-types.mjs
+[format:check] FAIL scripts/check-tsconfig-types.test.mjs
+[format:check] FAIL scripts/run-check.mjs
+[format:check] FAIL tools/eslint-local-rules/config.test.mjs
+[format:check] FAIL tools/eslint-local-rules/no-bare-jsx-text.mjs
+[format:check] FAIL tools/eslint-local-rules/no-bare-jsx-text.test.mjs
+[format:check] FAIL tools/eslint-local-rules/no-hardcoded-path.mjs
+[format:check] FAIL tools/eslint-local-rules/no-hardcoded-path.test.mjs
+[format:check] FAIL vitest.config.mjs
+[format:check] checked=56 failures=28
+[ELIFECYCLE] Command failed with exit code 1.

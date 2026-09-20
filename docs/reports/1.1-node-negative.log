@@ -1,0 +1,5 @@
+$ node scripts/check-node-version.mjs
+[node-version] scope: files=1, rules=1 (exact-node-version)
+[node-version] files: .nvmrc
+[node-version] FAIL Node version mismatch: required=0.0.0, actual=24.19.0.
+[ELIFECYCLE] Command failed with exit code 1.

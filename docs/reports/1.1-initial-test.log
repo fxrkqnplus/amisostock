@@ -1,0 +1,204 @@
+$ node scripts/run-check.mjs test
+[scope:test] files=7 rules=assertions counted by Vitest below
+  packages/shared/src/env.test.ts
+  scripts/check-env-file.test.mjs
+  scripts/check-node-version.test.mjs
+  scripts/check-tsconfig-types.test.mjs
+  tools/eslint-local-rules/config.test.mjs
+  tools/eslint-local-rules/no-bare-jsx-text.test.mjs
+  tools/eslint-local-rules/no-hardcoded-path.test.mjs
+
+ RUN  v5.0.1 C:/Users/fxrkqn/Documents/amisostock
+      Coverage enabled with v8
+
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > accepts the exact pinned runtime 3ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a different runtime: 24.18.0 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a different runtime: 24.19.1 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a different runtime: 25.0.0 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a different runtime: 24.19.0-rc.1 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a non-exact pin: 24 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a non-exact pin: v24.19.0 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a non-exact pin: ^24.19.0 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a non-exact pin:  0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > rejects a non-exact pin: 24.19.0
+25.0.0 0ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > reports the measured runtime and scope through the command entry point 6ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > reports a failed pin (0.0.0) and sets the command exit code 4ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > reports a failed pin (v24.19.0) and sets the command exit code 10ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > reports a failed pin (undefined) and sets the command exit code 3ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > passes a clean example and reports the absent optional local file 113ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > accepts an explicit array: [] 3ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > accepts an explicit array: [ 'node' ] 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > accepts an explicit array: [ 'node', 'react' ] 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects missing or invalid types: null 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects missing or invalid types: {} 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects missing or invalid types: {"compilerOptions":{}} 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects missing or invalid types: {"compilerOptions":{"types":"node"}} 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects missing or invalid types: {"compilerOptions":{"types":[42]}} 0ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > lists every package in both workspaces and accepts explicitly empty types 11ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects inherited types when the package omits its own array 7ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects a package without tsconfig.json 6ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > rejects invalid JSON and an empty workspace instead of reporting false success 8ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > reports absent workspace directories instead of treating them as inspected 3ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > skips files and directories without manifests while sorting the inspected packages 22ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > reports the package inventory and success through the command entry point 12ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > reports every violated package and sets the command exit code 18ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > CLI passes and reports scope for the actual process runtime 119ms
+ ✓ packages/shared/src/env.test.ts > environment schema > covers exactly the documented example keys 5ms
+ ✓ packages/shared/src/env.test.ts > environment schema > accepts complete infrastructure input and converts numeric fields 9ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent AI_API_KEY key 3ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent AI_DAILY_REQUEST_CAP key 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent AI_MONTHLY_BUDGET_USD key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent AI_PROVIDER key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent API_PORT key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent DATABASE_URL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent EMAIL_FROM key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent EVDS_API_KEY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent JWT_ACCESS_TTL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent JWT_REFRESH_TTL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent JWT_SECRET key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent KAP_API_KEY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent LOG_LEVEL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent NEWS_FEEDS_FILE key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent PROVIDER_CRYPTO key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent PROVIDER_EQUITY_FALLBACK key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent PROVIDER_EQUITY_PRIMARY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent PUBLIC_BASE_PATH key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent PUBLIC_URL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent REDIS_URL key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent RESEND_API_KEY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent SENTRY_DSN key 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent SERVER_MODE key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent SETUP_TOKEN key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent TURNSTILE_SECRET_KEY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent TURNSTILE_SITE_KEY key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an absent WEB_PORT key 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > accepts explicit blanks for unused service keys 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > requires a key for google AI 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > requires a key for openai AI 2ms
+ ✓ packages/shared/src/env.test.ts > environment schema > requires a key for anthropic AI 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects a short or placeholder JWT_SECRET 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects a short or placeholder SETUP_TOKEN 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects the unchanged example without disclosing its secret placeholders 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid API_PORT input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid WEB_PORT input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid API_PORT input 2ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid DATABASE_URL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid DATABASE_URL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid REDIS_URL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid PUBLIC_URL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid PUBLIC_BASE_PATH input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid JWT_ACCESS_TTL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid JWT_REFRESH_TTL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid AI_DAILY_REQUEST_CAP input 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid AI_MONTHLY_BUDGET_USD input 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid AI_MONTHLY_BUDGET_USD input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid SERVER_MODE input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid AI_PROVIDER input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid EMAIL_FROM input 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid LOG_LEVEL input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects invalid RESEND_API_KEY input 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an unpaired TURNSTILE_SITE_KEY 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects an unpaired TURNSTILE_SECRET_KEY 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > accepts a configured Turnstile pair 0ms
+ ✓ packages/shared/src/env.test.ts > environment schema > never includes rejected values in the error message 1ms
+ ✓ packages/shared/src/env.test.ts > environment schema > rejects a missing environment object 0ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > fails an actual NODE_ENV assignment in .env 103ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > CLI passes with a scope derived from package manifests 129ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > CLI exits 1 for a mismatched pin 114ms
+ ✓ scripts/check-tsconfig-types.test.mjs > explicit TypeScript types gate > CLI exits 1 when compilerOptions.types is absent 137ms
+ ✓ scripts/check-node-version.test.mjs > exact Node version gate > CLI exits 1 if the pin file is absent 124ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > fetch(basePath('/api/prices')); 134ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > fails an actual NODE_ENV assignment in .env.example 124ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > catches export syntax and whitespace 13ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > allows comments, other values and similarly named variables 11ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const button = <button>{t("common:save")}</button>; 131ms
+ ✓ scripts/check-env-file.test.mjs > environment file gate > fails when no environment template was inspected 86ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const path = basePath(`/api/${symbol}`); 4ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const link = <a href={basePath("/giris")} />; 3ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > fetch('https://example.com/api/prices'); 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const image = <img src="//cdn.example.com/logo.svg" />; 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const relative = './settings'; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const hash = '#settings'; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const key = 'navigation:login'; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const matcher = /api/; 3ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const root = basePath("/"); 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const value = 42; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > valid > const path = `${basePath()}/api/prices`; 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > fetch('/api/prices'); 4ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const path = "/giris"; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const link = <a href="/giris" />; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const link = <a href={"/giris"} />; 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > fetch(`/api/${symbol}`); 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const path = `/giris`; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const path = "/"; 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > const path = "/api/" + symbol; 2ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > other.basePath("/api/prices"); 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > basePath(transform("/api/prices")); 1ms
+ ✓ tools/eslint-local-rules/no-hardcoded-path.test.mjs > no-hardcoded-path (K6) > invalid > basePath(value, "/api/prices"); 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const input = <input placeholder={t("auth:email")} />; 3ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const button = <button aria-label={t("common:close")} />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const image = <img alt={t("brand:logo")} />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <div className="panel" data-testid="panel" id="panel" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const label = <span>{label}</span>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <div>
+  {t("common:title")}
+</div>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const image = <img alt="" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <span>{" "}</span>; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <span>{/* translator-provided content */}</span>; 3ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <span>{visible ? t("common:yes") : t("common:no")}</span>; 4ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <span>{status === "ready" && t("common:ready")}</span>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const input = <input type="hidden" value="identifier" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const input = <input type="submit" value={t("common:save")} />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const outsideJsx = "Kaydet"; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > valid > const element = <span>{`${label}`}</span>; 3ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const button = <button>Kaydet</button>; 4ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const link = <a>Giriş yap</a>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <>İşlem tamamlandı</>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>Save</p>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{"Veri yok"}</p>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{`Merhaba ${name}`}</p>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const input = <input placeholder="E-posta" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const button = <button aria-label="Kapat" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const image = <img alt="Şirket logosu" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <span title={"Ayrıntılar"} />; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <Field label="Ad" />; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <Field helperText={`En az ${min}`} />; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{ok ? "Başarılı" : "Başarısız"}</p>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{visible && "Hazır"}</p>; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{label || "Bilinmiyor"}</p>; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{label ?? "Bilinmiyor"}</p>; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{"Merhaba " + name}</p>; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <p>{(track(), "Kaydet")}</p>; 2ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const input = <input type="submit" value="Gönder" />; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const input = <input type={"button"} value="Aç" />; 1ms
+ ✓ tools/eslint-local-rules/no-bare-jsx-text.test.mjs > no-bare-jsx-text (K5) > invalid > const element = <Panel children="Yükleniyor" />; 1ms
+ ✓ tools/eslint-local-rules/config.test.mjs > root ESLint flat config applies K5 and K6 to an actual app source file > reports both configured rules for a known path and text violation 2758ms
+ ✓ tools/eslint-local-rules/config.test.mjs > root ESLint flat config applies K5 and K6 to an actual app source file > accepts basePath() and t() with no messages 122ms
+
+ Test Files  7 passed (7)
+      Tests  162 passed (162)
+   Start at  05:46:51
+   Duration  3.59s (tests 73%, import 21%, worker 3%, transform 3%)
+
+ % Coverage report from v8
+-------------------|---------|----------|---------|---------|-------------------
+File               | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------|---------|----------|---------|---------|-------------------
+All files          |    81.7 |    78.74 |   80.64 |   82.69 |                   
+ scripts           |   82.95 |    78.18 |     100 |   82.95 |                   
+  ...-env-file.mjs |   53.57 |       50 |     100 |   53.57 | 26,41-64          
+  ...e-version.mjs |   94.11 |       90 |     100 |   94.11 | 37                
+  ...fig-types.mjs |   97.67 |       96 |     100 |   97.67 | 81                
+ ...nt-local-rules |   70.58 |    74.13 |   57.14 |   72.72 |                   
+  ...-jsx-text.mjs |   67.44 |    71.11 |      50 |   69.44 | ...55,60,67-72,82 
+  ...oded-path.mjs |    87.5 |    84.61 |   66.66 |    87.5 | 28                
+-------------------|---------|----------|---------|---------|-------------------
+
+=============================== Coverage summary ===============================
+Statements   : 81.7% ( 134/164 )
+Branches     : 78.74% ( 100/127 )
+Functions    : 80.64% ( 25/31 )
+Lines        : 82.69% ( 129/156 )
+================================================================================

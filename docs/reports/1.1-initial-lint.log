@@ -1,0 +1,44 @@
+$ node scripts/check-env-file.mjs && node scripts/run-check.mjs lint
+Environment file gate: files=1, rules=2, missing=1, violations=0
+Rules: no NODE_ENV assignments; .env.example must be inspected
+Inspected: .env.example
+Missing: .env
+[scope:lint] files=26 rules=114
+  apps/api/src/index.ts
+  apps/web/src/index.ts
+  apps/worker/src/index.ts
+  eslint.config.mjs
+  packages/ai/src/index.ts
+  packages/data/src/index.ts
+  packages/db/src/index.ts
+  packages/engine/src/index.ts
+  packages/shared/src/env.test.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/ui/src/index.ts
+  scripts/check-env-file.mjs
+  scripts/check-env-file.test.mjs
+  scripts/check-node-version.mjs
+  scripts/check-node-version.test.mjs
+  scripts/check-tsconfig-types.mjs
+  scripts/check-tsconfig-types.test.mjs
+  scripts/run-check.mjs
+  tools/eslint-local-rules/config.test.mjs
+  tools/eslint-local-rules/index.mjs
+  tools/eslint-local-rules/no-bare-jsx-text.mjs
+  tools/eslint-local-rules/no-bare-jsx-text.test.mjs
+  tools/eslint-local-rules/no-hardcoded-path.mjs
+  tools/eslint-local-rules/no-hardcoded-path.test.mjs
+  vitest.config.mjs
+[scope:lint:local] files=10 rules=2
+  apps/api/src/index.ts
+  apps/web/src/index.ts
+  apps/worker/src/index.ts
+  packages/ai/src/index.ts
+  packages/data/src/index.ts
+  packages/db/src/index.ts
+  packages/engine/src/index.ts
+  packages/shared/src/env.ts
+  packages/shared/src/index.ts
+  packages/ui/src/index.ts
+[lint] errors=0 warnings=0

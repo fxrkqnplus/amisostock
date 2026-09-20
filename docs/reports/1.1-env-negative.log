@@ -1,0 +1,7 @@
+$ node scripts/check-env-file.mjs && node scripts/run-check.mjs lint
+Environment file gate: files=1, rules=2, missing=1, violations=1
+Remove NODE_ENV assignments from: .env.example
+Rules: no NODE_ENV assignments; .env.example must be inspected
+Inspected: .env.example
+Missing: .env
+[ELIFECYCLE] Command failed with exit code 1.

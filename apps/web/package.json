@@ -1,0 +1,41 @@
+{
+  "name": "@amisostock/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.json"
+  },
+  "dependencies": {
+    "@amisostock/shared": "workspace:*",
+    "@amisostock/ui": "workspace:*",
+    "@hookform/resolvers": "5.9.1",
+    "@sentry/react": "10.75.0",
+    "@tanstack/react-query": "5.103.1",
+    "@tanstack/react-table": "9.2.4",
+    "@tanstack/react-virtual": "3.14.13",
+    "i18next": "26.4.2",
+    "lightweight-charts": "5.2.1",
+    "lucide-react": "1.47.0",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "react-hook-form": "7.88.0",
+    "react-i18next": "17.0.14",
+    "react-router": "8.4.0",
+    "zod": "4.6.5",
+    "zustand": "5.0.15"
+  },
+  "devDependencies": {
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "tailwindcss": "4.3.3",
+    "vite": "8.3.0"
+  }
+}

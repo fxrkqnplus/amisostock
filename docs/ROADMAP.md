@@ -1,0 +1,100 @@
+# ROADMAP — Amisostock
+
+> **6 faz, 18 alt görev.** Her alt görev bir oturum, bir commit. Bu sayı tabandır:
+> daha aza indirmek tek oturuma sığmayan birimler üretir. Bir alt görev taşarsa
+> `X.Ya` / `X.Yb` diye ikiye bölünür — ROADMAP'e yazılır, sessizce uzatılmaz.
+>
+> Kaynak: `KARARLAR.md` → `CLAUDE.md` → `docs/SPEC.md`. Bu dosya kendi sesimizdir
+> (DZ-06); çelişkide kaynak kazanır.
+
+## 0. Yürütme
+
+- Tek seferde tek alt görev → dur → burada işaretle → onay bekle (K14).
+- **Kapı zinciri**, her alt görev sonunda, kapsamını basarak (DZ-03):
+  `typecheck → lint → test → build → arch:check → i18n:check → contract:check → money:check → freshness:check`
+- Faz kapanışı: kabul kriterleri + kapılar + `PROJECT_MEMORY.md` kaydı + `git tag -a faz-X-son`.
+- Kabul kriterlerindeki her sayı **ölçüm çıktısından** gelir (DZ-01).
+
+`[ ]` yapılmadı · `[x]` kapandı · `[~]` yarım (sebebi `CHECKPOINT.md`'de)
+
+---
+
+## Faz 1 — Temel
+
+**Amaç:** Yanlışı yakalayacak düzenek ve veri modeli, tek satır ürün kodundan önce.
+
+- [x] **1.1 İskelet.** pnpm workspace + Turborepo; `CLAUDE.md` §2.1'deki her sürüm npm registry'den doğrulanır ve blok **ölçümle yeniden yazılır**; `tsconfig.base.json` + paket başına açık `types`; ESLint flat config + iki yerel kural (`no-hardcoded-path` K6, `no-bare-jsx-text` K5); `.env.example` + Zod ortam şeması (eksikte açılmaz) + `NODE_ENV` yasağı kapısı. Ölçüm: `docs/reports/1.1-iskelet.md` (20.09.2026).
+- [ ] **1.2 Kapılar ve CI.** `arch-check` (katman + saflık), `money-check` (float para avı), `freshness-check` (tazeliksiz değer avı), `i18n-check`, `contract-check` iskeleti — **her biri kanaryalı ve iki yönlü** (DZ-12); CI `amd64`+`arm64`, tüm kapılar **maskesiz `run:`** + kablolamayı iddia eden test (DZ-11); `docker-compose` (postgres + redis).
+- [ ] **1.3 Veri modeli ve çekirdek tipler.** `SPEC.md` §1'deki tabloların tamamı + zaman bazlı bölümleme + saklama süreleri; `packages/shared`: `Money`, `Quote`, `Freshness`, markalı tipler — **tazelik alanı olmayan değer arayüze geçemez** (K2), farklı para birimli toplama **derlenmez** (K9).
+
+**Kabul:** tüm kapılar temiz ve kapsamını basıyor · üç nöbetçinin kanaryası gerçek depoda ötüyor · CI'da her kapı `run:` olarak görünüyor · sürüm bloğu ölçümle yazılmış · `K2`/`K9` ihlali derlenmiyor (negatif test).
+**Atıf:** `SPEC.md` §1, §9
+
+---
+
+## Faz 2 — Veri hattı
+
+**Amaç:** Bir fiyatın kaynağı, anı ve tazeliğiyle ekrana kadar akması. Ürünün geri kalanı buna bağlanır.
+
+- [ ] **2.1 Omurga + canlı kaynaklar.** `MarketDataProvider` sözleşmesi, registry, **kaynak önceliği** (ortalama/medyan yok); kripto (borsa WebSocket) ve döviz (TCMB EVDS resmî + serbest piyasa ikinci kaynak); ingest worker (BullMQ) + Redis önbellek + hız sınırı + yeniden deneme; **bayat tespiti** (DZ-A2); SSE yayın kanalı (sunucu tek bağlantı kurar).
+- [ ] **2.2 BIST.** Gecikmeli kaynak **taranır, ölçülür, seçilir** ve karar `KARARLAR.md`'ye işlenir (açık belirsizlik #1); hisse ingest; **piyasa takvimi** (tatil, yarım gün) ve işlem durumu (tedbirli, işleme kapalı, sırası kapalı).
+- [ ] **2.3 Olay ve haber.** KAP bildirim hattı + bildirimin varlığa eşleştirilmesi; çok kaynaklı RSS + **tekilleştirme** (parmak izi + zaman penceresi) + kural tabanlı duygu; KAP finansal tablolarından temel oranlar (veri yoksa hesaplanmaz); `NOTICE` + "Veri kaynakları" sayfası.
+
+**Kabul:** kripto ve kur canlı akıyor, sınıf etiketiyle görünüyor · sağlayıcı elle kapatıldığında değer **bayat** etiketine düşüyor, uygulama çökmüyor · bozuk şema `ProviderError` fırlatıyor, sessiz `null` yok · aynı olay beş kaynaktan gelse tek kayıt · piyasa kapalıyken "kapanış" etiketi çıkıyor · `freshness:check` ve `contract:check` temiz.
+**Atıf:** `SPEC.md` §2, §3
+
+---
+
+## Faz 3 — Motor
+
+**Amaç:** Ürünün ürettiği her sayıyı saf, test edilebilir ve gerekçeli kılmak. Sinyal burada doğar.
+
+- [ ] **3.1 Göstergeler ve düzeltilmiş seri.** SMA, EMA, RSI, MACD, Bollinger, ATR — `SPEC.md` §4 formülleriyle, `minBars`/`warmupBars` kuralı dahil (DZ-A3); bedelsiz, bedelli, bölünme ve temettü düzeltmesi; ham ve düzeltilmiş seri ayrı, eksikse "düzeltilmemiş" işaretli.
+- [ ] **3.2 Portföy ve risk.** Ağırlıklı ortalama maliyet + FIFO; gerçekleşen/gerçekleşmemiş kâr-zarar; işlem anı kuruyla dönüşüm; oynaklık, zirveden düşüş, korelasyon, dağılım ve maruziyet.
+- [ ] **3.3 Sinyal ve hedef fiyat.** Bileşik skor (teknik · temel · olay · risk) + eşikler + histerezis; **hedef fiyat: üç yöntem → aralık** + ayrışma uyarısı + geçerlilik süresi; `signals` / `signal_outcomes` ve **kıyas ölçütüne göre isabet hesabı** (K11).
+
+**Kabul:** `packages/engine` kapsamı ≥%85 (ölçümle) · saflık ihlali yok · 20 barlık geçmişle 200 barlık ortalama hesaplanmıyor, "yeterli geçmiş yok" dönüyor · bayat veriyle sinyal üretilmiyor · her sinyal `calcTrace` taşıyor · isabet hesabı test edilmiş.
+**Atıf:** `SPEC.md` §4, §5
+
+---
+
+## Faz 4 — Kabuk ve ekranlar
+
+**Amaç:** Girişsiz hiçbir veri ekranının açılmadığı, iki temalı Türkçe arayüz ve grafik.
+
+- [ ] **4.1 Kimlik ve kabuk.** argon2 + kısa ömürlü erişim jetonu + httpOnly yenileme + iptal; izin listesi + `SERVER_MODE` + Turnstile + hız sınırı; e-posta doğrulama, parola sıfırlama, TOTP, **hesap silme ve veri indirme**; tasarım jetonları (`SPEC.md` §7, koyu birincil + açık tema aynı jetonlardan) + tek biçimlendirme modülü (tr-TR, tabular rakam); i18n + Türkçe ek modülü; beş bölümlü gezinme + PWA.
+- [ ] **4.2 Arama, varlık sayfası, grafik.** Tam metin arama + takma ad sözlüğü + Türkçe normalleştirme; varlık sayfası **tek şablon, türe göre açılan bölümler**; mum/çizgi/alan + hacim + zaman dilimleri + yakınlaştırma + artı imleç; göstergelerin bağlanması (motordan gelir, istemcide hesaplanmaz); çizim araçları (yatay/dikey/trend + not).
+- [ ] **4.3 Sinyal bileşeni ve tablolar.** `SPEC.md` §5.6 zorunlu birlikteliği — eksik alanla **render edilmez**; skor bileşenlerinin açılabilir dökümü; isabet geçmişi; sanallaştırılmış tablolar + mobilde kart görünümü; panel (bileşen aç/kapa + sıralama, mobilde tek sütun).
+
+**Kabul:** oturumsuz istek hiçbir veri ucuna ulaşmıyor (test) · iki tema yalnız jetonlardan türüyor · 360px'te grafik, tablo ve gezinme kullanılabilir, sayfa yatay kaymıyor · sinyal bileşeni eksik alanla çizilmiyor (negatif test) · `i18n:check` temiz, sabit kodlanmış Türkçe metin yok.
+**Atıf:** `SPEC.md` §5, §6, §7
+
+---
+
+## Faz 5 — Kişisel katman ve yapay zekâ
+
+**Amaç:** Ürünü kişiye bağlamak — kişiye özel tavsiye üretmeden — ve anlamı eklemek.
+
+- [ ] **5.1 Portföy ve izleme.** Portföy + deneme portföyü + çoklu portföy; işlem girişi + **CSV içe aktarma** (sütun eşleme); kâr-zarar, dağılım, maruziyet, kıyas karşılaştırması; izleme listeleri + varlık sınırı.
+- [ ] **5.2 Alarm.** Kurulum ve değerlendirme; **gecikme etiketi** (tetikleyen değerin ait olduğu an); soğuma süresi + saatlik üst sınır; uygulama içi + e-posta bildirimi (Telegram isteğe bağlı).
+- [ ] **5.3 Yapay zekâ.** Ücretsiz kademe **ölçümü** (istek sınırı + veri kullanımı politikası; kabul edilemezse sağlayıcı değişir); `AiProvider` + istem şablonları + bağlam derleyici (yalnız kaynak parçaları); Zod çıktı şeması + reddetme ve **bir kez** yeniden isteme; kota sayacı + kapanma + ekranda görünürlük; olay tetikleme + versiyonlama + "ne değişti"; sinyalin anlatımı — **sayı üretmeden** (K10), kaynak kimlikleriyle (K12).
+
+**Kabul:** gecikmeli varlıkta alarm bildirimi gecikmeyi ve değerin anını yazıyor · alarm fırtınası sınırlanıyor (test) · `money-check` temiz · şemaya uymayan AI çıktısı reddediliyor (test) · kaynaksız cümle eleniyor (test) · **AI metnindeki hiçbir sayı arayüze geçmiyor** (nöbetçi) · kota dolunca ekran söylüyor.
+**Atıf:** `SPEC.md` §6, §8
+
+---
+
+## Faz 6 — Yayın
+
+**Amaç:** Ürünü yayına almak ve **çalıştığını kanıtlamak**.
+
+- [ ] **6.1 Yönetim ve hukuk.** Yönetim paneli (kullanıcılar, izin listesi, sağlayıcı sağlığı, kota/maliyet sayaçları, bakım modu); KVKK aydınlatma + kullanım şartları + sorumluluk reddi ve **dört yerde gösterimi**; ısı haritası, sektör performansı, KAP türevli bilanço/temettü takvimi, hesaplayıcılar.
+- [ ] **6.2 Dağıtım.** Oracle: kaynak sınırlı konteynerler, Caddy alt yol, ayrı veritabanı ve kullanıcı; Sentry + sağlık ucu + **veri tazelik nöbetçisi**; günlük yedek + nesne deposuna gönderim + **geri yükleme tatbikatı**.
+- [ ] **6.3 Tatbikatlar ve kapanış.** Sağlayıcı arızası tatbikatı; yük ölçümü (eşzamanlı SSE + zaman serisi sorgusu); performans bütçesi kapısı; `CLAUDE.md` §8.3 başarı tanımının madde madde denetimi.
+
+**Kabul:** başarı tanımındaki **her madde** işaretli ve ölçümle belgelenmiş · geri yükleme tatbikatı yazılı · sinyal isabet tablosu dolu ve görünür.
+**Atıf:** `SPEC.md` §7, §9
+
+---
+
+v1.0.0 etiketlenir. Yeni fikirler `SPEC.md` §10'a (v2 kasası) yazılır, v1'e sokulmaz (K15).

@@ -1,0 +1,12 @@
+Scope: all 10 workspace projects
+? Verifying lockfile against supply-chain policies (703 entries)...
+Lockfile is up to date, resolution step is skipped
+Already up to date
+✓ Lockfile passes supply-chain policies (703 entries in 6.2s)
+
+. preinstall$ node scripts/check-node-version.mjs
+. preinstall: [node-version] scope: files=1, rules=1 (exact-node-version)
+. preinstall: [node-version] files: .nvmrc
+. preinstall: [node-version] PASS required=24.19.0, actual=24.19.0
+. preinstall: Done
+Done in 6.9s using pnpm v11.23.0

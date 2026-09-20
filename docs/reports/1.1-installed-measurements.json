@@ -1,0 +1,1143 @@
+[
+  {
+    "name": "amisostock",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock",
+    "private": true,
+    "devDependencies": {
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "10.0.1",
+        "resolved": "https://registry.npmjs.org/@eslint/js/-/js-10.0.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "1.63.0",
+        "resolved": "https://registry.npmjs.org/@playwright/test/-/test-1.63.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "24.13.6",
+        "resolved": "https://registry.npmjs.org/@types/node/-/node-24.13.6.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "5.0.1",
+        "resolved": "https://registry.npmjs.org/@vitest/coverage-v8/-/coverage-v8-5.0.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      },
+      "eslint": {
+        "from": "eslint",
+        "version": "10.11.0",
+        "resolved": "https://registry.npmjs.org/eslint/-/eslint-10.11.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "17.12.0",
+        "resolved": "https://registry.npmjs.org/globals/-/globals-17.12.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "3.9.8",
+        "resolved": "https://registry.npmjs.org/prettier/-/prettier-3.9.8.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "4.21.0",
+        "resolved": "https://registry.npmjs.org/shadcn/-/shadcn-4.21.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "2.11.2",
+        "resolved": "https://registry.npmjs.org/turbo/-/turbo-2.11.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "6.0.3",
+        "resolved": "https://registry.npmjs.org/typescript/-/typescript-6.0.3.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "8.70.0",
+        "resolved": "https://registry.npmjs.org/typescript-eslint/-/typescript-eslint-8.70.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "8.3.0",
+        "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "5.0.1",
+        "resolved": "https://registry.npmjs.org/vitest/-/vitest-5.0.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/api",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\apps\\api",
+    "private": true,
+    "dependencies": {
+      "@amisostock/ai": {
+        "from": "@amisostock/ai",
+        "version": "link:../../packages/ai",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\ai"
+      },
+      "@amisostock/data": {
+        "from": "@amisostock/data",
+        "version": "link:../../packages/data",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\data"
+      },
+      "@amisostock/db": {
+        "from": "@amisostock/db",
+        "version": "link:../../packages/db",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\db"
+      },
+      "@amisostock/engine": {
+        "from": "@amisostock/engine",
+        "version": "link:../../packages/engine",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\engine"
+      },
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../../packages/shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "@nestjs/common": {
+        "from": "@nestjs/common",
+        "version": "12.0.3",
+        "resolved": "https://registry.npmjs.org/@nestjs/common/-/common-12.0.3.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@nestjs+common@12.0.3_reflect-metadata@0.2.2_rxjs@7.8.2\\node_modules\\@nestjs\\common"
+      },
+      "@nestjs/core": {
+        "from": "@nestjs/core",
+        "version": "12.0.3",
+        "resolved": "https://registry.npmjs.org/@nestjs/core/-/core-12.0.3.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@nestjs+core@12.0.3_@nestjs_b4c4b4a6393fcc48031c116488d685c9\\node_modules\\@nestjs\\core"
+      },
+      "@nestjs/platform-express": {
+        "from": "@nestjs/platform-express",
+        "version": "12.0.3",
+        "resolved": "https://registry.npmjs.org/@nestjs/platform-express/-/platform-express-12.0.3.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@nestjs+platform-express@12_d78401c6bf754c25f23dcd29d6c5d846\\node_modules\\@nestjs\\platform-express"
+      },
+      "@node-rs/argon2": {
+        "from": "@node-rs/argon2",
+        "version": "2.2.1",
+        "resolved": "https://registry.npmjs.org/@node-rs/argon2/-/argon2-2.2.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@node-rs+argon2@2.2.1\\node_modules\\@node-rs\\argon2"
+      },
+      "@sentry/node": {
+        "from": "@sentry/node",
+        "version": "10.75.0",
+        "resolved": "https://registry.npmjs.org/@sentry/node/-/node-10.75.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@sentry+node@10.75.0_@opent_448222c8713d5ace77d56796e7fb860e\\node_modules\\@sentry\\node"
+      },
+      "jose": {
+        "from": "jose",
+        "version": "6.2.12",
+        "resolved": "https://registry.npmjs.org/jose/-/jose-6.2.12.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\jose@6.2.12\\node_modules\\jose"
+      },
+      "nestjs-pino": {
+        "from": "nestjs-pino",
+        "version": "5.2.0",
+        "resolved": "https://registry.npmjs.org/nestjs-pino/-/nestjs-pino-5.2.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\nestjs-pino@5.2.0_@nestjs+c_6f56c78efdc39d084ae6858cdcbd3222\\node_modules\\nestjs-pino"
+      },
+      "pino": {
+        "from": "pino",
+        "version": "10.3.1",
+        "resolved": "https://registry.npmjs.org/pino/-/pino-10.3.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\pino@10.3.1\\node_modules\\pino"
+      },
+      "pino-http": {
+        "from": "pino-http",
+        "version": "11.0.0",
+        "resolved": "https://registry.npmjs.org/pino-http/-/pino-http-11.0.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\pino-http@11.0.0\\node_modules\\pino-http"
+      },
+      "reflect-metadata": {
+        "from": "reflect-metadata",
+        "version": "0.2.2",
+        "resolved": "https://registry.npmjs.org/reflect-metadata/-/reflect-metadata-0.2.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\reflect-metadata@0.2.2\\node_modules\\reflect-metadata"
+      },
+      "resend": {
+        "from": "resend",
+        "version": "6.28.1",
+        "resolved": "https://registry.npmjs.org/resend/-/resend-6.28.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\resend@6.28.1\\node_modules\\resend"
+      },
+      "rxjs": {
+        "from": "rxjs",
+        "version": "7.8.2",
+        "resolved": "https://registry.npmjs.org/rxjs/-/rxjs-7.8.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\rxjs@7.8.2\\node_modules\\rxjs"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/web",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\apps\\web",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../../packages/shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "@amisostock/ui": {
+        "from": "@amisostock/ui",
+        "version": "link:../../packages/ui",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\ui"
+      },
+      "@hookform/resolvers": {
+        "from": "@hookform/resolvers",
+        "version": "5.9.1",
+        "resolved": "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-5.9.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@hookform+resolvers@5.9.1_@_b2daaf682ef89593a3a8814ce7fdb42d\\node_modules\\@hookform\\resolvers"
+      },
+      "@sentry/react": {
+        "from": "@sentry/react",
+        "version": "10.75.0",
+        "resolved": "https://registry.npmjs.org/@sentry/react/-/react-10.75.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@sentry+react@10.75.0_react@19.3.0\\node_modules\\@sentry\\react"
+      },
+      "@tanstack/react-query": {
+        "from": "@tanstack/react-query",
+        "version": "5.103.1",
+        "resolved": "https://registry.npmjs.org/@tanstack/react-query/-/react-query-5.103.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@tanstack+react-query@5.103.1_react@19.3.0\\node_modules\\@tanstack\\react-query"
+      },
+      "@tanstack/react-table": {
+        "from": "@tanstack/react-table",
+        "version": "9.2.4",
+        "resolved": "https://registry.npmjs.org/@tanstack/react-table/-/react-table-9.2.4.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@tanstack+react-table@9.2.4_6382c6160242113014fc5c759bd4b2fc\\node_modules\\@tanstack\\react-table"
+      },
+      "@tanstack/react-virtual": {
+        "from": "@tanstack/react-virtual",
+        "version": "3.14.13",
+        "resolved": "https://registry.npmjs.org/@tanstack/react-virtual/-/react-virtual-3.14.13.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@tanstack+react-virtual@3.1_a8dc63622a48ce981b422eaf98df6132\\node_modules\\@tanstack\\react-virtual"
+      },
+      "i18next": {
+        "from": "i18next",
+        "version": "26.4.2",
+        "resolved": "https://registry.npmjs.org/i18next/-/i18next-26.4.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\i18next@26.4.2_typescript@6.0.3\\node_modules\\i18next"
+      },
+      "lightweight-charts": {
+        "from": "lightweight-charts",
+        "version": "5.2.1",
+        "resolved": "https://registry.npmjs.org/lightweight-charts/-/lightweight-charts-5.2.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\lightweight-charts@5.2.1\\node_modules\\lightweight-charts"
+      },
+      "lucide-react": {
+        "from": "lucide-react",
+        "version": "1.47.0",
+        "resolved": "https://registry.npmjs.org/lucide-react/-/lucide-react-1.47.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\lucide-react@1.47.0_react@19.3.0\\node_modules\\lucide-react"
+      },
+      "react": {
+        "from": "react",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/react/-/react-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react@19.3.0\\node_modules\\react"
+      },
+      "react-dom": {
+        "from": "react-dom",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-dom@19.3.0_react@19.3.0\\node_modules\\react-dom"
+      },
+      "react-hook-form": {
+        "from": "react-hook-form",
+        "version": "7.88.0",
+        "resolved": "https://registry.npmjs.org/react-hook-form/-/react-hook-form-7.88.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-hook-form@7.88.0_react@19.3.0\\node_modules\\react-hook-form"
+      },
+      "react-i18next": {
+        "from": "react-i18next",
+        "version": "17.0.14",
+        "resolved": "https://registry.npmjs.org/react-i18next/-/react-i18next-17.0.14.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-i18next@17.0.14_i18ne_878ab5026c00939b0e040a77fca88c5c\\node_modules\\react-i18next"
+      },
+      "react-router": {
+        "from": "react-router",
+        "version": "8.4.0",
+        "resolved": "https://registry.npmjs.org/react-router/-/react-router-8.4.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-router@8.4.0_react-do_8c7b91c66c8115d08033ff54fc817791\\node_modules\\react-router"
+      },
+      "zod": {
+        "from": "zod",
+        "version": "4.6.5",
+        "resolved": "https://registry.npmjs.org/zod/-/zod-4.6.5.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\zod@4.6.5\\node_modules\\zod"
+      },
+      "zustand": {
+        "from": "zustand",
+        "version": "5.0.15",
+        "resolved": "https://registry.npmjs.org/zustand/-/zustand-5.0.15.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\zustand@5.0.15_@types+react_d6e1d6603700a0185ed179e16b0fda65\\node_modules\\zustand"
+      }
+    },
+    "devDependencies": {
+      "@types/react": {
+        "from": "@types/react",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+react@19.3.0\\node_modules\\@types\\react"
+      },
+      "@types/react-dom": {
+        "from": "@types/react-dom",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+react-dom@19.3.0_@types+react@19.3.0\\node_modules\\@types\\react-dom"
+      },
+      "tailwindcss": {
+        "from": "tailwindcss",
+        "version": "4.3.3",
+        "resolved": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-4.3.3.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\tailwindcss@4.3.3\\node_modules\\tailwindcss"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "8.3.0",
+        "resolved": "https://registry.npmjs.org/vite/-/vite-8.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/worker",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\apps\\worker",
+    "private": true,
+    "dependencies": {
+      "@amisostock/ai": {
+        "from": "@amisostock/ai",
+        "version": "link:../../packages/ai",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\ai"
+      },
+      "@amisostock/data": {
+        "from": "@amisostock/data",
+        "version": "link:../../packages/data",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\data"
+      },
+      "@amisostock/db": {
+        "from": "@amisostock/db",
+        "version": "link:../../packages/db",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\db"
+      },
+      "@amisostock/engine": {
+        "from": "@amisostock/engine",
+        "version": "link:../../packages/engine",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\engine"
+      },
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../../packages/shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "@sentry/node": {
+        "from": "@sentry/node",
+        "version": "10.75.0",
+        "resolved": "https://registry.npmjs.org/@sentry/node/-/node-10.75.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@sentry+node@10.75.0_@opent_448222c8713d5ace77d56796e7fb860e\\node_modules\\@sentry\\node"
+      },
+      "bullmq": {
+        "from": "bullmq",
+        "version": "6.3.8",
+        "resolved": "https://registry.npmjs.org/bullmq/-/bullmq-6.3.8.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\bullmq@6.3.8_ioredis@6.0.0_pg@8.23.0\\node_modules\\bullmq"
+      },
+      "ioredis": {
+        "from": "ioredis",
+        "version": "6.0.0",
+        "resolved": "https://registry.npmjs.org/ioredis/-/ioredis-6.0.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\ioredis@6.0.0\\node_modules\\ioredis"
+      },
+      "pino": {
+        "from": "pino",
+        "version": "10.3.1",
+        "resolved": "https://registry.npmjs.org/pino/-/pino-10.3.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\pino@10.3.1\\node_modules\\pino"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/ai",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\ai",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/data",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\data",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/db",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\db",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "drizzle-orm": {
+        "from": "drizzle-orm",
+        "version": "0.45.2",
+        "resolved": "https://registry.npmjs.org/drizzle-orm/-/drizzle-orm-0.45.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\drizzle-orm@0.45.2_@opentel_6807419f06948b7119cf4c2e43264475\\node_modules\\drizzle-orm"
+      },
+      "pg": {
+        "from": "pg",
+        "version": "8.23.0",
+        "resolved": "https://registry.npmjs.org/pg/-/pg-8.23.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\pg@8.23.0\\node_modules\\pg"
+      }
+    },
+    "devDependencies": {
+      "@types/pg": {
+        "from": "@types/pg",
+        "version": "8.23.1",
+        "resolved": "https://registry.npmjs.org/@types/pg/-/pg-8.23.1.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+pg@8.23.1\\node_modules\\@types\\pg"
+      },
+      "drizzle-kit": {
+        "from": "drizzle-kit",
+        "version": "0.31.10",
+        "resolved": "https://registry.npmjs.org/drizzle-kit/-/drizzle-kit-0.31.10.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\drizzle-kit@0.31.10\\node_modules\\drizzle-kit"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/engine",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\engine",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "decimal.js": {
+        "from": "decimal.js",
+        "version": "10.6.0",
+        "resolved": "https://registry.npmjs.org/decimal.js/-/decimal.js-10.6.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\decimal.js@10.6.0\\node_modules\\decimal.js"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/shared",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared",
+    "private": true,
+    "dependencies": {
+      "decimal.js": {
+        "from": "decimal.js",
+        "version": "10.6.0",
+        "resolved": "https://registry.npmjs.org/decimal.js/-/decimal.js-10.6.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\decimal.js@10.6.0\\node_modules\\decimal.js"
+      },
+      "zod": {
+        "from": "zod",
+        "version": "4.6.5",
+        "resolved": "https://registry.npmjs.org/zod/-/zod-4.6.5.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\zod@4.6.5\\node_modules\\zod"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  },
+  {
+    "name": "@amisostock/ui",
+    "version": "0.0.0",
+    "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\ui",
+    "private": true,
+    "dependencies": {
+      "@amisostock/shared": {
+        "from": "@amisostock/shared",
+        "version": "link:../shared",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\packages\\shared"
+      },
+      "i18next": {
+        "from": "i18next",
+        "version": "26.4.2",
+        "resolved": "https://registry.npmjs.org/i18next/-/i18next-26.4.2.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\i18next@26.4.2_typescript@6.0.3\\node_modules\\i18next"
+      },
+      "lucide-react": {
+        "from": "lucide-react",
+        "version": "1.47.0",
+        "resolved": "https://registry.npmjs.org/lucide-react/-/lucide-react-1.47.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\lucide-react@1.47.0_react@19.3.0\\node_modules\\lucide-react"
+      },
+      "react": {
+        "from": "react",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/react/-/react-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react@19.3.0\\node_modules\\react"
+      },
+      "react-dom": {
+        "from": "react-dom",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-dom@19.3.0_react@19.3.0\\node_modules\\react-dom"
+      },
+      "react-i18next": {
+        "from": "react-i18next",
+        "version": "17.0.14",
+        "resolved": "https://registry.npmjs.org/react-i18next/-/react-i18next-17.0.14.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\react-i18next@17.0.14_i18ne_878ab5026c00939b0e040a77fca88c5c\\node_modules\\react-i18next"
+      }
+    },
+    "devDependencies": {
+      "@types/react": {
+        "from": "@types/react",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/@types/react/-/react-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+react@19.3.0\\node_modules\\@types\\react"
+      },
+      "@types/react-dom": {
+        "from": "@types/react-dom",
+        "version": "19.3.0",
+        "resolved": "https://registry.npmjs.org/@types/react-dom/-/react-dom-19.3.0.tgz",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+react-dom@19.3.0_@types+react@19.3.0\\node_modules\\@types\\react-dom"
+      }
+    },
+    "unsavedDependencies": {
+      "eslint": {
+        "from": "eslint",
+        "version": "link:../../node_modules/.pnpm/eslint@10.11.0/node_modules/eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\eslint@10.11.0\\node_modules\\eslint"
+      },
+      "globals": {
+        "from": "globals",
+        "version": "link:../../node_modules/.pnpm/globals@17.12.0/node_modules/globals",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\globals@17.12.0\\node_modules\\globals"
+      },
+      "prettier": {
+        "from": "prettier",
+        "version": "link:../../node_modules/.pnpm/prettier@3.9.8/node_modules/prettier",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\prettier@3.9.8\\node_modules\\prettier"
+      },
+      "shadcn": {
+        "from": "shadcn",
+        "version": "link:../../node_modules/.pnpm/shadcn@4.21.0_typescript@6.0.3/node_modules/shadcn",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\shadcn@4.21.0_typescript@6.0.3\\node_modules\\shadcn"
+      },
+      "turbo": {
+        "from": "turbo",
+        "version": "link:../../node_modules/.pnpm/turbo@2.11.2/node_modules/turbo",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\turbo@2.11.2\\node_modules\\turbo"
+      },
+      "typescript": {
+        "from": "typescript",
+        "version": "link:../../node_modules/.pnpm/typescript@6.0.3/node_modules/typescript",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript@6.0.3\\node_modules\\typescript"
+      },
+      "typescript-eslint": {
+        "from": "typescript-eslint",
+        "version": "link:../../node_modules/.pnpm/typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3/node_modules/typescript-eslint",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\typescript-eslint@8.70.0_eslint@10.11.0_typescript@6.0.3\\node_modules\\typescript-eslint"
+      },
+      "vite": {
+        "from": "vite",
+        "version": "link:../../node_modules/.pnpm/vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13/node_modules/vite",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vite@8.3.0_@types+node@24.13.6_esbuild@0.28.2_tsx@4.23.13\\node_modules\\vite"
+      },
+      "vitest": {
+        "from": "vitest",
+        "version": "link:../../node_modules/.pnpm/vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf/node_modules/vitest",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\vitest@5.0.1_@opentelemetry_9f5ef5606605e7d8dacacc6659a63cbf\\node_modules\\vitest"
+      },
+      "@playwright/test": {
+        "from": "@playwright/test",
+        "version": "link:../../node_modules/.pnpm/@playwright+test@1.63.0/node_modules/@playwright/test",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@playwright+test@1.63.0\\node_modules\\@playwright\\test"
+      },
+      "@eslint/js": {
+        "from": "@eslint/js",
+        "version": "link:../../node_modules/.pnpm/@eslint+js@10.0.1_eslint@10.11.0/node_modules/@eslint/js",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@eslint+js@10.0.1_eslint@10.11.0\\node_modules\\@eslint\\js"
+      },
+      "@types/node": {
+        "from": "@types/node",
+        "version": "link:../../node_modules/.pnpm/@types+node@24.13.6/node_modules/@types/node",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@types+node@24.13.6\\node_modules\\@types\\node"
+      },
+      "@vitest/coverage-v8": {
+        "from": "@vitest/coverage-v8",
+        "version": "link:../../node_modules/.pnpm/@vitest+coverage-v8@5.0.1_vitest@5.0.1/node_modules/@vitest/coverage-v8",
+        "path": "C:\\Users\\fxrkqn\\Documents\\amisostock\\node_modules\\.pnpm\\@vitest+coverage-v8@5.0.1_vitest@5.0.1\\node_modules\\@vitest\\coverage-v8"
+      }
+    }
+  }
+]

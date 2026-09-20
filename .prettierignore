@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.turbo/
+coverage/
+pnpm-lock.yaml
+prompt-*.md
+docs/reports/*.log
+docs/reports/*-measurements.json
+# Preserve the source document; edits are explicitly limited to individual lines.
+CLAUDE.md

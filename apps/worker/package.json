@@ -1,0 +1,27 @@
+{
+  "name": "@amisostock/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "build": "tsc --project tsconfig.json"
+  },
+  "dependencies": {
+    "@amisostock/shared": "workspace:*",
+    "@amisostock/db": "workspace:*",
+    "@amisostock/engine": "workspace:*",
+    "@amisostock/data": "workspace:*",
+    "@amisostock/ai": "workspace:*",
+    "@sentry/node": "10.75.0",
+    "bullmq": "6.3.8",
+    "ioredis": "6.0.0",
+    "pino": "10.3.1"
+  }
+}

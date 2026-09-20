@@ -1,0 +1,73 @@
+{
+  "measuredAt": "2026-09-20",
+  "orderedChecks": [
+    {
+      "command": "pnpm install",
+      "exitCode": 0,
+      "log": "1.1-install.log"
+    },
+    {
+      "command": "pnpm typecheck",
+      "exitCode": 0,
+      "log": "1.1-typecheck.log"
+    },
+    {
+      "command": "pnpm lint",
+      "exitCode": 0,
+      "log": "1.1-lint.log"
+    },
+    {
+      "command": "pnpm test",
+      "exitCode": 0,
+      "log": "1.1-test.log"
+    },
+    {
+      "command": "pnpm build",
+      "exitCode": 0,
+      "log": "1.1-build.log"
+    },
+    {
+      "command": "pnpm format:check",
+      "exitCode": 0,
+      "log": "1.1-format-check.log"
+    }
+  ],
+  "canaries": [
+    {
+      "command": "pnpm lint",
+      "mutation": ".env.example: NODE_ENV=development",
+      "exitCode": 1,
+      "log": "1.1-env-negative.log"
+    },
+    {
+      "command": "pnpm lint",
+      "mutation": "restored",
+      "exitCode": 0,
+      "log": "1.1-env-restored.log"
+    },
+    {
+      "command": "node node_modules/vitest/vitest.mjs run tools/eslint-local-rules/config.test.mjs --reporter=verbose",
+      "exitCode": 0,
+      "log": "1.1-eslint-canary.log"
+    },
+    {
+      "command": "pnpm run preinstall",
+      "mutation": ".nvmrc: 0.0.0",
+      "exitCode": 1,
+      "log": "1.1-node-negative.log"
+    },
+    {
+      "command": "pnpm run preinstall",
+      "mutation": "restored",
+      "exitCode": 0,
+      "log": "1.1-node-restored.log"
+    }
+  ],
+  "grep": {
+    "command": "\"C:/Program Files/Git/usr/bin/grep.exe\" -n \"9 faz\" CLAUDE.md",
+    "exitCode": 1,
+    "output": ""
+  },
+  "envBeforeGitHash": "10a47b5daa7dcf6f29b6864a41f5340c064c30a1",
+  "envAfterGitHash": "10a47b5daa7dcf6f29b6864a41f5340c064c30a1"
+}

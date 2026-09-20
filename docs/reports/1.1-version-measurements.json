@@ -1,0 +1,1149 @@
+{
+  "measuredAt": "2026-09-20",
+  "environment": [
+    {
+      "command": "rg --files --hidden -g AGENTS.md -g '!node_modules' -g '!.git'",
+      "result": {
+        "chunk_id": "4fb90e",
+        "wall_time_seconds": 0.3635478,
+        "exit_code": 1,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "command": "node -v",
+      "result": {
+        "chunk_id": "bddbed",
+        "wall_time_seconds": 0.3600864,
+        "exit_code": 0,
+        "original_token_count": 3,
+        "output": "v24.19.0\r\n"
+      }
+    },
+    {
+      "command": "pnpm -v",
+      "result": {
+        "chunk_id": "32b32a",
+        "wall_time_seconds": 1.6535285,
+        "exit_code": 0,
+        "original_token_count": 2,
+        "output": "11.23.0\n"
+      }
+    },
+    {
+      "command": "docker version --format '{{.Server.Version}}'",
+      "result": {
+        "chunk_id": "792d7c",
+        "wall_time_seconds": 0.5533833,
+        "exit_code": 1,
+        "original_token_count": 57,
+        "output": "\nfailed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.\n"
+      }
+    },
+    {
+      "command": "$PSVersionTable.PSVersion.ToString()",
+      "result": {
+        "chunk_id": "21a397",
+        "wall_time_seconds": 0.3459569,
+        "exit_code": 0,
+        "original_token_count": 2,
+        "output": "7.6.6\r\n"
+      }
+    },
+    {
+      "command": "npm -v",
+      "result": {
+        "chunk_id": "9f00b5",
+        "wall_time_seconds": 0.8574933,
+        "exit_code": 0,
+        "original_token_count": 2,
+        "output": "11.17.0\n"
+      }
+    },
+    {
+      "command": "git --version",
+      "result": {
+        "chunk_id": "554ab3",
+        "wall_time_seconds": 0.4544851,
+        "exit_code": 0,
+        "original_token_count": 8,
+        "output": "git version 2.50.0.windows.1\n"
+      }
+    },
+    {
+      "command": "Get-Command node,pnpm,npm | Select-Object Name,Source",
+      "result": {
+        "chunk_id": "d014d9",
+        "wall_time_seconds": 0.4726038,
+        "exit_code": 0,
+        "original_token_count": 42,
+        "output": "\r\nName     Source\r\n----     ------\r\nnode.exe C:\\Program Files\\nodejs\\node.exe\r\npnpm.ps1 C:\\Program Files\\nodejs\\pnpm.ps1\r\nnpm.ps1  C:\\Program Files\\nodejs\\npm.ps1\r\n\r\n"
+      }
+    }
+  ],
+  "latest": [
+    {
+      "name": "node",
+      "command": "npm view node version",
+      "chunk_id": "a59028",
+      "wall_time_seconds": 2.6958816,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "26.9.0\n"
+    },
+    {
+      "name": "pnpm",
+      "command": "npm view pnpm version",
+      "chunk_id": "b8f6ff",
+      "wall_time_seconds": 2.9495894,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "12.4.2\n"
+    },
+    {
+      "name": "turbo",
+      "command": "npm view turbo version",
+      "chunk_id": "f8301f",
+      "wall_time_seconds": 2.8736889,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "2.11.2\n"
+    },
+    {
+      "name": "typescript",
+      "command": "npm view typescript version",
+      "chunk_id": "407069",
+      "wall_time_seconds": 2.7960187,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "7.0.2\n"
+    },
+    {
+      "name": "react",
+      "command": "npm view react version",
+      "chunk_id": "9f5d51",
+      "wall_time_seconds": 3.2084649,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "19.3.0\n"
+    },
+    {
+      "name": "react-dom",
+      "command": "npm view react-dom version",
+      "chunk_id": "8917e3",
+      "wall_time_seconds": 3.1246524,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "19.3.0\n"
+    },
+    {
+      "name": "vite",
+      "command": "npm view vite version",
+      "chunk_id": "aae67d",
+      "wall_time_seconds": 3.9942435,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "8.3.0\n"
+    },
+    {
+      "name": "react-router",
+      "command": "npm view react-router version",
+      "chunk_id": "3b9ec0",
+      "wall_time_seconds": 2.379873,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "8.4.0\n"
+    },
+    {
+      "name": "tailwindcss",
+      "command": "npm view tailwindcss version",
+      "chunk_id": "3ab91c",
+      "wall_time_seconds": 2.7232448,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "4.3.3\n"
+    },
+    {
+      "name": "shadcn",
+      "command": "npm view shadcn version",
+      "chunk_id": "0b596a",
+      "wall_time_seconds": 2.3748698,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "4.21.0\n"
+    },
+    {
+      "name": "zustand",
+      "command": "npm view zustand version",
+      "chunk_id": "8d5b85",
+      "wall_time_seconds": 2.3288387999999998,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.0.15\n"
+    },
+    {
+      "name": "@tanstack/react-query",
+      "command": "npm view @tanstack/react-query version",
+      "chunk_id": "a9e637",
+      "wall_time_seconds": 2.6550916,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.103.1\n"
+    },
+    {
+      "name": "@tanstack/react-table",
+      "command": "npm view @tanstack/react-table version",
+      "chunk_id": "71ee3f",
+      "wall_time_seconds": 2.6173494,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "9.2.4\n"
+    },
+    {
+      "name": "@tanstack/react-virtual",
+      "command": "npm view @tanstack/react-virtual version",
+      "chunk_id": "516558",
+      "wall_time_seconds": 2.6014409,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "3.14.13\n"
+    },
+    {
+      "name": "lightweight-charts",
+      "command": "npm view lightweight-charts version",
+      "chunk_id": "895a0f",
+      "wall_time_seconds": 2.2802003,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.2.1\n"
+    },
+    {
+      "name": "i18next",
+      "command": "npm view i18next version",
+      "chunk_id": "d2da61",
+      "wall_time_seconds": 2.4544032,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "26.4.2\n"
+    },
+    {
+      "name": "react-i18next",
+      "command": "npm view react-i18next version",
+      "chunk_id": "fb234b",
+      "wall_time_seconds": 2.4793778,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "17.0.14\n"
+    },
+    {
+      "name": "lucide-react",
+      "command": "npm view lucide-react version",
+      "chunk_id": "aba7c8",
+      "wall_time_seconds": 2.5244676,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "1.47.0\n"
+    },
+    {
+      "name": "react-hook-form",
+      "command": "npm view react-hook-form version",
+      "chunk_id": "d25410",
+      "wall_time_seconds": 2.5651766,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "7.88.0\n"
+    },
+    {
+      "name": "@hookform/resolvers",
+      "command": "npm view @hookform/resolvers version",
+      "chunk_id": "a52754",
+      "wall_time_seconds": 2.6626798000000003,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.9.1\n"
+    },
+    {
+      "name": "@nestjs/common",
+      "command": "npm view @nestjs/common version",
+      "chunk_id": "a272f2",
+      "wall_time_seconds": 2.7937665000000003,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "12.0.3\n"
+    },
+    {
+      "name": "@nestjs/core",
+      "command": "npm view @nestjs/core version",
+      "chunk_id": "cc1c03",
+      "wall_time_seconds": 2.617222,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "12.0.3\n"
+    },
+    {
+      "name": "@nestjs/platform-express",
+      "command": "npm view @nestjs/platform-express version",
+      "chunk_id": "e51759",
+      "wall_time_seconds": 2.6848613,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "12.0.3\n"
+    },
+    {
+      "name": "drizzle-orm",
+      "command": "npm view drizzle-orm version",
+      "chunk_id": "be65a0",
+      "wall_time_seconds": 7.2917021,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "0.45.2\n"
+    },
+    {
+      "name": "drizzle-kit",
+      "command": "npm view drizzle-kit version",
+      "chunk_id": "5dd77e",
+      "wall_time_seconds": 2.3605824,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "0.31.10\n"
+    },
+    {
+      "name": "ioredis",
+      "command": "npm view ioredis version",
+      "chunk_id": "3a13c1",
+      "wall_time_seconds": 2.307744,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "6.0.0\n"
+    },
+    {
+      "name": "bullmq",
+      "command": "npm view bullmq version",
+      "chunk_id": "d3af18",
+      "wall_time_seconds": 2.4658679,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "6.3.8\n"
+    },
+    {
+      "name": "zod",
+      "command": "npm view zod version",
+      "chunk_id": "abdff3",
+      "wall_time_seconds": 2.2783818,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "4.6.5\n"
+    },
+    {
+      "name": "pino",
+      "command": "npm view pino version",
+      "chunk_id": "aa1a60",
+      "wall_time_seconds": 2.3550103,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.3.1\n"
+    },
+    {
+      "name": "nestjs-pino",
+      "command": "npm view nestjs-pino version",
+      "chunk_id": "700baa",
+      "wall_time_seconds": 2.5703141,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.2.0\n"
+    },
+    {
+      "name": "@node-rs/argon2",
+      "command": "npm view @node-rs/argon2 version",
+      "chunk_id": "0bfe3b",
+      "wall_time_seconds": 2.5248851,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "2.2.1\n"
+    },
+    {
+      "name": "jose",
+      "command": "npm view jose version",
+      "chunk_id": "a785a2",
+      "wall_time_seconds": 2.1077651,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "6.2.12\n"
+    },
+    {
+      "name": "resend",
+      "command": "npm view resend version",
+      "chunk_id": "b9a0db",
+      "wall_time_seconds": 2.4888661,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "6.28.1\n"
+    },
+    {
+      "name": "decimal.js",
+      "command": "npm view decimal.js version",
+      "chunk_id": "755354",
+      "wall_time_seconds": 2.4083087,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.6.0\n"
+    },
+    {
+      "name": "vitest",
+      "command": "npm view vitest version",
+      "chunk_id": "84a037",
+      "wall_time_seconds": 2.3404998,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.0.1\n"
+    },
+    {
+      "name": "@playwright/test",
+      "command": "npm view @playwright/test version",
+      "chunk_id": "a110fe",
+      "wall_time_seconds": 3.039034,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "1.63.0\n"
+    },
+    {
+      "name": "eslint",
+      "command": "npm view eslint version",
+      "chunk_id": "471e17",
+      "wall_time_seconds": 2.4882637,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.11.0\n"
+    },
+    {
+      "name": "typescript-eslint",
+      "command": "npm view typescript-eslint version",
+      "chunk_id": "5db2f4",
+      "wall_time_seconds": 2.5965114,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "8.70.0\n"
+    },
+    {
+      "name": "prettier",
+      "command": "npm view prettier version",
+      "chunk_id": "e8aa39",
+      "wall_time_seconds": 2.4165244,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "3.9.8\n"
+    },
+    {
+      "name": "@sentry/node",
+      "command": "npm view @sentry/node version",
+      "chunk_id": "6d8a22",
+      "wall_time_seconds": 2.8335014,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.75.0\n"
+    },
+    {
+      "name": "@sentry/react",
+      "command": "npm view @sentry/react version",
+      "chunk_id": "03241c",
+      "wall_time_seconds": 2.7052396,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.75.0\n"
+    },
+    {
+      "name": "@eslint/js",
+      "command": "npm view @eslint/js version",
+      "chunk_id": "c0d7a5",
+      "wall_time_seconds": 2.5623312,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "10.0.1\n"
+    },
+    {
+      "name": "@types/node",
+      "command": "npm view @types/node version",
+      "chunk_id": "a3468b",
+      "wall_time_seconds": 2.3777371,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "26.6.2\n"
+    },
+    {
+      "name": "@types/react",
+      "command": "npm view @types/react version",
+      "chunk_id": "8c096e",
+      "wall_time_seconds": 2.3869806000000002,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "19.3.0\n"
+    },
+    {
+      "name": "@types/react-dom",
+      "command": "npm view @types/react-dom version",
+      "chunk_id": "1bc5f1",
+      "wall_time_seconds": 2.1560584,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "19.3.0\n"
+    },
+    {
+      "name": "globals",
+      "command": "npm view globals version",
+      "chunk_id": "2c5d9a",
+      "wall_time_seconds": 2.3245442,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "17.12.0\n"
+    },
+    {
+      "name": "reflect-metadata",
+      "command": "npm view reflect-metadata version",
+      "chunk_id": "66ecb8",
+      "wall_time_seconds": 2.3110682000000002,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "0.2.2\n"
+    },
+    {
+      "name": "rxjs",
+      "command": "npm view rxjs version",
+      "chunk_id": "611919",
+      "wall_time_seconds": 2.336818,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "7.8.2\n"
+    },
+    {
+      "name": "pino-http",
+      "command": "npm view pino-http version",
+      "chunk_id": "103a42",
+      "wall_time_seconds": 1.6377169,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "11.0.0\n"
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "command": "npm view @vitest/coverage-v8 version",
+      "chunk_id": "360511",
+      "wall_time_seconds": 1.7073612,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "5.0.1\n"
+    },
+    {
+      "name": "pg",
+      "command": "npm view pg version",
+      "chunk_id": "0e0ea6",
+      "wall_time_seconds": 1.6393078,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "8.23.0\n"
+    },
+    {
+      "name": "@types/pg",
+      "command": "npm view @types/pg version",
+      "chunk_id": "10c2df",
+      "wall_time_seconds": 1.8307947,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "8.23.1\n"
+    }
+  ],
+  "selection": [
+    {
+      "name": "node",
+      "version": "24.19.0",
+      "command": "npm view node@24.19.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "e913b2",
+      "wall_time_seconds": 2.4699352,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"24.19.0\",\n  \"engines\": {\n    \"npm\": \">=5.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "pnpm",
+      "version": "11.23.0",
+      "command": "npm view pnpm@11.23.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "134f91",
+      "wall_time_seconds": 2.2908173,
+      "exit_code": 0,
+      "original_token_count": 18,
+      "output": "{\n  \"version\": \"11.23.0\",\n  \"engines\": {\n    \"node\": \">=22.13\"\n  }\n}\n"
+    },
+    {
+      "name": "turbo",
+      "version": "2.11.2",
+      "command": "npm view turbo@2.11.2 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "b5d353",
+      "wall_time_seconds": 2.2982673,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"2.11.2\"\n"
+    },
+    {
+      "name": "typescript",
+      "version": "6.0.3",
+      "command": "npm view typescript@6.0.3 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "edf1fd",
+      "wall_time_seconds": 2.5411723,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"6.0.3\",\n  \"engines\": {\n    \"node\": \">=14.17\"\n  }\n}\n"
+    },
+    {
+      "name": "react",
+      "version": "19.3.0",
+      "command": "npm view react@19.3.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "67593f",
+      "wall_time_seconds": 2.4102813,
+      "exit_code": 0,
+      "original_token_count": 18,
+      "output": "{\n  \"version\": \"19.3.0\",\n  \"engines\": {\n    \"node\": \">=0.10.0\"\n  }\n}\n"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0",
+      "command": "npm view react-dom@19.3.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "71f92b",
+      "wall_time_seconds": 2.4510234,
+      "exit_code": 0,
+      "original_token_count": 20,
+      "output": "{\n  \"version\": \"19.3.0\",\n  \"peerDependencies\": {\n    \"react\": \"^19.3.0\"\n  }\n}\n"
+    },
+    {
+      "name": "vite",
+      "version": "8.3.0",
+      "command": "npm view vite@8.3.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "de9466",
+      "wall_time_seconds": 2.5378544,
+      "exit_code": 0,
+      "original_token_count": 261,
+      "output": "{\n  \"version\": \"8.3.0\",\n  \"peerDependencies\": {\n    \"tsx\": \"^4.8.1\",\n    \"jiti\": \">=1.21.0\",\n    \"less\": \"^4.0.0\",\n    \"sass\": \"^1.70.0\",\n    \"yaml\": \"^2.4.2\",\n    \"stylus\": \">=0.54.8\",\n    \"terser\": \"^5.16.0\",\n    \"esbuild\": \"^0.27.0 || ^0.28.0\",\n    \"sugarss\": \"^5.0.0\",\n    \"@types/node\": \"^20.19.0 || >=22.12.0\",\n    \"sass-embedded\": \"^1.70.0\",\n    \"@vitejs/devtools\": \"^0.7.1\"\n  },\n  \"peerDependenciesMeta\": {\n    \"tsx\": {\n      \"optional\": true\n    },\n    \"jiti\": {\n      \"optional\": true\n    },\n    \"less\": {\n      \"optional\": true\n    },\n    \"sass\": {\n      \"optional\": true\n    },\n    \"yaml\": {\n      \"optional\": true\n    },\n    \"stylus\": {\n      \"optional\": true\n    },\n    \"terser\": {\n      \"optional\": true\n    },\n    \"esbuild\": {\n      \"optional\": true\n    },\n    \"sugarss\": {\n      \"optional\": true\n    },\n    \"@types/node\": {\n      \"optional\": true\n    },\n    \"sass-embedded\": {\n      \"optional\": true\n    },\n    \"@vitejs/devtools\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \"^20.19.0 || >=22.12.0\"\n  }\n}\n"
+    },
+    {
+      "name": "react-router",
+      "version": "8.4.0",
+      "command": "npm view react-router@8.4.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "e65a09",
+      "wall_time_seconds": 2.4859349,
+      "exit_code": 0,
+      "original_token_count": 58,
+      "output": "{\n  \"version\": \"8.4.0\",\n  \"peerDependencies\": {\n    \"react\": \">=19.2.7\",\n    \"react-dom\": \">=19.2.7\"\n  },\n  \"peerDependenciesMeta\": {\n    \"react-dom\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">=22.22.0\"\n  }\n}\n"
+    },
+    {
+      "name": "tailwindcss",
+      "version": "4.3.3",
+      "command": "npm view tailwindcss@4.3.3 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "7e1cbd",
+      "wall_time_seconds": 2.6441061,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "\"4.3.3\"\n"
+    },
+    {
+      "name": "shadcn",
+      "version": "4.21.0",
+      "command": "npm view shadcn@4.21.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "29aac6",
+      "wall_time_seconds": 2.4273846,
+      "exit_code": 0,
+      "original_token_count": 18,
+      "output": "{\n  \"version\": \"4.21.0\",\n  \"engines\": {\n    \"node\": \">=20.18.1\"\n  }\n}\n"
+    },
+    {
+      "name": "zustand",
+      "version": "5.0.15",
+      "command": "npm view zustand@5.0.15 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "692758",
+      "wall_time_seconds": 2.4450089999999998,
+      "exit_code": 0,
+      "original_token_count": 115,
+      "output": "{\n  \"version\": \"5.0.15\",\n  \"peerDependencies\": {\n    \"immer\": \">=9.0.6\",\n    \"react\": \">=18.0.0\",\n    \"@types/react\": \">=18.0.0\",\n    \"use-sync-external-store\": \">=1.2.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"immer\": {\n      \"optional\": true\n    },\n    \"react\": {\n      \"optional\": true\n    },\n    \"@types/react\": {\n      \"optional\": true\n    },\n    \"use-sync-external-store\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">=12.20.0\"\n  }\n}\n"
+    },
+    {
+      "name": "@tanstack/react-query",
+      "version": "5.103.1",
+      "command": "npm view @tanstack/react-query@5.103.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "d8aff1",
+      "wall_time_seconds": 2.4786718,
+      "exit_code": 0,
+      "original_token_count": 21,
+      "output": "{\n  \"version\": \"5.103.1\",\n  \"peerDependencies\": {\n    \"react\": \"^18 || ^19\"\n  }\n}\n"
+    },
+    {
+      "name": "@tanstack/react-table",
+      "version": "9.2.4",
+      "command": "npm view @tanstack/react-table@9.2.4 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "8595c3",
+      "wall_time_seconds": 2.5367237,
+      "exit_code": 0,
+      "original_token_count": 29,
+      "output": "{\n  \"version\": \"9.2.4\",\n  \"peerDependencies\": {\n    \"react\": \">=18\"\n  },\n  \"engines\": {\n    \"node\": \">=20\"\n  }\n}\n"
+    },
+    {
+      "name": "@tanstack/react-virtual",
+      "version": "3.14.13",
+      "command": "npm view @tanstack/react-virtual@3.14.13 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "5594dc",
+      "wall_time_seconds": 2.467077,
+      "exit_code": 0,
+      "original_token_count": 44,
+      "output": "{\n  \"version\": \"3.14.13\",\n  \"peerDependencies\": {\n    \"react\": \"^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0\",\n    \"react-dom\": \"^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "lightweight-charts",
+      "version": "5.2.1",
+      "command": "npm view lightweight-charts@5.2.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "123f33",
+      "wall_time_seconds": 2.4462155,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "\"5.2.1\"\n"
+    },
+    {
+      "name": "i18next",
+      "version": "26.4.2",
+      "command": "npm view i18next@26.4.2 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "1cd0d2",
+      "wall_time_seconds": 2.3941201,
+      "exit_code": 0,
+      "original_token_count": 43,
+      "output": "{\n  \"version\": \"26.4.2\",\n  \"peerDependencies\": {\n    \"typescript\": \"^5 || ^6 || ^7\"\n  },\n  \"peerDependenciesMeta\": {\n    \"typescript\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "react-i18next",
+      "version": "17.0.14",
+      "command": "npm view react-i18next@17.0.14 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "5d23c1",
+      "wall_time_seconds": 2.1156245,
+      "exit_code": 0,
+      "original_token_count": 82,
+      "output": "{\n  \"version\": \"17.0.14\",\n  \"peerDependencies\": {\n    \"react\": \">= 16.8.0\",\n    \"i18next\": \">= 26.2.0\",\n    \"typescript\": \"^5 || ^6 || ^7\"\n  },\n  \"peerDependenciesMeta\": {\n    \"react-dom\": {\n      \"optional\": true\n    },\n    \"typescript\": {\n      \"optional\": true\n    },\n    \"react-native\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "lucide-react",
+      "version": "1.47.0",
+      "command": "npm view lucide-react@1.47.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "d07fab",
+      "wall_time_seconds": 2.058511,
+      "exit_code": 0,
+      "original_token_count": 28,
+      "output": "{\n  \"version\": \"1.47.0\",\n  \"peerDependencies\": {\n    \"react\": \"^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "react-hook-form",
+      "version": "7.88.0",
+      "command": "npm view react-hook-form@7.88.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "c59aae",
+      "wall_time_seconds": 2.375095,
+      "exit_code": 0,
+      "original_token_count": 36,
+      "output": "{\n  \"version\": \"7.88.0\",\n  \"peerDependencies\": {\n    \"react\": \"^16.8.0 || ^17 || ^18 || ^19\"\n  },\n  \"engines\": {\n    \"node\": \">=18.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "@hookform/resolvers",
+      "version": "5.9.1",
+      "command": "npm view @hookform/resolvers@5.9.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "9272b5",
+      "wall_time_seconds": 2.1824782,
+      "exit_code": 0,
+      "original_token_count": 523,
+      "output": "{\n  \"version\": \"5.9.1\",\n  \"peerDependencies\": {\n    \"ajv\": \"^8.12.0\",\n    \"joi\": \"^17.0.0 || ^18.0.0\",\n    \"yup\": \"^1.0.0\",\n    \"zod\": \"^3.25.0 || ^4.0.0\",\n    \"vest\": \">=6.0.0\",\n    \"fp-ts\": \"^2.7.0\",\n    \"io-ts\": \"^2.0.0\",\n    \"effect\": \"^3.10.3\",\n    \"arktype\": \"^2.0.0\",\n    \"valibot\": \">=0.31.0 || ^1.0.0-beta.4 || ^1.0.0-rc\",\n    \"typanion\": \"^3.3.2\",\n    \"ajv-errors\": \"^3.0.0\",\n    \"ajv-formats\": \"^2.1.1\",\n    \"superstruct\": \">=0.12.0\",\n    \"@vinejs/vine\": \"^2.0.0 || ^3.0.0 || ^4.0.0\",\n    \"ata-validator\": \"^1.2.0\",\n    \"computed-types\": \"^1.0.0\",\n    \"nope-validator\": \">=0.12.0\",\n    \"class-validator\": \">=0.12.0\",\n    \"react-hook-form\": \"^7.55.0\",\n    \"@typeschema/main\": \">=0.13.7\",\n    \"@sinclair/typebox\": \">=0.25.24\",\n    \"class-transformer\": \">=0.4.0\",\n    \"fluentvalidation-ts\": \"^3.0.0\",\n    \"@standard-schema/spec\": \"^1.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"ajv\": {\n      \"optional\": true\n    },\n    \"joi\": {\n      \"optional\": true\n    },\n    \"yup\": {\n      \"optional\": true\n    },\n    \"zod\": {\n      \"optional\": true\n    },\n    \"vest\": {\n      \"optional\": true\n    },\n    \"fp-ts\": {\n      \"optional\": true\n    },\n    \"io-ts\": {\n      \"optional\": true\n    },\n    \"effect\": {\n      \"optional\": true\n    },\n    \"arktype\": {\n      \"optional\": true\n    },\n    \"valibot\": {\n      \"optional\": true\n    },\n    \"typanion\": {\n      \"optional\": true\n    },\n    \"ajv-errors\": {\n      \"optional\": true\n    },\n    \"ajv-formats\": {\n      \"optional\": true\n    },\n    \"superstruct\": {\n      \"optional\": true\n    },\n    \"@vinejs/vine\": {\n      \"optional\": true\n    },\n    \"ata-validator\": {\n      \"optional\": true\n    },\n    \"computed-types\": {\n      \"optional\": true\n    },\n    \"nope-validator\": {\n      \"optional\": true\n    },\n    \"class-validator\": {\n      \"optional\": true\n    },\n    \"@typeschema/main\": {\n      \"optional\": true\n    },\n    \"@sinclair/typebox\": {\n      \"optional\": true\n    },\n    \"class-transformer\": {\n      \"optional\": true\n    },\n    \"fluentvalidation-ts\": {\n      \"optional\": true\n    },\n    \"@standard-schema/spec\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "@nestjs/common",
+      "version": "12.0.3",
+      "command": "npm view @nestjs/common@12.0.3 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "1b14ec",
+      "wall_time_seconds": 2.152295,
+      "exit_code": 0,
+      "original_token_count": 84,
+      "output": "{\n  \"version\": \"12.0.3\",\n  \"peerDependencies\": {\n    \"rxjs\": \"^7.1.0\",\n    \"class-validator\": \">=0.13.2\",\n    \"reflect-metadata\": \"^0.1.12 || ^0.2.0\",\n    \"class-transformer\": \">=0.4.1\"\n  },\n  \"peerDependenciesMeta\": {\n    \"class-validator\": {\n      \"optional\": true\n    },\n    \"class-transformer\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "@nestjs/core",
+      "version": "12.0.3",
+      "command": "npm view @nestjs/core@12.0.3 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "e95ad0",
+      "wall_time_seconds": 2.3268388,
+      "exit_code": 0,
+      "original_token_count": 133,
+      "output": "{\n  \"version\": \"12.0.3\",\n  \"peerDependencies\": {\n    \"rxjs\": \"^7.1.0\",\n    \"@nestjs/common\": \"^12.0.0\",\n    \"reflect-metadata\": \"^0.1.12 || ^0.2.0\",\n    \"@nestjs/websockets\": \"^12.0.0\",\n    \"@nestjs/microservices\": \"^12.0.0\",\n    \"@nestjs/platform-express\": \"^12.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"@nestjs/websockets\": {\n      \"optional\": true\n    },\n    \"@nestjs/microservices\": {\n      \"optional\": true\n    },\n    \"@nestjs/platform-express\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">= 20\"\n  }\n}\n"
+    },
+    {
+      "name": "@nestjs/platform-express",
+      "version": "12.0.3",
+      "command": "npm view @nestjs/platform-express@12.0.3 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "1424cc",
+      "wall_time_seconds": 2.133906,
+      "exit_code": 0,
+      "original_token_count": 30,
+      "output": "{\n  \"version\": \"12.0.3\",\n  \"peerDependencies\": {\n    \"@nestjs/core\": \"^12.0.0\",\n    \"@nestjs/common\": \"^12.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "drizzle-orm",
+      "version": "0.45.2",
+      "command": "npm view drizzle-orm@0.45.2 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "b8d234",
+      "wall_time_seconds": 2.5388997,
+      "exit_code": 0,
+      "original_token_count": 618,
+      "output": "{\n  \"version\": \"0.45.2\",\n  \"peerDependencies\": {\n    \"pg\": \">=8\",\n    \"gel\": \">=2\",\n    \"knex\": \"*\",\n    \"kysely\": \"*\",\n    \"mysql2\": \">=2\",\n    \"sql.js\": \">=1\",\n    \"sqlite3\": \">=5\",\n    \"postgres\": \">=3\",\n    \"@types/pg\": \"*\",\n    \"bun-types\": \"*\",\n    \"expo-sqlite\": \">=14.0.0\",\n    \"@types/sql.js\": \"*\",\n    \"@libsql/client\": \">=0.10.0\",\n    \"@prisma/client\": \"*\",\n    \"@upstash/redis\": \">=1.34.7\",\n    \"better-sqlite3\": \">=7\",\n    \"@xata.io/client\": \"*\",\n    \"@vercel/postgres\": \">=0.8.0\",\n    \"@opentelemetry/api\": \"^1.4.1\",\n    \"@libsql/client-wasm\": \">=0.10.0\",\n    \"@electric-sql/pglite\": \">=0.2.0\",\n    \"@planetscale/database\": \">=1.13\",\n    \"@tidbcloud/serverless\": \"*\",\n    \"@types/better-sqlite3\": \"*\",\n    \"@aws-sdk/client-rds-data\": \">=3\",\n    \"@neondatabase/serverless\": \">=0.10.0\",\n    \"@cloudflare/workers-types\": \">=4\",\n    \"@op-engineering/op-sqlite\": \">=2\"\n  },\n  \"peerDependenciesMeta\": {\n    \"pg\": {\n      \"optional\": true\n    },\n    \"gel\": {\n      \"optional\": true\n    },\n    \"knex\": {\n      \"optional\": true\n    },\n    \"kysely\": {\n      \"optional\": true\n    },\n    \"mysql2\": {\n      \"optional\": true\n    },\n    \"prisma\": {\n      \"optional\": true\n    },\n    \"sql.js\": {\n      \"optional\": true\n    },\n    \"sqlite3\": {\n      \"optional\": true\n    },\n    \"postgres\": {\n      \"optional\": true\n    },\n    \"@types/pg\": {\n      \"optional\": true\n    },\n    \"bun-types\": {\n      \"optional\": true\n    },\n    \"expo-sqlite\": {\n      \"optional\": true\n    },\n    \"@types/sql.js\": {\n      \"optional\": true\n    },\n    \"@libsql/client\": {\n      \"optional\": true\n    },\n    \"@prisma/client\": {\n      \"optional\": true\n    },\n    \"@upstash/redis\": {\n      \"optional\": true\n    },\n    \"better-sqlite3\": {\n      \"optional\": true\n    },\n    \"@xata.io/client\": {\n      \"optional\": true\n    },\n    \"@vercel/postgres\": {\n      \"optional\": true\n    },\n    \"@opentelemetry/api\": {\n      \"optional\": true\n    },\n    \"@libsql/client-wasm\": {\n      \"optional\": true\n    },\n    \"@electric-sql/pglite\": {\n      \"optional\": true\n    },\n    \"@planetscale/database\": {\n      \"optional\": true\n    },\n    \"@tidbcloud/serverless\": {\n      \"optional\": true\n    },\n    \"@types/better-sqlite3\": {\n      \"optional\": true\n    },\n    \"@aws-sdk/client-rds-data\": {\n      \"optional\": true\n    },\n    \"@neondatabase/serverless\": {\n      \"optional\": true\n    },\n    \"@cloudflare/workers-types\": {\n      \"optional\": true\n    },\n    \"@op-engineering/op-sqlite\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "drizzle-kit",
+      "version": "0.31.10",
+      "command": "npm view drizzle-kit@0.31.10 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "bed436",
+      "wall_time_seconds": 2.1975741,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"0.31.10\"\n"
+    },
+    {
+      "name": "ioredis",
+      "version": "6.0.0",
+      "command": "npm view ioredis@6.0.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "d0dac4",
+      "wall_time_seconds": 2.1627487,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"6.0.0\",\n  \"engines\": {\n    \"node\": \">=20.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "bullmq",
+      "version": "6.3.8",
+      "command": "npm view bullmq@6.3.8 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "ce7e93",
+      "wall_time_seconds": 2.2240228,
+      "exit_code": 0,
+      "original_token_count": 104,
+      "output": "{\n  \"version\": \"6.3.8\",\n  \"peerDependencies\": {\n    \"pg\": \">=8.0.0\",\n    \"redis\": \">=5.0.0\",\n    \"ioredis\": \">=5.0.0\",\n    \"bullmq-otel\": \">=2.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"pg\": {\n      \"optional\": true\n    },\n    \"redis\": {\n      \"optional\": true\n    },\n    \"ioredis\": {\n      \"optional\": true\n    },\n    \"bullmq-otel\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">=14.17.0\"\n  }\n}\n"
+    },
+    {
+      "name": "zod",
+      "version": "4.6.5",
+      "command": "npm view zod@4.6.5 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "74c1bb",
+      "wall_time_seconds": 2.393826,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "\"4.6.5\"\n"
+    },
+    {
+      "name": "pino",
+      "version": "10.3.1",
+      "command": "npm view pino@10.3.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "588ad4",
+      "wall_time_seconds": 2.1583739,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"10.3.1\"\n"
+    },
+    {
+      "name": "nestjs-pino",
+      "version": "5.2.0",
+      "command": "npm view nestjs-pino@5.2.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "21a787",
+      "wall_time_seconds": 2.2324643,
+      "exit_code": 0,
+      "original_token_count": 64,
+      "output": "{\n  \"version\": \"5.2.0\",\n  \"peerDependencies\": {\n    \"pino\": \"^10.0.0\",\n    \"rxjs\": \"^7.1.0\",\n    \"pino-http\": \"^11.0.0\",\n    \"@nestjs/core\": \"^11.0.8 || ^12.0.2\",\n    \"@nestjs/common\": \"^11.0.8 || ^12.0.2\"\n  },\n  \"engines\": {\n    \"node\": \">=22.12.0\"\n  }\n}\n"
+    },
+    {
+      "name": "@node-rs/argon2",
+      "version": "2.2.1",
+      "command": "npm view @node-rs/argon2@2.2.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "5fb3ee",
+      "wall_time_seconds": 2.2271072,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"2.2.1\",\n  \"engines\": {\n    \"node\": \">= 10\"\n  }\n}\n"
+    },
+    {
+      "name": "jose",
+      "version": "6.2.12",
+      "command": "npm view jose@6.2.12 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "a1d4ec",
+      "wall_time_seconds": 2.1119198,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"6.2.12\"\n"
+    },
+    {
+      "name": "resend",
+      "version": "6.28.1",
+      "command": "npm view resend@6.28.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "7ba54e",
+      "wall_time_seconds": 2.4730556,
+      "exit_code": 0,
+      "original_token_count": 54,
+      "output": "{\n  \"version\": \"6.28.1\",\n  \"peerDependencies\": {\n    \"@react-email/render\": \"*\"\n  },\n  \"peerDependenciesMeta\": {\n    \"@react-email/render\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">=20\"\n  }\n}\n"
+    },
+    {
+      "name": "decimal.js",
+      "version": "10.6.0",
+      "command": "npm view decimal.js@10.6.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "3c0f93",
+      "wall_time_seconds": 2.4795895,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"10.6.0\"\n"
+    },
+    {
+      "name": "vitest",
+      "version": "5.0.1",
+      "command": "npm view vitest@5.0.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "378633",
+      "wall_time_seconds": 2.5466153,
+      "exit_code": 0,
+      "original_token_count": 317,
+      "output": "{\n  \"version\": \"5.0.1\",\n  \"peerDependencies\": {\n    \"vite\": \"^6.4.0 || ^7.0.0 || ^8.0.0\",\n    \"jsdom\": \"*\",\n    \"happy-dom\": \"*\",\n    \"@vitest/ui\": \"5.0.1\",\n    \"@types/node\": \"^22.0.0 || >=24.0.0\",\n    \"@edge-runtime/vm\": \"*\",\n    \"@opentelemetry/api\": \"^1.9.0\",\n    \"@vitest/coverage-v8\": \"5.0.1\",\n    \"@vitest/browser-preview\": \"5.0.1\",\n    \"@vitest/coverage-istanbul\": \"5.0.1\",\n    \"@vitest/browser-playwright\": \"5.0.1\",\n    \"@vitest/browser-webdriverio\": \"^5.0.0-beta.5 || >=5.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"vite\": {\n      \"optional\": false\n    },\n    \"jsdom\": {\n      \"optional\": true\n    },\n    \"happy-dom\": {\n      \"optional\": true\n    },\n    \"@vitest/ui\": {\n      \"optional\": true\n    },\n    \"@types/node\": {\n      \"optional\": true\n    },\n    \"@edge-runtime/vm\": {\n      \"optional\": true\n    },\n    \"@opentelemetry/api\": {\n      \"optional\": true\n    },\n    \"@vitest/coverage-v8\": {\n      \"optional\": true\n    },\n    \"@vitest/browser-preview\": {\n      \"optional\": true\n    },\n    \"@vitest/coverage-istanbul\": {\n      \"optional\": true\n    },\n    \"@vitest/browser-playwright\": {\n      \"optional\": true\n    },\n    \"@vitest/browser-webdriverio\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \"^22.12.0 || ^24.0.0 || >=26.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "@playwright/test",
+      "version": "1.63.0",
+      "command": "npm view @playwright/test@1.63.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "65af9a",
+      "wall_time_seconds": 2.6849993,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"1.63.0\",\n  \"engines\": {\n    \"node\": \">=20\"\n  }\n}\n"
+    },
+    {
+      "name": "eslint",
+      "version": "10.11.0",
+      "command": "npm view eslint@10.11.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "a156c6",
+      "wall_time_seconds": 2.3294611,
+      "exit_code": 0,
+      "original_token_count": 53,
+      "output": "{\n  \"version\": \"10.11.0\",\n  \"peerDependencies\": {\n    \"jiti\": \"*\"\n  },\n  \"peerDependenciesMeta\": {\n    \"jiti\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \"^20.19.0 || ^22.13.0 || >=24\"\n  }\n}\n"
+    },
+    {
+      "name": "typescript-eslint",
+      "version": "8.70.0",
+      "command": "npm view typescript-eslint@8.70.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "cfbd04",
+      "wall_time_seconds": 2.3005848,
+      "exit_code": 0,
+      "original_token_count": 51,
+      "output": "{\n  \"version\": \"8.70.0\",\n  \"peerDependencies\": {\n    \"eslint\": \"^8.57.0 || ^9.0.0 || ^10.0.0\",\n    \"typescript\": \">=4.8.4 <6.1.0\"\n  },\n  \"engines\": {\n    \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n  }\n}\n"
+    },
+    {
+      "name": "prettier",
+      "version": "3.9.8",
+      "command": "npm view prettier@3.9.8 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "520ab8",
+      "wall_time_seconds": 2.4483645,
+      "exit_code": 0,
+      "original_token_count": 16,
+      "output": "{\n  \"version\": \"3.9.8\",\n  \"engines\": {\n    \"node\": \">=14\"\n  }\n}\n"
+    },
+    {
+      "name": "@sentry/node",
+      "version": "10.75.0",
+      "command": "npm view @sentry/node@10.75.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "dcc57f",
+      "wall_time_seconds": 2.5474312,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"10.75.0\",\n  \"engines\": {\n    \"node\": \">=18\"\n  }\n}\n"
+    },
+    {
+      "name": "@sentry/react",
+      "version": "10.75.0",
+      "command": "npm view @sentry/react@10.75.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "7234ca",
+      "wall_time_seconds": 2.3001557999999998,
+      "exit_code": 0,
+      "original_token_count": 36,
+      "output": "{\n  \"version\": \"10.75.0\",\n  \"peerDependencies\": {\n    \"react\": \"^16.14.0 || 17.x || 18.x || 19.x\"\n  },\n  \"engines\": {\n    \"node\": \">=18\"\n  }\n}\n"
+    },
+    {
+      "name": "@eslint/js",
+      "version": "10.0.1",
+      "command": "npm view @eslint/js@10.0.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "87de46",
+      "wall_time_seconds": 2.4860415,
+      "exit_code": 0,
+      "original_token_count": 55,
+      "output": "{\n  \"version\": \"10.0.1\",\n  \"peerDependencies\": {\n    \"eslint\": \"^10.0.0\"\n  },\n  \"peerDependenciesMeta\": {\n    \"eslint\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \"^20.19.0 || ^22.13.0 || >=24\"\n  }\n}\n"
+    },
+    {
+      "name": "@types/node",
+      "version": "24.13.6",
+      "command": "npm view @types/node@24.13.6 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "f9537d",
+      "wall_time_seconds": 2.5749296,
+      "exit_code": 0,
+      "original_token_count": 14,
+      "output": "{\n  \"version\": \"24.13.6\",\n  \"peerDependencies\": {}\n}\n"
+    },
+    {
+      "name": "@types/react",
+      "version": "19.3.0",
+      "command": "npm view @types/react@19.3.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "1ce757",
+      "wall_time_seconds": 2.2602192,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "{\n  \"version\": \"19.3.0\",\n  \"peerDependencies\": {}\n}\n"
+    },
+    {
+      "name": "@types/react-dom",
+      "version": "19.3.0",
+      "command": "npm view @types/react-dom@19.3.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "b4e9d2",
+      "wall_time_seconds": 2.6798450000000003,
+      "exit_code": 0,
+      "original_token_count": 22,
+      "output": "{\n  \"version\": \"19.3.0\",\n  \"peerDependencies\": {\n    \"@types/react\": \"^19.3.0\"\n  }\n}\n"
+    },
+    {
+      "name": "globals",
+      "version": "17.12.0",
+      "command": "npm view globals@17.12.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "01b507",
+      "wall_time_seconds": 2.2066445,
+      "exit_code": 0,
+      "original_token_count": 17,
+      "output": "{\n  \"version\": \"17.12.0\",\n  \"engines\": {\n    \"node\": \">=18\"\n  }\n}\n"
+    },
+    {
+      "name": "reflect-metadata",
+      "version": "0.2.2",
+      "command": "npm view reflect-metadata@0.2.2 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "77b1ea",
+      "wall_time_seconds": 2.194283,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "\"0.2.2\"\n"
+    },
+    {
+      "name": "rxjs",
+      "version": "7.8.2",
+      "command": "npm view rxjs@7.8.2 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "eee74b",
+      "wall_time_seconds": 2.4462082,
+      "exit_code": 0,
+      "original_token_count": 2,
+      "output": "\"7.8.2\"\n"
+    },
+    {
+      "name": "pino-http",
+      "version": "11.0.0",
+      "command": "npm view pino-http@11.0.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "6606aa",
+      "wall_time_seconds": 1.3579728,
+      "exit_code": 0,
+      "original_token_count": 3,
+      "output": "\"11.0.0\"\n"
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "version": "5.0.1",
+      "command": "npm view @vitest/coverage-v8@5.0.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "da1e72",
+      "wall_time_seconds": 1.60484,
+      "exit_code": 0,
+      "original_token_count": 49,
+      "output": "{\n  \"version\": \"5.0.1\",\n  \"peerDependencies\": {\n    \"vitest\": \"5.0.1\",\n    \"@vitest/browser\": \"5.0.1\"\n  },\n  \"peerDependenciesMeta\": {\n    \"@vitest/browser\": {\n      \"optional\": true\n    }\n  }\n}\n"
+    },
+    {
+      "name": "pg",
+      "version": "8.23.0",
+      "command": "npm view pg@8.23.0 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "ad6e7b",
+      "wall_time_seconds": 1.3191389,
+      "exit_code": 0,
+      "original_token_count": 52,
+      "output": "{\n  \"version\": \"8.23.0\",\n  \"peerDependencies\": {\n    \"pg-native\": \">=3.0.1\"\n  },\n  \"peerDependenciesMeta\": {\n    \"pg-native\": {\n      \"optional\": true\n    }\n  },\n  \"engines\": {\n    \"node\": \">= 16.0.0\"\n  }\n}\n"
+    },
+    {
+      "name": "@types/pg",
+      "version": "8.23.1",
+      "command": "npm view @types/pg@8.23.1 version peerDependencies peerDependenciesMeta engines os cpu --json",
+      "chunk_id": "adaa4b",
+      "wall_time_seconds": 1.3635843,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "{\n  \"version\": \"8.23.1\",\n  \"peerDependencies\": {}\n}\n"
+    }
+  ],
+  "compatibility": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "9b2359",
+        "wall_time_seconds": 1.9995924999999999,
+        "exit_code": 0,
+        "original_token_count": 45,
+        "output": "{\n  \"peerDependencies\": {\n    \"eslint\": \"^8.57.0 || ^9.0.0 || ^10.0.0\",\n    \"typescript\": \">=4.8.4 <6.1.0\"\n  },\n  \"engines\": {\n    \"node\": \"^18.18.0 || ^20.9.0 || >=21.1.0\"\n  }\n}\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "2b4731",
+        "wall_time_seconds": 2.068577,
+        "exit_code": 0,
+        "original_token_count": 7,
+        "output": "[\n  \"6.0.2\",\n  \"6.0.3\"\n]\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "3a399d",
+        "wall_time_seconds": 1.7237812,
+        "exit_code": 0,
+        "original_token_count": 92,
+        "output": "[\n  \"24.0.0\",\n  \"24.0.1\",\n  \"24.0.2\",\n  \"24.1.0\",\n  \"24.2.0\",\n  \"24.3.0\",\n  \"24.4.0\",\n  \"24.4.1\",\n  \"24.5.0\",\n  \"24.6.0\",\n  \"24.7.0\",\n  \"24.8.0\",\n  \"24.9.0\",\n  \"24.10.0\",\n  \"24.11.0\",\n  \"24.11.1\",\n  \"24.12.0\",\n  \"24.13.0\",\n  \"24.13.1\",\n  \"24.14.0\",\n  \"24.14.1\",\n  \"24.15.0\",\n  \"24.16.0\",\n  \"24.17.0\",\n  \"24.18.0\",\n  \"24.18.1\",\n  \"24.19.0\",\n  \"24.20.0\",\n  \"24.21.0\"\n]\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "0ff6c1",
+        "wall_time_seconds": 1.779287,
+        "exit_code": 0,
+        "original_token_count": 147,
+        "output": "[\n  \"11.0.0\",\n  \"11.0.1\",\n  \"11.0.2\",\n  \"11.0.3\",\n  \"11.0.4\",\n  \"11.0.5\",\n  \"11.0.6\",\n  \"11.0.7\",\n  \"11.0.8\",\n  \"11.0.9\",\n  \"11.1.0\",\n  \"11.1.1\",\n  \"11.1.2\",\n  \"11.1.3\",\n  \"11.2.0\",\n  \"11.2.1\",\n  \"11.2.2\",\n  \"11.3.0\",\n  \"11.4.0\",\n  \"11.5.0\",\n  \"11.5.1\",\n  \"11.5.2\",\n  \"11.5.3\",\n  \"11.6.0\",\n  \"11.7.0\",\n  \"11.8.0\",\n  \"11.9.0\",\n  \"11.10.0\",\n  \"11.11.0\",\n  \"11.12.0\",\n  \"11.13.0\",\n  \"11.13.1\",\n  \"11.14.0\",\n  \"11.15.0\",\n  \"11.15.1\",\n  \"11.16.0\",\n  \"11.17.0\",\n  \"11.18.0\",\n  \"11.19.0\",\n  \"11.20.0\",\n  \"11.21.0\",\n  \"11.22.0\",\n  \"11.23.0\",\n  \"11.24.0\",\n  \"11.25.0\",\n  \"11.26.0\",\n  \"11.27.0\"\n]\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "bc012c",
+        "wall_time_seconds": 1.8143151,
+        "exit_code": 0,
+        "original_token_count": 219,
+        "output": "[\n  \"24.0.0\",\n  \"24.0.1\",\n  \"24.0.2\",\n  \"24.0.3\",\n  \"24.0.4\",\n  \"24.0.5\",\n  \"24.0.6\",\n  \"24.0.7\",\n  \"24.0.8\",\n  \"24.0.9\",\n  \"24.0.10\",\n  \"24.0.11\",\n  \"24.0.12\",\n  \"24.0.13\",\n  \"24.0.14\",\n  \"24.0.15\",\n  \"24.1.0\",\n  \"24.2.0\",\n  \"24.2.1\",\n  \"24.3.0\",\n  \"24.3.1\",\n  \"24.3.2\",\n  \"24.3.3\",\n  \"24.4.0\",\n  \"24.5.0\",\n  \"24.5.1\",\n  \"24.5.2\",\n  \"24.6.0\",\n  \"24.6.1\",\n  \"24.6.2\",\n  \"24.7.0\",\n  \"24.7.1\",\n  \"24.7.2\",\n  \"24.8.0\",\n  \"24.8.1\",\n  \"24.9.0\",\n  \"24.9.1\",\n  \"24.9.2\",\n  \"24.10.0\",\n  \"24.10.1\",\n  \"24.10.2\",\n  \"24.10.3\",\n  \"24.10.4\",\n  \"24.10.5\",\n  \"24.10.6\",\n  \"24.10.7\",\n  \"24.10.8\",\n  \"24.10.9\",\n  \"24.10.10\",\n  \"24.10.11\",\n  \"24.10.12\",\n  \"24.10.13\",\n  \"24.10.14\",\n  \"24.10.15\",\n  \"24.11.0\",\n  \"24.11.1\",\n  \"24.11.2\",\n  \"24.12.0\",\n  \"24.12.1\",\n  \"24.12.2\",\n  \"24.12.3\",\n  \"24.12.4\",\n  \"24.13.0\",\n  \"24.13.1\",\n  \"24.13.2\",\n  \"24.13.3\",\n  \"24.13.4\",\n  \"24.13.5\",\n  \"24.13.6\"\n]\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "53ae43",
+        "wall_time_seconds": 0.4381377,
+        "exit_code": 0,
+        "original_token_count": 10,
+        "output": "Docker version 29.7.2, build a7dcaa6\n"
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "e8edb0",
+        "wall_time_seconds": 0.3685691,
+        "exit_code": 0,
+        "original_token_count": 33,
+        "output": "prompt-faz-1.1.md\nPROJECT_MEMORY.md\nPROJE-DEVIR-PROMPTU.md\nKARARLAR.md\nCLAUDE.md\ndocs\\SPEC.md\ndocs\\ROADMAP.md\ndocs\\CHECKPOINT.md\n"
+      }
+    }
+  ]
+}
