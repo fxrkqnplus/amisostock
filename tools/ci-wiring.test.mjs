@@ -62,6 +62,25 @@ function validate(text) {
 it('every check script and the full gate chain run unmasked in CI', () => {
   expect(validate(workflow)).toHaveLength(required.length + 1);
 });
+it('applies and exercises the database model on PostgreSQL 18 in CI', () => {
+  const ast = parsers.yaml.parse(workflow);
+  const config = decode(
+    ast.children[0].children.find((node) => node.type === 'documentBody'),
+  );
+  const job = config.jobs.database;
+  expect(job).toBeDefined();
+  expect(job.services.postgres.image).toBe('postgres:18.6');
+  expect(job.env.DATABASE_URL).toContain('localhost:5432/amisostock');
+  const commands = job.steps.map((step) => step.run?.trim()).filter(Boolean);
+  expect(commands).toContain('pnpm --filter @amisostock/db db:migrate');
+  expect(commands).toContain('pnpm --filter @amisostock/db db:integration');
+  expect(job).not.toHaveProperty('if');
+  expect(job).not.toHaveProperty('continue-on-error');
+  for (const step of job.steps) {
+    expect(step).not.toHaveProperty('if');
+    expect(step).not.toHaveProperty('continue-on-error');
+  }
+});
 it.each([
   (text) =>
     text.replace('run: pnpm arch:check', 'run: pnpm arch:check || true'),

@@ -4,29 +4,32 @@
 > orası insan için anlatı, burası makine için alan listesi. Her alt görev sonunda güncellenir.
 
 ```yaml
-guncelleme: 2026-09-20
+guncelleme: 2026-10-01
 faz: 1
 faz_adi: Temel
-alt_gorev: 1.2
-alt_gorev_adi: Kapılar ve CI
-asama: yerel_tamam_ci_olculecek
-dal: develop
-taban_commit: 423c2cc0c1e747888a4cc40470b8e86532eae49d
+alt_gorev: 1.3
+alt_gorev_adi: Veri modeli ve çekirdek tipler
+asama: yerel_tamam_push_uzak_ci_bekliyor
+dal: feature/faz-1-3-veri-modeli
+taban_commit: 1829115392a5f4c96304241af7504381eac37ce5
 son_tag: null
-agac: commit_hazirlaniyor
+agac: yerel_commit_push_bekliyor
 
 kapi_tabani:
   install: gecti
-  typecheck: gecti # 9 paket / 10 kaynak, 0 cached
-  lint: gecti # 34 dosya / 114 etkin kural; yerel 2 kural / 10 dosya
-  test: gecti # 9 dosya / 206 test, 12 dosyalık coverage kapsamı
-  build: gecti # 9 paket / 10 kaynak, 0 cached; 9 ESM yükleme testi
+  typecheck: gecti # 9 paket / 20 kaynak
+  lint: gecti # 50 dosya / 114 etkin kural
+  test: gecti # 12 dosya / 257 test; satır kapsamı %95.70
+  build: gecti # 9 paket / 20 kaynak; 9 ESM yükleme testi
   format_check: gecti
   arch_check: gecti
   i18n_check: gecti
   contract_check: gecti
   money_check: gecti
   freshness_check: gecti
+  drizzle_check: gecti
+  db_migrate_pg18_3: gecti
+  db_integration_pg18_3: gecti
 
 biten:
   - karar kütüğü (131 madde) — KARARLAR.md
@@ -40,13 +43,22 @@ biten:
   - 1.2 beş kapı, iki yönlü kanaryalar, CI kablolaması ve veri katmanı
   - Docker daemon 29.7.2; Postgres 18.6 ve Redis 8.10.1 sağlık yanıtları
   - docs/reports/1.2-kapilar.md
+  - 1.3 şema: SPEC tabloları + ayrı düzeltilmiş mum serisi (35 tablo)
+  - 1.3 Money/Quote/Freshness + K2/K9 negatif tip sözleşmeleri
+  - PostgreSQL migration, aylık RANGE/LIST bölümleri, rollup korumalı retention
+  - PostgreSQL 18.3 PGlite migration ve retention entegrasyon ölçümü
+  - docs/reports/1.3-veri-modeli.md
 
-yarim_kalan: ['push sonrası CI iş ölçümü ve uzak dal eşitliği']
+yarim_kalan:
+  - GitHub token geçersiz olduğundan feature dalı push edilemedi
+  - 1.3 PostgreSQL 18.6 migration/retention CI işi ölçülmedi
+  - Feature dalındaki amd64/arm64 uzak CI işleri ölçülmedi
 
-siradaki_komut: 'commit, push, CI işlerini ölç; sonra DUR'
+siradaki_komut: 'erişim düzelince push et, CI işlerini ölç; sonra DUR'
 
 acik_karar: null
 
 olculmemis:
-  - 'CI amd64 ve arm64 işleri: push sonrası ÖLÇÜLECEK'
+  - 'GitHub Actions: PostgreSQL 18.6 migration/retention işi'
+  - "1.3 feature dalı için CI amd64 ve arm64 işleri"
 ```

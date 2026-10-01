@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1790844960404,
+      "tag": "0000_phase_1_3_model",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790844962235,
+      "tag": "0001_candle_partition_maintenance",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1790845751757,
+      "tag": "0002_alert_event_delay_consistency",
+      "breakpoints": true
+    }
+  ]
+}

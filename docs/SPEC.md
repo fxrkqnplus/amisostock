@@ -28,25 +28,35 @@ yok** (K9). Zaman alanları `timestamptz`, **UTC saklanır**, gösterim `Europe/
 
 ### 1.2 Fiyat tabloları
 
-| Tablo                | Alanlar                                                                                                                      | Not                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `quotes`             | `asset_id` · `price` · `change_abs` · `change_pct` · `day_high` · `day_low` · `volume` · `as_of` · `source_id` · `freshness` | **Son durum**, varlık başına tek satır (upsert)                            |
-| `price_candles`      | `asset_id` · `timeframe` (1m/5m/1h/1d) · `ts` · `open` · `high` · `low` · `close` · `volume` · `source_id`                   | PK `(asset_id, timeframe, ts)`; **aylık `RANGE` bölümleme** `ts` üzerinden |
-| `corporate_actions`  | `asset_id` · `ex_date` · `kind` (bonus/rights/split/dividend) · `ratio` · `amount` · `subscription_price` · `source_id`      | §4.5 düzeltmesinin girdisi                                                 |
-| `adjustment_factors` | `asset_id` · `ex_date` · `price_factor` · `volume_factor`                                                                    | `corporate_actions`'tan **türetilir**, elle yazılmaz                       |
+| Tablo                    | Alanlar                                                                                                                                                     | Not                                                                              |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `quotes`                 | `asset_id` · `currency` · `price` · `change_abs` · `change_pct` · `day_high` · `day_low` · `volume` · `as_of` · `source_id` · `freshness` · `delay_minutes` | **Son durum**, varlık başına tek satır (upsert); `delayed` ise dakika zorunlu    |
+| `price_candles`          | `asset_id` · `timeframe` (1m/5m/1h/1d) · `ts` · `currency` · `open` · `high` · `low` · `close` · `volume` · `source_id`                                     | PK `(asset_id, timeframe, ts)`; aylık `RANGE(ts)` + `LIST(timeframe)` alt bölümü |
+| `adjusted_price_candles` | `price_candles` ile aynı alanlar ve anahtarlar                                                                                                              | Ham seriden ayrı fiziksel tablo (L-02); aynı bölümleme ve saklama düzeni         |
+| `corporate_actions`      | `asset_id` · `ex_date` · `kind` (bonus/rights/split/dividend) · `ratio` · `amount` · `subscription_price` · `currency` · `source_id`                        | §4.5 düzeltmesinin girdisi                                                       |
+| `adjustment_factors`     | `asset_id` · `ex_date` · `price_factor` · `volume_factor`                                                                                                   | `corporate_actions`'tan **türetilir**, elle yazılmaz                             |
 
 **Saklama:** `1m` 90 gün · `5m` 1 yıl · `1h` 3 yıl · `1d` süresiz.
-Eski bölümler `1d`'ye toplulaştırıldıktan sonra düşürülür; düşürme işi `ingest_runs`'a yazılır.
+Her saklama çalışması varlık ve seri başına başarılı `1d` rollup kanıtı ister
+(`ingest_runs.details`: seri, varlık, giriş/çıkış zaman dilimi ve `verifiedThrough`).
+Rollup, piyasanın yerel seans takvimine göre eksiksiz doğrulanır. Süresi tamamen
+dolan aylık bölümde yalnız ilgili zaman diliminin alt bölümü düşürülür; sınır aydaki
+satırlar kesin UTC kesim zamanına göre silinir. Her işlem `ingest_runs`'a yazılır.
+İçe aktarma işi, veri yazmadan önce `ensure_candle_partitions(from, through)` ile
+gereken ay bölümlerini açar; migration geçerli ve sonraki UTC ayı başlangıçta açar.
 
 ### 1.3 İçerik tabloları
 
-| Tablo                | Alanlar                                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| `disclosures`        | `id` · `asset_id` · `kap_id` · `category` · `title` · `summary` · `published_at` · `url` · `source_id`                            |
-| `news`               | `id` · `title` · `excerpt` · `url` · `published_at` · `source_id` · `fingerprint` · `group_id` · `sentiment` · `sentiment_method` |
-| `news_assets`        | `news_id` · `asset_id` · `match_confidence`                                                                                       |
-| `financials`         | `asset_id` · `period` · `revenue` · `net_income` · `equity` · `total_debt` · `shares_outstanding` · `eps_ttm` · `source_id`       |
-| `fundamental_ratios` | `asset_id` · `as_of` · `pe` · `pb` · `roe` · `debt_to_equity` · `dividend_yield` · `earnings_growth_yoy` — **türetilir**          |
+| Tablo                | Alanlar                                                                                                                                                                      |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `disclosures`        | `id` · `asset_id` · `kap_id` · `category` · `title` · `summary` · `published_at` · `url` · `source_id`                                                                       |
+| `news`               | `id` · `title` · `excerpt` · `url` · `published_at` · `source_id` · `fingerprint` · `group_id` · `sentiment` · `sentiment_method`                                            |
+| `news_assets`        | `news_id` · `asset_id` · `match_confidence`                                                                                                                                  |
+| `financials`         | `asset_id` · `period` · `revenue` · `net_income` · `equity` · `total_debt` · `shares_outstanding` · `eps_ttm` · `source_id`                                                  |
+| `fundamental_ratios` | `asset_id` · `as_of` · `pe` · `pb` · `roe` · `debt_to_equity` · `dividend_yield` · `earnings_growth_yoy` · `source_id` · `freshness=estimate` · `calc_trace` — **türetilir** |
+
+`calc_trace`, en az bir `{sourceId, asOf}` girdisi taşır; arayüze giden her
+türetilmiş değer gibi oranlar da kaynak, zaman ve `estimate` sınıfını korur.
 
 ### 1.4 Kullanıcı tabloları
 
@@ -54,12 +64,21 @@ Eski bölümler `1d`'ye toplulaştırıldıktan sonra düşürülür; düşürme
 `watchlists` · `watchlist_items` · `alerts` · `alert_events` · `notifications` ·
 `user_preferences` (temel para birimi, tema, panel düzeni) · `audit_log`
 
+Hesap e-postası ve davet e-postası boşluklardan arındırılmış olmalı ve
+büyük/küçük harf duyarsız benzersiz tutulur. Portföy, izleme listesi, alarm,
+olay ve bildirim ilişkileri kullanıcı sahipliğini bileşik foreign key'lerle
+korur. İşlemler tutar para birimini, baz para birimini ve işlem anındaki FX
+kurunu saklar. Fiyat alarmı olayı gözlemlenen değerle birlikte para birimi ve
+kaynak kimliğini saklar; gecikmeli gözlemde gecikme dakikası pozitiftir.
+Kullanıcı silinince `audit_log` olayı korunur ve
+`user_id` boşaltılır; `details` içine kişisel veri yazılmaz.
+
 ### 1.5 Sinyal ve analiz tabloları
 
 | Tablo             | Alanlar                                                                                                                                                   |
 | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `signals`         | `id` · `asset_id` · `verdict` (buy/sell/hold) · `score` · `confidence` · `components` (jsonb, `calcTrace`) · `created_at` · `valid_until` · `inputs_hash` |
-| `price_targets`   | `signal_id` · `method` · `value` · `inputs` (jsonb) · `valid_until`                                                                                       |
+| `price_targets`   | `signal_id` · `method` · `value` · `currency` · `inputs` (jsonb) · `valid_until`                                                                          |
 | `signal_outcomes` | `signal_id` · `evaluated_at` · `asset_return_pct` · `benchmark_return_pct` · `excess_pct` · `hit` (bool)                                                  |
 | `ai_analyses`     | `id` · `asset_id` · `version` · `payload` (jsonb, §8.3 şeması) · `sources` (jsonb) · `model` · `created_at` · `superseded_by`                             |
 | `ai_usage`        | `day` · `requests` · `input_tokens` · `output_tokens` · `est_cost_usd`                                                                                    |
@@ -67,7 +86,9 @@ Eski bölümler `1d`'ye toplulaştırıldıktan sonra düşürülür; düşürme
 ### 1.6 İşletme tabloları
 
 `ingest_runs` (`source_id` · `started_at` · `finished_at` · `status` · `rows` · `error`) ·
-`provider_health` (`source_id` · `last_success_at` · `consecutive_failures` · `state`)
+`provider_health` (`source_id` · `last_success_at` · `consecutive_failures` · `state`).
+`ingest_runs.details`, rollup doğrulama ve saklama ölçümlerini taşır; işletme
+işlerinin kaynak sağlayıcısı olmadığı durumlarda `source_id` boş kalabilir.
 
 ---
 
