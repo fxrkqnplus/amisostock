@@ -11,6 +11,7 @@ import {
   BinanceSpotProvider,
   CoinGeckoProvider,
   EvdsProvider,
+  OpenExchangeRatesProvider,
   ProviderError,
   ProviderRegistry,
   createQuote,
@@ -23,6 +24,7 @@ import {
 const BINANCE_SOURCE = parseSourceId('a412c229-7d68-46b6-8a79-208f119364c0');
 const GECKO_SOURCE = parseSourceId('b412c229-7d68-46b6-8a79-208f119364c0');
 const EVDS_SOURCE = parseSourceId('c412c229-7d68-46b6-8a79-208f119364c0');
+const OER_SOURCE = parseSourceId('d412c229-7d68-46b6-8a79-208f119364c0');
 const BTC: ProviderInstrument = {
   ticker: parseTicker('BTCUSDT'),
   assetClass: 'crypto',
@@ -34,6 +36,16 @@ const USDTRY: ProviderInstrument = {
   assetClass: 'fx',
   currency: parseIsoCurrency('TRY'),
   providerSymbol: 'TP.DK.USD.S.YTL',
+};
+const EURTRY: ProviderInstrument = {
+  ticker: parseTicker('EUR/TRY'),
+  assetClass: 'fx',
+  currency: parseIsoCurrency('TRY'),
+  providerSymbol: 'EUR/TRY',
+};
+const OER_USDTRY: ProviderInstrument = {
+  ...USDTRY,
+  providerSymbol: 'USD/TRY',
 };
 
 class FakeSocket implements BinanceSocket {
@@ -338,6 +350,125 @@ describe('TCMB EVDS provider', () => {
       code: 'rate-limited',
       retryAfterMs: 30_000,
     });
+  });
+});
+
+describe('Open Exchange Rates provider', () => {
+  const asOf = new Date('2026-10-01T10:00:00.000Z');
+  const response = (rates: Record<string, number>, timestamp = asOf) =>
+    JSON.stringify({
+      timestamp: Math.floor(timestamp.getTime() / 1_000),
+      base: 'USD',
+      rates,
+    });
+
+  it('keeps the USD-base response as separate attributed estimates', async () => {
+    let requestUrl = '';
+    let authorization = '';
+    let requests = 0;
+    const provider = new OpenExchangeRatesProvider(
+      OER_SOURCE,
+      [OER_USDTRY, EURTRY],
+      'server-app-id',
+      {
+        now: () => new Date('2026-10-01T10:10:00.000Z'),
+        fetcher: async (input, init) => {
+          requests += 1;
+          requestUrl = String(input);
+          authorization = new Headers(init?.headers).get('authorization') ?? '';
+          return new Response(response({ USD: 1, TRY: 41.2, EUR: 0.81345 }), {
+            status: 200,
+          });
+        },
+      },
+    );
+
+    await provider.refresh();
+    const usdTry = await provider.getQuote(USDTRY.ticker);
+    const eurTry = await provider.getQuote(EURTRY.ticker);
+    expect(requests).toBe(1);
+    expect(requestUrl).not.toContain('server-app-id');
+    expect(new URL(requestUrl).searchParams.get('symbols')).toBe('EUR,TRY,USD');
+    expect(authorization).toBe('Token server-app-id');
+    expect(provider.attributionText).toContain('Open Exchange Rates');
+    for (const [result, expected] of [
+      [usdTry, '41.2'],
+      [eurTry, '50.648473'],
+    ] as const) {
+      expect(result.price.kind).toBe('value');
+      if (result.price.kind === 'value') {
+        expect(result.price.data.value.amount.toString()).toBe(expected);
+        expect(result.price.data.freshness).toBe('estimate');
+        expect(result.price.data.asOf).toEqual(asOf);
+      }
+    }
+  });
+
+  it('rejects a response missing any mapped currency without caching a partial result', async () => {
+    const provider = new OpenExchangeRatesProvider(
+      OER_SOURCE,
+      [OER_USDTRY, EURTRY],
+      'server-app-id',
+      {
+        fetcher: async () =>
+          new Response(response({ USD: 1, TRY: 41.2 }), { status: 200 }),
+      },
+    );
+
+    await expect(provider.refresh()).rejects.toMatchObject({
+      providerId: 'open-exchange-rates',
+      code: 'invalid-response',
+    });
+    await expect(provider.getQuote(USDTRY.ticker)).rejects.toMatchObject({
+      code: 'invalid-response',
+    });
+  });
+
+  it('hides estimate values older than 75 minutes', async () => {
+    const provider = new OpenExchangeRatesProvider(
+      OER_SOURCE,
+      [OER_USDTRY],
+      'server-app-id',
+      {
+        now: () => new Date('2026-10-01T11:16:00.000Z'),
+        fetcher: async () =>
+          new Response(response({ USD: 1, TRY: 41.2 }), { status: 200 }),
+      },
+    );
+
+    const result = await provider.getQuote(USDTRY.ticker);
+    expect(result.price).toMatchObject({
+      kind: 'stale',
+      source: OER_SOURCE,
+      asOf,
+    });
+    expect(result.price).not.toHaveProperty('data');
+  });
+
+  it('preserves 429 backoff guidance without exposing the response body or App ID', async () => {
+    const provider = new OpenExchangeRatesProvider(
+      OER_SOURCE,
+      [OER_USDTRY],
+      'secret-app-id',
+      {
+        fetcher: async () =>
+          new Response('secret provider response', {
+            status: 429,
+            headers: { 'retry-after': '20' },
+          }),
+      },
+    );
+    const error = await provider
+      .getQuote(USDTRY.ticker)
+      .catch((caught: unknown) => caught);
+
+    expect(error).toBeInstanceOf(ProviderError);
+    expect(error).toMatchObject({
+      code: 'rate-limited',
+      retryAfterMs: 20_000,
+    });
+    expect(String(error)).not.toContain('secret provider response');
+    expect(String(error)).not.toContain('secret-app-id');
   });
 });
 

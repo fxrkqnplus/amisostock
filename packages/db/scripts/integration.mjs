@@ -62,6 +62,7 @@ try {
   );
 
   const sourceId = randomUUID();
+  const estimateSourceId = randomUUID();
   const assetId = randomUUID();
   const userId = randomUUID();
   const alertId = randomUUID();
@@ -69,6 +70,11 @@ try {
     `INSERT INTO public.sources (id, kind, name)
      VALUES ($1, 'market', $2)`,
     [sourceId, `integration-${sourceId}`],
+  );
+  await client.query(
+    `INSERT INTO public.sources (id, kind, name)
+     VALUES ($1, 'market', $2)`,
+    [estimateSourceId, `integration-${estimateSourceId}`],
   );
   await client.query(
     `INSERT INTO public.markets (id, timezone, currency)
@@ -79,6 +85,21 @@ try {
      VALUES ($1, 'INTEGRATION', 'TEST', 'Integration test', 'equity', 'USD')`,
     [assetId],
   );
+  await client.query(
+    `INSERT INTO public.quotes
+       (asset_id, currency, price, as_of, source_id, freshness)
+     VALUES
+       ($1, 'USD', 10, statement_timestamp(), $2, 'close'),
+       ($1, 'USD', 10.1, statement_timestamp(), $3, 'estimate')`,
+    [assetId, sourceId, estimateSourceId],
+  );
+  const sourceQuotes = await client.query(
+    `SELECT count(*)::integer AS count
+     FROM public.quotes
+     WHERE asset_id = $1 AND source_id IN ($2, $3)`,
+    [assetId, sourceId, estimateSourceId],
+  );
+  assert.equal(sourceQuotes.rows[0].count, 2);
   await client.query(
     `INSERT INTO public.users (id, email, password_hash)
      VALUES ($1, $2, 'integration-test-hash')`,
@@ -183,7 +204,7 @@ try {
   assert.equal(auditEntry.details['adjusted_price_candles:1m'].partitions, 1);
 
   process.stdout.write(
-    '[db:integration] partitioning, rollup guard, retention, and audit checks passed\n',
+    '[db:integration] source-separated quotes, partitioning, rollup guard, retention, and audit checks passed\n',
   );
 } finally {
   try {

@@ -33,7 +33,7 @@ export const quotes = pgTable(
   'quotes',
   {
     assetId: uuid('asset_id')
-      .primaryKey()
+      .notNull()
       .references(() => assets.id),
     currency: text('currency').notNull(),
     price: numeric('price', { precision: 20, scale: 6 }).notNull(),
@@ -52,6 +52,7 @@ export const quotes = pgTable(
     delayMinutes: integer('delay_minutes'),
   },
   (table) => [
+    primaryKey({ columns: [table.assetId, table.sourceId] }),
     check('quotes_price_check', sql`${table.price} > 0`),
     check('quotes_day_range_check', sql`${table.dayHigh} >= ${table.dayLow}`),
     check('quotes_volume_check', sql`${table.volume} >= 0`),

@@ -29,13 +29,13 @@ yok** (K9). Zaman alanları `timestamptz`, **UTC saklanır**, gösterim `Europe/
 
 ### 1.2 Fiyat tabloları
 
-| Tablo                    | Alanlar                                                                                                                                                     | Not                                                                              |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `quotes`                 | `asset_id` · `currency` · `price` · `change_abs` · `change_pct` · `day_high` · `day_low` · `volume` · `as_of` · `source_id` · `freshness` · `delay_minutes` | **Son durum**, varlık başına tek satır (upsert); `delayed` ise dakika zorunlu    |
-| `price_candles`          | `asset_id` · `timeframe` (1m/5m/1h/1d) · `ts` · `currency` · `open` · `high` · `low` · `close` · `volume` · `source_id`                                     | PK `(asset_id, timeframe, ts)`; aylık `RANGE(ts)` + `LIST(timeframe)` alt bölümü |
-| `adjusted_price_candles` | `price_candles` ile aynı alanlar ve anahtarlar                                                                                                              | Ham seriden ayrı fiziksel tablo (L-02); aynı bölümleme ve saklama düzeni         |
-| `corporate_actions`      | `asset_id` · `ex_date` · `kind` (bonus/rights/split/dividend) · `ratio` · `amount` · `subscription_price` · `currency` · `source_id`                        | §4.5 düzeltmesinin girdisi                                                       |
-| `adjustment_factors`     | `asset_id` · `ex_date` · `price_factor` · `volume_factor`                                                                                                   | `corporate_actions`'tan **türetilir**, elle yazılmaz                             |
+| Tablo                    | Alanlar                                                                                                                                                     | Not                                                                                                                                                  |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `quotes`                 | `asset_id` · `currency` · `price` · `change_abs` · `change_pct` · `day_high` · `day_low` · `volume` · `as_of` · `source_id` · `freshness` · `delay_minutes` | Kaynak başına son durum; PK `(asset_id, source_id)`. Aynı FX çifti için EVDS ve serbest piyasa değerleri ayrı satırdır; `delayed` ise dakika zorunlu |
+| `price_candles`          | `asset_id` · `timeframe` (1m/5m/1h/1d) · `ts` · `currency` · `open` · `high` · `low` · `close` · `volume` · `source_id`                                     | PK `(asset_id, timeframe, ts)`; aylık `RANGE(ts)` + `LIST(timeframe)` alt bölümü                                                                     |
+| `adjusted_price_candles` | `price_candles` ile aynı alanlar ve anahtarlar                                                                                                              | Ham seriden ayrı fiziksel tablo (L-02); aynı bölümleme ve saklama düzeni                                                                             |
+| `corporate_actions`      | `asset_id` · `ex_date` · `kind` (bonus/rights/split/dividend) · `ratio` · `amount` · `subscription_price` · `currency` · `source_id`                        | §4.5 düzeltmesinin girdisi                                                                                                                           |
+| `adjustment_factors`     | `asset_id` · `ex_date` · `price_factor` · `volume_factor`                                                                                                   | `corporate_actions`'tan **türetilir**, elle yazılmaz                                                                                                 |
 
 **Saklama:** `1m` 90 gün · `5m` 1 yıl · `1h` 3 yıl · `1d` süresiz.
 Her saklama çalışması varlık ve seri başına başarılı `1d` rollup kanıtı ister
@@ -128,20 +128,25 @@ haber  : RSS kümesi (hepsi eşdeğer, tekilleştirme §3.4)
 bildirim: KAP (tek kaynak)
 ```
 
-İkinci kaynak **yalnız birincisi yoksa** devreye girer. Ortalama/medyan alınmaz.
-Aktif kaynak her değerde `source_id` olarak taşınır ve ekranda görünür.
+İkinci kaynak genel olarak **yalnız birincisi yoksa** devreye girer. C-03'teki FX
+istisnasında EVDS ve serbest piyasa kuru ayrı değerlerdir; biri diğerinin yedeği
+değildir. Ortalama/medyan alınmaz. Aktif kaynak her değerde `source_id` olarak
+taşınır ve ekranda görünür.
 
 ### 2.3 Tazelik ve bayatlama
 
-| Sınıf      | Koşul                                                                  |
-| ---------- | ---------------------------------------------------------------------- |
-| `live`     | Sağlayıcı gerçek zamanlı **ve** `now − as_of ≤ 2 × beklenen aralık`    |
-| `delayed`  | Sağlayıcı bilinen gecikmeyle veriyor; ekranda gecikme dakikası yazılır |
-| `close`    | Piyasa kapalı; değer son seans kapanışı                                |
-| `estimate` | Türetilmiş değer (gösterge, oran, hedef fiyat)                         |
+| Sınıf      | Koşul                                                                         |
+| ---------- | ----------------------------------------------------------------------------- |
+| `live`     | Sağlayıcı gerçek zamanlı **ve** `now − as_of ≤ 2 × beklenen aralık`           |
+| `delayed`  | Sağlayıcı bilinen gecikmeyle veriyor; ekranda gecikme dakikası yazılır        |
+| `close`    | Piyasa kapalı; değer son seans kapanışı                                       |
+| `estimate` | Türetilmiş değer veya sağlayıcının açıkça gösterge niteliğinde verdiği tahmin |
 
 **Bayat:** `now − as_of > staleAfter`. Varsayılanlar: kripto 30 sn · serbest piyasa
-döviz 5 dk · gecikmeli hisse 25 dk · makro 2 gün. Bayat değer **hesaplara, sinyale
+döviz 5 dk · gecikmeli hisse 25 dk · makro 2 gün. Saatlik Open Exchange Rates
+gösterge kuru için kaynağın saatlik yayın aralığına özel eşik 75 dakikadır; bu
+`estimate` yalnızca gösterge/ekran değeri olarak sunulur, alım-satım veya sinyal
+kararı üretmez. Bayat değer **hesaplara, sinyale
 ve alarmlara girmez** (DZ-A2); ekranda değerin **yerine** "güncellenmedi · son:
 HH:MM" gösterilir. TCMB EVDS günlük referans kuru istisnadır: `close` sınıfında
 kalır ve yeni resmî günlük gözlem yayımlanana kadar geçerlidir; gözlem tarihi

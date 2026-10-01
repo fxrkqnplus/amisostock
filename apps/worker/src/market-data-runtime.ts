@@ -6,6 +6,7 @@ import {
   BinanceSpotProvider,
   CoinGeckoProvider,
   EvdsProvider,
+  OpenExchangeRatesProvider,
   ProviderError,
   ProviderRegistry,
   parseMarketQuoteEvent,
@@ -28,8 +29,12 @@ import {
 } from '@amisostock/shared';
 import { RedisProviderRateLimiter } from './provider-rate-limit.js';
 
-const quoteCacheKey = (ticker: string) =>
+const quoteCacheKey = (ticker: string, providerId: string) =>
+  `amisostock:market:quote:v2:${ticker}:${providerId}`;
+const legacyQuoteCacheKey = (ticker: string) =>
   `amisostock:market:quote:v1:${ticker}`;
+const quoteEventKey = (ticker: string, providerId: string) =>
+  `${ticker}:${providerId}`;
 const healthCacheKey = (providerId: string) =>
   `amisostock:provider:health:v1:${providerId}`;
 const failureCountKey = (providerId: string) =>
@@ -44,6 +49,7 @@ const workerEnvironmentSchema = z
     DATABASE_URL: z.url().refine((value) => /^postgres(?:ql)?:/.test(value)),
     REDIS_URL: z.url().refine((value) => /^rediss?:/.test(value)),
     EVDS_API_KEY: z.string().trim().default(''),
+    OPEN_EXCHANGE_RATES_APP_ID: z.string().trim().default(''),
     PROVIDER_CRYPTO_FALLBACK: z.enum(['', 'coingecko']).default(''),
     COINGECKO_API_KEY: z.string().trim().default(''),
     LOG_LEVEL: z
@@ -132,13 +138,34 @@ export class MarketQuotePipeline {
       normalizedTicker,
       skipProviders,
     );
+    return this.publishResolved(normalizedTicker, resolved);
+  }
+
+  async ingestFromProvider(
+    ticker: string,
+    providerId: ProviderId,
+  ): Promise<MarketQuoteEvent> {
+    const normalizedTicker = parseTicker(ticker);
+    const resolved = await this.registry.getQuoteFromProvider(
+      providerId,
+      normalizedTicker,
+    );
+    return this.publishResolved(normalizedTicker, resolved);
+  }
+
+  private async publishResolved(
+    normalizedTicker: ReturnType<typeof parseTicker>,
+    resolved: ResolvedQuote,
+  ): Promise<MarketQuoteEvent> {
     const event: MarketQuoteEvent = {
       ticker: normalizedTicker,
       providerId: resolved.providerId,
       attributionText: resolved.attributionText,
       quote: resolved.quote,
     };
-    if (resolved.persist) await this.persist(resolved);
+    if (resolved.persist && resolved.quote.price.kind === 'value') {
+      await this.persist(resolved);
+    }
     await this.storeAndPublish(event);
     await this.recordSuccess(resolved.providerId);
     return event;
@@ -191,30 +218,67 @@ export class MarketQuotePipeline {
   async hydrateCachedEvents(tickers: Iterable<string>): Promise<void> {
     for (const input of tickers) {
       const ticker = parseTicker(input);
-      const key = quoteCacheKey(ticker);
-      const encoded = await this.redis.get(key);
-      if (encoded === null) continue;
-      try {
-        const event = parseMarketQuoteEvent(JSON.parse(encoded) as unknown);
-        if (event.ticker !== ticker) {
-          throw new TypeError('Cached ticker does not match its Redis key');
+      const providers = this.registry.providersFor(ticker);
+      const legacyKey = legacyQuoteCacheKey(ticker);
+      const legacyEncoded = await this.redis.get(legacyKey);
+      if (legacyEncoded !== null) {
+        try {
+          const event = parseMarketQuoteEvent(
+            JSON.parse(legacyEncoded) as unknown,
+          );
+          if (
+            event.ticker === ticker &&
+            providers.some((provider) => provider.id === event.providerId)
+          ) {
+            await this.redis.set(
+              quoteCacheKey(ticker, event.providerId),
+              legacyEncoded,
+              'EX',
+              QUOTE_CACHE_SECONDS,
+            );
+            await this.redis.del(legacyKey);
+            this.cachedEvents.set(quoteEventKey(ticker, event.providerId), {
+              event,
+              stalePublished: false,
+            });
+          }
+        } catch {
+          this.logger.warn({ ticker }, 'Discarded invalid cached market quote');
+          await this.redis.del(legacyKey);
         }
-        this.cachedEvents.set(ticker, { event, stalePublished: false });
-      } catch {
-        this.logger.warn({ ticker }, 'Discarded invalid cached market quote');
-        await this.redis.del(key);
+      }
+      for (const provider of providers) {
+        const key = quoteCacheKey(ticker, provider.id);
+        const encoded = await this.redis.get(key);
+        if (encoded === null) continue;
+        try {
+          const event = parseMarketQuoteEvent(JSON.parse(encoded) as unknown);
+          if (event.ticker !== ticker || event.providerId !== provider.id) {
+            throw new TypeError('Cached quote does not match its Redis key');
+          }
+          this.cachedEvents.set(quoteEventKey(ticker, provider.id), {
+            event,
+            stalePublished: false,
+          });
+        } catch {
+          this.logger.warn(
+            { ticker, providerId: provider.id },
+            'Discarded invalid cached market quote',
+          );
+          await this.redis.del(key);
+        }
       }
     }
   }
 
   async markStaleQuotes(): Promise<void> {
     const now = Date.now();
-    for (const [ticker, cached] of this.cachedEvents) {
+    for (const [eventKey, cached] of this.cachedEvents) {
       if (cached.stalePublished) continue;
       const datum = cached.event.quote.price;
       if (datum.kind === 'stale') {
         await this.storeAndPublish(cached.event);
-        this.cachedEvents.set(ticker, {
+        this.cachedEvents.set(eventKey, {
           event: cached.event,
           stalePublished: true,
         });
@@ -223,13 +287,17 @@ export class MarketQuotePipeline {
       if (cached.event.providerId === 'tcmb-evds') continue;
       if (datum.kind !== 'value') continue;
       const age = now - datum.data.asOf.getTime();
-      if (age <= 30_000) continue;
+      const staleAfter =
+        cached.event.providerId === 'open-exchange-rates'
+          ? 75 * 60_000
+          : 30_000;
+      if (age <= staleAfter) continue;
       const event: MarketQuoteEvent = {
         ...cached.event,
         quote: staleQuote(cached.event.quote),
       };
       await this.storeAndPublish(event);
-      this.cachedEvents.set(ticker, { event, stalePublished: true });
+      this.cachedEvents.set(eventKey, { event, stalePublished: true });
     }
   }
 
@@ -239,7 +307,9 @@ export class MarketQuotePipeline {
   ): Promise<void> {
     try {
       await provider.refresh();
-      for (const ticker of tickers) await this.ingest(ticker);
+      for (const ticker of tickers) {
+        await this.ingestFromProvider(ticker, provider.id);
+      }
     } catch (error) {
       const providerError =
         error instanceof ProviderError
@@ -255,6 +325,28 @@ export class MarketQuotePipeline {
 
   async stop(): Promise<void> {
     await this.redis.quit();
+  }
+
+  async refreshOpenExchangeRates(
+    provider: OpenExchangeRatesProvider,
+    tickers: readonly string[],
+  ): Promise<void> {
+    try {
+      await provider.refresh();
+      for (const ticker of tickers) {
+        await this.ingestFromProvider(ticker, provider.id);
+      }
+    } catch (error) {
+      const providerError =
+        error instanceof ProviderError
+          ? error
+          : new ProviderError(provider.id, 'Provider request failed', {
+              code: 'unavailable',
+              cause: error,
+            });
+      await this.recordFailure(provider.id, providerError);
+      if (providerError.code !== 'rate-limited') throw providerError;
+    }
   }
 
   private async persist(resolved: ResolvedQuote): Promise<void> {
@@ -299,10 +391,18 @@ export class MarketQuotePipeline {
     const encoded = JSON.stringify(event);
     await this.redis
       .multi()
-      .set(quoteCacheKey(event.ticker), encoded, 'EX', QUOTE_CACHE_SECONDS)
+      .set(
+        quoteCacheKey(event.ticker, event.providerId),
+        encoded,
+        'EX',
+        QUOTE_CACHE_SECONDS,
+      )
       .publish(MARKET_QUOTE_CHANNEL, encoded)
       .exec();
-    this.cachedEvents.set(event.ticker, { event, stalePublished: false });
+    this.cachedEvents.set(quoteEventKey(event.ticker, event.providerId), {
+      event,
+      stalePublished: false,
+    });
     this.logger.debug(
       { ticker: event.ticker, providerId: event.providerId },
       'Market quote published',
@@ -443,6 +543,7 @@ export async function startMarketDataWorker(
     'binance',
     'coingecko',
     'tcmb-evds',
+    'open-exchange-rates',
   ]);
 
   const byProvider = new Map<string, AssetProviderMapping[]>();
@@ -470,7 +571,6 @@ export async function startMarketDataWorker(
     assetIds,
     logger,
   );
-  await pipeline.hydrateCachedEvents(assetIds.keys());
   const recordProviderFailure = (error: ProviderError): void => {
     void pipeline.handleProviderFailure(error).catch(() => {
       logger.error(
@@ -564,6 +664,44 @@ export async function startMarketDataWorker(
     );
   }
 
+  const openExchangeRows = byProvider.get('open-exchange-rates') ?? [];
+  let openExchangeRates: OpenExchangeRatesProvider | undefined;
+  if (
+    openExchangeRows.length > 0 &&
+    environment.OPEN_EXCHANGE_RATES_APP_ID !== ''
+  ) {
+    const id = await database.registerMarketDataSource({
+      name: 'Open Exchange Rates',
+      priority: 100,
+      attributionText:
+        'Kaynak: Open Exchange Rates; saatlik gösterge niteliğinde kur tahmini.',
+      licenseNote:
+        'Forever Free plan: small-scale/open-source eligibility, USD base, hourly indicative midpoint estimates, 1,000 monthly requests; no precise FX trading or direct resale.',
+    });
+    sources.set(parseProviderId('open-exchange-rates'), id);
+    openExchangeRates = new OpenExchangeRatesProvider(
+      parseSourceId(id),
+      openExchangeRows.map(makeInstrument),
+      environment.OPEN_EXCHANGE_RATES_APP_ID,
+      { permit: () => rateLimiter.acquire('open-exchange-rates') },
+    );
+    registry.register(openExchangeRates, 100);
+    logger.info(
+      {
+        providerId: 'open-exchange-rates',
+        instruments: openExchangeRows.length,
+      },
+      'Indicative FX estimate provider enabled',
+    );
+  } else if (openExchangeRows.length > 0) {
+    logger.warn(
+      { providerId: 'open-exchange-rates' },
+      'Open Exchange Rates disabled because its App ID is empty',
+    );
+  }
+
+  await pipeline.hydrateCachedEvents(assetIds.keys());
+
   const worker = new Worker(
     'market-data',
     async (job) => {
@@ -577,6 +715,14 @@ export async function startMarketDataWorker(
         await pipeline.refreshEvds(
           evds,
           fxRows.map((row) => row.ticker),
+        );
+      } else if (
+        job.name === 'open-exchange-rates-hourly' &&
+        openExchangeRates !== undefined
+      ) {
+        await pipeline.refreshOpenExchangeRates(
+          openExchangeRates,
+          openExchangeRows.map((row) => row.ticker),
         );
       }
     },
@@ -611,15 +757,6 @@ export async function startMarketDataWorker(
         );
       });
     }
-    await queue.upsertJobScheduler(
-      'stale-audit',
-      { every: 5_000 },
-      {
-        name: 'stale-audit',
-        data: {},
-        opts: { attempts: 6, backoff: { type: 'exponential', delay: 1_000 } },
-      },
-    );
   }
   if (evds !== undefined) {
     await queue.upsertJobScheduler(
@@ -632,13 +769,49 @@ export async function startMarketDataWorker(
       },
     );
   }
+  if (openExchangeRates !== undefined) {
+    await queue.upsertJobScheduler(
+      'open-exchange-rates-hourly',
+      { pattern: '5 * * * *', tz: 'UTC' },
+      {
+        name: 'open-exchange-rates-hourly',
+        data: {},
+        opts: { attempts: 2, backoff: { type: 'exponential', delay: 5_000 } },
+      },
+    );
+    void pipeline
+      .refreshOpenExchangeRates(
+        openExchangeRates,
+        openExchangeRows.map((row) => row.ticker),
+      )
+      .catch((error: unknown) =>
+        logger.warn(
+          {
+            providerId: 'open-exchange-rates',
+            errorCode: error instanceof ProviderError ? error.code : 'internal',
+          },
+          'Initial FX estimate refresh failed',
+        ),
+      );
+  }
+  if (assetIds.size > 0) {
+    await queue.upsertJobScheduler(
+      'stale-audit',
+      { every: 5_000 },
+      {
+        name: 'stale-audit',
+        data: {},
+        opts: { attempts: 6, backoff: { type: 'exponential', delay: 1_000 } },
+      },
+    );
+  }
   await worker.waitUntilReady();
   await redis.ping();
   await database.query('SELECT 1');
   logger.info(
     {
       cryptoInstruments: cryptoInstruments.length,
-      fxInstruments: fxRows.length,
+      fxInstruments: fxRows.length + openExchangeRows.length,
       providers: [...sources.keys()],
     },
     'Market-data worker ready',

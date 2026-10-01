@@ -44,6 +44,7 @@ describe('environment schema', () => {
     expect(environment.RESEND_API_KEY).toBe('');
     expect(environment.COINGECKO_API_KEY).toBe('');
     expect(environment.EVDS_API_KEY).toBe('');
+    expect(environment.OPEN_EXCHANGE_RATES_APP_ID).toBe('');
     expect(environment.KAP_API_KEY).toBe('');
     expect(environment.TURNSTILE_SECRET_KEY).toBe('');
     expect(environment.AI_API_KEY).toBe('');

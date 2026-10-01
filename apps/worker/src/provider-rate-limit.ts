@@ -19,6 +19,17 @@ if monthCount == 1 then redis.call('EXPIRE', KEYS[2], ARGV[4]) end
 return {1, minuteCount, monthCount}
 `;
 
+const MONTHLY_LIMIT_SCRIPT = `
+local monthCount = tonumber(redis.call('GET', KEYS[1]) or '0')
+local monthLimit = tonumber(ARGV[1])
+if monthCount >= monthLimit then
+  return {0, redis.call('TTL', KEYS[1])}
+end
+monthCount = redis.call('INCR', KEYS[1])
+if monthCount == 1 then redis.call('EXPIRE', KEYS[1], ARGV[2]) end
+return {1, monthCount}
+`;
+
 export interface RedisScriptClient {
   eval(
     script: string,
@@ -52,9 +63,31 @@ export class RedisProviderRateLimiter {
 
   async acquire(providerIdInput: ProviderId | string): Promise<void> {
     const providerId = parseProviderId(providerIdInput);
-    if (providerId !== 'coingecko') return;
     const now = this.now();
     const windows = resetWindows(now);
+    if (providerId === 'open-exchange-rates') {
+      const monthKey = `provider-quota:${providerId}:month:${windows.month}`;
+      const result = await this.redis.eval(
+        MONTHLY_LIMIT_SCRIPT,
+        1,
+        monthKey,
+        900,
+        windows.monthTtl,
+      );
+      if (!Array.isArray(result) || result[0] !== 1) {
+        const retrySeconds = Array.isArray(result) ? Number(result[1]) : 60;
+        throw new ProviderError(
+          providerId,
+          'Open Exchange Rates monthly quota guard is exhausted',
+          {
+            code: 'rate-limited',
+            retryAfterMs: Math.max(1, retrySeconds) * 1_000,
+          },
+        );
+      }
+      return;
+    }
+    if (providerId !== 'coingecko') return;
     const minuteKey = `provider-quota:${providerId}:minute:${windows.minute}`;
     const monthKey = `provider-quota:${providerId}:month:${windows.month}`;
     const result = await this.redis.eval(

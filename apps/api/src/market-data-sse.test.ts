@@ -95,19 +95,20 @@ describe('market-data SSE fan-out', () => {
         readUntil(reader2, ': connected'),
       ]);
       expect(redis.listenerCount('message')).toBe(1);
-      const ticker = parseTicker('BTCUSDT');
+      const ticker = parseTicker('USD/TRY');
       const source = parseSourceId('a412c229-7d68-46b6-8a79-208f119364c0');
       const event = {
         ticker,
-        providerId: 'binance',
-        attributionText: 'Piyasa verisi: Binance Spot.',
+        providerId: 'tcmb-evds',
+        attributionText:
+          'Kaynak: Türkiye Cumhuriyet Merkez Bankası (TCMB), EVDS.',
         quote: createQuote({
           ticker,
           source,
-          currency: parseCurrencyCode('USDT'),
+          currency: parseCurrencyCode('TRY'),
           asOf: new Date('2026-10-01T12:00:00.000Z'),
-          freshness: 'live',
-          price: '123.456789',
+          freshness: 'close',
+          price: '41.35',
         }),
       };
       expect(() =>
@@ -120,10 +121,39 @@ describe('market-data SSE fan-out', () => {
         readUntil(reader2, 'event: quote'),
       ]);
       expect(redis.subscribeCalls).toEqual([MARKET_QUOTE_CHANNEL]);
-      expect(stream1).toContain('BTCUSDT');
-      expect(stream2).toContain('BTCUSDT');
-      expect(stream1).toContain('123.456789');
-      expect(stream2).toContain('123.456789');
+      expect(stream1).toContain('USD/TRY');
+      expect(stream2).toContain('USD/TRY');
+      expect(stream1).toContain('41.35');
+      expect(stream2).toContain('41.35');
+
+      const estimateSource = parseSourceId(
+        'b412c229-7d68-46b6-8a79-208f119364c0',
+      );
+      const estimate = {
+        ticker,
+        providerId: 'open-exchange-rates',
+        attributionText:
+          'Kaynak: Open Exchange Rates; saatlik gösterge niteliğinde kur tahmini.',
+        quote: createQuote({
+          ticker,
+          source: estimateSource,
+          currency: parseCurrencyCode('TRY'),
+          asOf: new Date('2026-10-01T12:00:00.000Z'),
+          freshness: 'estimate',
+          price: '41.2',
+        }),
+      };
+      expect(() =>
+        parseMarketQuoteEvent(JSON.parse(JSON.stringify(estimate)) as unknown),
+      ).not.toThrow();
+      redis.emit('message', MARKET_QUOTE_CHANNEL, JSON.stringify(estimate));
+      expect(hubEvents).toEqual([ticker, ticker]);
+      const [estimateStream1, estimateStream2] = await Promise.all([
+        readUntil(reader1, '41.2'),
+        readUntil(reader2, '41.2'),
+      ]);
+      expect(estimateStream1).toContain('open-exchange-rates');
+      expect(estimateStream2).toContain('open-exchange-rates');
     } finally {
       unsubscribeHub();
       for (const abort of aborts) abort.abort();

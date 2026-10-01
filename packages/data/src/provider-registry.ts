@@ -92,6 +92,36 @@ export class ProviderRegistry {
       .map((entry) => entry.provider);
   }
 
+  async getQuoteFromProvider(
+    providerIdInput: ProviderId | string,
+    ticker: Ticker,
+  ): Promise<ResolvedQuote> {
+    const providerId = parseProviderId(providerIdInput);
+    const provider = this.entries.find(
+      (entry) => entry.provider.id === providerId,
+    )?.provider;
+    if (provider === undefined || !provider.supports(ticker)) {
+      throw new ProviderError(providerId, 'Provider does not support ticker', {
+        code: 'unsupported',
+      });
+    }
+    try {
+      const quote = assertProviderQuote(
+        await provider.getQuote(ticker),
+        ticker,
+        provider,
+      );
+      return {
+        attributionText: provider.attributionText,
+        persist: provider.storagePolicy === 'database',
+        providerId: provider.id,
+        quote,
+      };
+    } catch (error) {
+      throw providerError(error, provider.id);
+    }
+  }
+
   async getQuote(
     ticker: Ticker,
     skipProviders: ReadonlySet<ProviderId> = new Set(),

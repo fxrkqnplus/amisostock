@@ -61,6 +61,7 @@ export const envSchema = z
     PROVIDER_CRYPTO_FALLBACK: z.enum(['', 'coingecko']),
     COINGECKO_API_KEY: optionalServiceKey,
     EVDS_API_KEY: optionalServiceKey,
+    OPEN_EXCHANGE_RATES_APP_ID: optionalServiceKey,
     KAP_API_KEY: optionalServiceKey,
     NEWS_FEEDS_FILE: configuredString,
     AI_PROVIDER: z.enum(['google', 'openai', 'anthropic', 'local']),

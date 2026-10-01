@@ -29,6 +29,13 @@
       "when": 1790856649248,
       "tag": "0003_asset_provider_symbols",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790864073421,
+      "tag": "0004_quote_source_key",
+      "breakpoints": true
     }
   ]
 }

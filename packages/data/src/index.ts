@@ -7,3 +7,4 @@ export * from './provider-registry.js';
 export * from './binance-spot-provider.js';
 export * from './coingecko-provider.js';
 export * from './evds-provider.js';
+export * from './open-exchange-rates-provider.js';

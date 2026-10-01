@@ -40,7 +40,7 @@
 **Amaç:** Bir fiyatın kaynağı, anı ve tazeliğiyle ekrana kadar akması. Ürünün geri kalanı buna bağlanır.
 
 - [x] **2.1a Sağlayıcı omurgası, kripto ve resmî kur.** `MarketDataProvider`, Zod doğrulama, öncelik/registry; Binance Spot WebSocket kripto; TCMB EVDS günlük referans kuru (`close`, sonraki günlük yayına dek); BullMQ worker, Redis cache/kota/sağlık ve paylaşımlı SSE. CoinGecko Demo yedeği yalnız açık sunucu ayarı ve anahtarla etkinleşir, 30 saniyeyi aşınca bayat olur ve kullanıcı şartları/atıf gereklidir. Ayrıntı: `docs/reports/2.1a-saglayici-omurgasi.md`.
-- [ ] **2.1b Serbest piyasa FX kaynağı.** Lisansı, kullanım koşulları, atıf ve ücretsizliği ölçülmüş ikinci kur kaynağını resmî EVDS değerinden ayrı etiketle; bu iki değer birleştirilmez.
+- [x] **2.1b Serbest piyasa FX kaynağı.** Open Exchange Rates saatlik USD tabanlı kur tahmini; EVDS `close` değerinden ayrı `estimate` kaydı/etiketi, kaynak zamanı ve atıf. Ücretsiz küçük ölçekli/açık kaynak kullanımı, 1.000 istek/ay sınırı ve yeniden satış koşulları ölçüldü; uygulama kotası 900/ay. Tahmin sinyal veya işlem kararında kullanılmaz. Ayrıntı: `docs/reports/2.1b-serbest-fx.md`.
 - [ ] **2.2 BIST.** Gecikmeli kaynak **taranır, ölçülür, seçilir** ve karar `KARARLAR.md`'ye işlenir (açık belirsizlik #1); hisse ingest; **piyasa takvimi** (tatil, yarım gün) ve işlem durumu (tedbirli, işleme kapalı, sırası kapalı).
 - [ ] **2.3 Olay ve haber.** KAP bildirim hattı + bildirimin varlığa eşleştirilmesi; çok kaynaklı RSS + **tekilleştirme** (parmak izi + zaman penceresi) + kural tabanlı duygu; KAP finansal tablolarından temel oranlar (veri yoksa hesaplanmaz); `NOTICE` + "Veri kaynakları" sayfası.
 

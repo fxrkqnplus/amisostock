@@ -101,7 +101,7 @@ async function upsertMarketQuote(
     .insert(schema.quotes)
     .values(values)
     .onConflictDoUpdate({
-      target: schema.quotes.assetId,
+      target: [schema.quotes.assetId, schema.quotes.sourceId],
       set: {
         currency: values.currency,
         price: values.price,

@@ -66,7 +66,7 @@ export type QuoteSnapshot = Readonly<{
   source: SourceId;
   currency: CurrencyCode;
   asOf: Date;
-  freshness: 'live' | 'delayed' | 'close';
+  freshness: 'live' | 'delayed' | 'close' | 'estimate';
   delayMinutes?: number;
   price: string;
   changeAbs?: string;
