@@ -20,7 +20,7 @@ Taban commit   : 7149333dfebe9bba5c85c81dd2d7445435c2f902 (Faz 1 merge commit'i)
 Faz 1 etiketi  : faz-1-son → 7149333dfebe9bba5c85c81dd2d7445435c2f902
 Ağaç           : 2.1a kodu/belgeleri bu görev; kullanıcıya ait PROJE-DEVIR-PROMPTU.md değişikliği korunuyor ve commit dışında kalacak
 Faz 1 PR/CI    : PR #1 merge edildi; run 36855404121, 36855689769, 36856094428 PostgreSQL 18.6/amd64/arm64 kapılarını geçti
-Faz 2 PR/CI    : Faz PR'si açılmadı; uzak CI sonucu bu kayıt yazılırken ölçülmedi
+Faz 2 PR/CI    : PR yok (faz kapanışında açılacak); run 36869221755, amd64/arm64 temiz checkout tip kontrolünde başarısız
 Yerel kapılar   : typecheck 9 paket/32 kaynak; lint 67 dosya/114 kural/0 hata-uyarı; test 17 dosya/288 test; build 9 paket/9 ESM yüklemesi
 Kapsam         : ifade %94,91; dal %90,76; fonksiyon %97,11; satır %95,76
 Statik kapılar  : arch 38 dosya/0 bulgu; i18n 34 dosya/0 aday; contract alanı 0 dosya; money 34 dosya/13 aday/0 bulgu; freshness 34 dosya/6 aday/0 bulgu; format 117 dosya/0 hata
@@ -28,7 +28,7 @@ DB/runtime     : db:check, db:migrate, db:integration geçti; Postgres 18.6 ve R
 Ortam          : Node v24.19.0, pnpm 11.23.0; .env ve gerçek sağlayıcı anahtarları yok; aktif sağlayıcı eşlemesi 0; volume'lar korundu
 Sınır          : canlı Binance/EVDS/CoinGecko çağrısı yapılmadı; CoinGecko yedeği varsayılan kapalı ve dış kullanıcı koşulları/atıf UI bekliyor
 Açık bulgu     : 1.3 rollup kanıtı tarihsel düzeltmeyle geçersizleşmiyor P1 inceleme bulgusu açık
-Sıradaki       : 2.1a tamamlandı; 2.1b için kullanıcı yönlendirmesini bekle
+Sıradaki       : typecheck bağımlılık build düzeltmesini push edip uzak CI'ı doğrula; sonra 2.1a için dur
 Açık karar     : yok; EVDS günlük gözlemi bir sonraki resmî yayına kadar close
 ```
 
@@ -146,6 +146,12 @@ GitHub erişim ölçümü: yerel `gh` komutu kurulu değil. PR #1'in merge'i ve 
   servis anahtarı olmadığından canlı sağlayıcı isteği yapılmadı.
 - CoinGecko yedeği kapalı kaldı; demo tazeliği, görünür atıf UI'si ve dış
   kullanıcılara dönük şartlar hazır olmadan açılmamalı. Serbest piyasa FX 2.1b'de.
+- İlk GitHub run `36869221755`, temiz checkout'ta `@amisostock/shared` bildirimleri
+  eksik olduğundan amd64/arm64 typecheck aşamasında başarısız oldu. `turbo.json`
+  `typecheck` görevi, `^build` ve `^typecheck` görevlerini bekleyecek şekilde
+  düzeltildi. Dokuz eski `dist` klasörü dışarı taşınarak yapılan yerel temiz-çıktı
+  denemesinde typecheck 9/9 paket ve 15/15 Turbo görevinde geçti; push sonrası uzak
+  tekrar henüz ölçülmedi.
 - Faz 2 henüz kapanmadı ve PR açılmadı. Faz 1 feature branch'inin yerel/uzak
   kopyası ölçümde bulunmadı.
 

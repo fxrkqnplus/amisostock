@@ -26,7 +26,8 @@ github:
   faz_1_basarili_ci_runlari: [36855404121, 36855689769, 36856094428]
   faz_1_merge_commit_ci: bulunamadi
   faz_2_pr: yok_faz_kapanisinda_acilacak
-  faz_2_remote_ci: bu_kaydi_hazirlarken_olculmedi
+  faz_2_remote_ci: 'run 36869221755 başarısız; amd64 ve arm64 typecheck temiz checkout hatası'
+  faz_2_ci_duzeltme: 'turbo typecheck bağımlı paket build görevini bekliyor; temiz çıktı yerel doğrulaması geçti; uzak tekrar push sonrası bekleniyor'
 
 runtime:
   node: v24.19.0

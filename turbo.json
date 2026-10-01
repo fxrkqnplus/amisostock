@@ -3,7 +3,7 @@
   "globalDependencies": ["tsconfig.base.json", ".nvmrc", ".npmrc"],
   "tasks": {
     "typecheck": {
-      "dependsOn": ["^typecheck"],
+      "dependsOn": ["^build", "^typecheck"],
       "outputs": []
     },
     "build": {
