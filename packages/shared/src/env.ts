@@ -58,6 +58,8 @@ export const envSchema = z
     PROVIDER_EQUITY_PRIMARY: z.string().trim(),
     PROVIDER_EQUITY_FALLBACK: z.string().trim(),
     PROVIDER_CRYPTO: configuredString,
+    PROVIDER_CRYPTO_FALLBACK: z.enum(['', 'coingecko']),
+    COINGECKO_API_KEY: optionalServiceKey,
     EVDS_API_KEY: optionalServiceKey,
     KAP_API_KEY: optionalServiceKey,
     NEWS_FEEDS_FILE: configuredString,
@@ -95,6 +97,16 @@ export const envSchema = z
             : 'TURNSTILE_SITE_KEY',
         ],
         message: 'required',
+      });
+    }
+    if (
+      value.PROVIDER_CRYPTO_FALLBACK === 'coingecko' &&
+      value.COINGECKO_API_KEY === ''
+    ) {
+      context.addIssue({
+        code: 'custom',
+        path: ['COINGECKO_API_KEY'],
+        message: 'required when CoinGecko is enabled as the crypto fallback',
       });
     }
   });

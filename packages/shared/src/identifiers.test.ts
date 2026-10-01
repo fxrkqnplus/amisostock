@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   parseIsoCurrency,
+  parseCurrencyCode,
   parseProviderId,
   parseSignalId,
   parseSourceId,
@@ -35,6 +36,11 @@ describe('branded identifiers', () => {
       expect(() => parseIsoCurrency(currency)).toThrow();
     },
   );
+
+  it('accepts USDT as a provider settlement currency without calling it ISO', () => {
+    expect(parseCurrencyCode('USDT')).toBe('USDT');
+    expect(() => parseCurrencyCode('ZZZ')).toThrow();
+  });
 
   it('keeps adapter slugs distinct from persisted source UUIDs', () => {
     expect(parseProviderId('tcmb-evds')).toBe('tcmb-evds');

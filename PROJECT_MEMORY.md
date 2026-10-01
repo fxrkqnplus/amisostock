@@ -12,20 +12,24 @@
 
 ```
 Tarih          : 01.10.2026
-Faz            : 1 — Temel
-Alt görev      : 1.3 — Veri modeli ve çekirdek tipler (CI kabulü, PR açık)
+Faz            : 2 — Veri hattı
+Alt görev      : 2.1a — Sağlayıcı omurgası, kripto ve resmî kur (yerel kabul geçti)
 Aktif klon     : C:\Sistem\Projeler\amisostock-lf
-Dal            : feature/faz-1-3-veri-modeli
-Taban commit   : 1829115392a5f4c96304241af7504381eac37ce5
-Ağaç           : origin ile eşit; yalnız kullanıcıya ait PROJE-DEVIR-PROMPTU.md değişikliği commit dışı kaldı
-Son tag        : —
-Yerel kapılar   : typecheck 9/9 paket; lint 50 dosya/114 kural/0 hata; test 12 dosya/257 test, satır %95,70; build 9/9 paket/9 ESM yüklemesi; statik kapılar ve db:check geçti
-Uzak CI        : push run 36855404121 ve PR run 36855689769; PostgreSQL 18.6, amd64, arm64 üç işi de geçti
-PR             : #1, develop tabanlı, açık ve mergeable; merge edilmedi
-Ortam          : Node v24.19.0, pnpm 11.23.0; Docker 29.8.1; compose PostgreSQL 18 sağlıklı, `amisostock_postgres-data` volume'u korunuyor
-Yarım kalan    : PR inceleme/kabulü; resmi Faz 1 etiketi merge sonrasına bırakıldı
-Sıradaki komut : PR #1 için kullanıcı incelemesini bekle; kabul/merge sonrası ROADMAP 2.1'e geç
-Açık karar     : yok
+Dal            : feature/faz-2-veri-hatti
+Taban commit   : 7149333dfebe9bba5c85c81dd2d7445435c2f902 (Faz 1 merge commit'i)
+Faz 1 etiketi  : faz-1-son → 7149333dfebe9bba5c85c81dd2d7445435c2f902
+Ağaç           : 2.1a kodu/belgeleri bu görev; kullanıcıya ait PROJE-DEVIR-PROMPTU.md değişikliği korunuyor ve commit dışında kalacak
+Faz 1 PR/CI    : PR #1 merge edildi; run 36855404121, 36855689769, 36856094428 PostgreSQL 18.6/amd64/arm64 kapılarını geçti
+Faz 2 PR/CI    : Faz PR'si açılmadı; uzak CI sonucu bu kayıt yazılırken ölçülmedi
+Yerel kapılar   : typecheck 9 paket/32 kaynak; lint 67 dosya/114 kural/0 hata-uyarı; test 17 dosya/288 test; build 9 paket/9 ESM yüklemesi
+Kapsam         : ifade %94,91; dal %90,76; fonksiyon %97,11; satır %95,76
+Statik kapılar  : arch 38 dosya/0 bulgu; i18n 34 dosya/0 aday; contract alanı 0 dosya; money 34 dosya/13 aday/0 bulgu; freshness 34 dosya/6 aday/0 bulgu; format 117 dosya/0 hata
+DB/runtime     : db:check, db:migrate, db:integration geçti; Postgres 18.6 ve Redis PONG; worker başlatıldı, tek Redis olayı 2 gerçek SSE istemcisine ulaştı
+Ortam          : Node v24.19.0, pnpm 11.23.0; .env ve gerçek sağlayıcı anahtarları yok; aktif sağlayıcı eşlemesi 0; volume'lar korundu
+Sınır          : canlı Binance/EVDS/CoinGecko çağrısı yapılmadı; CoinGecko yedeği varsayılan kapalı ve dış kullanıcı koşulları/atıf UI bekliyor
+Açık bulgu     : 1.3 rollup kanıtı tarihsel düzeltmeyle geçersizleşmiyor P1 inceleme bulgusu açık
+Sıradaki       : 2.1a tamamlandı; 2.1b için kullanıcı yönlendirmesini bekle
+Açık karar     : yok; EVDS günlük gözlemi bir sonraki resmî yayına kadar close
 ```
 
 ---
@@ -39,6 +43,8 @@ Tamamı `KARARLAR.md`'de. Yalnız sonraki oturumların bilmesi gerekenler:
 - Yapay zekâ **sayı üretmez** (K10) ve **kaynaksız konuşmaz** (K12).
   Sağlayıcı: Gemini API ücretsiz kademe; aylık bütçe `$0`.
 - BIST verisi **gecikmelidir** ve gecikme her ekranda yazılır (K2).
+- TCMB EVDS günlük referans kuru, sonraki resmî günlük yayına kadar `close` kalır;
+  serbest piyasa FX ayrı kaynak olarak 2.1b'de ölçülür.
 - Kurulum **davetlidir**; `SERVER_MODE=public`'e geçiş hukuki maddeleri yeniden açar.
 - Marka **tek `s`**: `Amisostock`. Alt yol `/amisostock`.
 
@@ -65,7 +71,7 @@ Karara bağlanmış her sapma buraya. Boşsa boş kalır — doldurulmaz.
 | --------- | ---------- | -------------------------------------------------------------- | -------------------------------------- | --------------------------------------------------------------------------------------- |
 | SAPMA-001 | 19.09.2026 | `B-03` önerisi "sinyal verilmesin" idi                         | Sinyal ve hedef fiyat **verilir**      | Kullanıcı kararı; koşullar K11'e yazıldı, kişi düzeyinde kişiselleştirme yasağı korundu |
 | SAPMA-002 | 19.09.2026 | `E-01`/`E-02` ücretli bulut sağlayıcı ve $10 tavan öngörüyordu | Gemini **ücretsiz kademe**, bütçe `$0` | Kullanıcı kararı. Not: ChatGPT Plus / Gemini uygulama aboneliği API erişimi içermez     |
-| SAPMA-003 | 19.09.2026 | Yol haritası 9 faz / 57 alt görevdi                            | **6 faz / 18 alt görev**               | Kullanıcı kısalık istedi; kapı zinciri korundu, ajan orkestrasyonu çıkarıldı            |
+| SAPMA-003 | 19.09.2026 | Yol haritası 9 faz / 57 alt görevdi                            | **6 faz / 19 alt görev**               | Kullanıcı kısalık istedi; 2.1 kaynak koşulları nedeniyle 2.1a/2.1b olarak ayrıldı       |
 
 ---
 
@@ -108,10 +114,40 @@ Bilinçli ertelenen teknik borç. Her satırın **hedef alt görevi** olmak zoru
 - PostgreSQL 18.3 PGlite üzerinde `db:migrate` ve `db:integration` geçti. Bölümleme `RANGE(ts)` ay + `LIST(timeframe)` alt bölüm; retention kanıtsız silmeyi reddediyor ve `1d`'yi koruyor.
 - Root quality gates: typecheck 9 paket; lint 50 dosya; build 9 paket; arch/i18n/contract/money/freshness geçti. `drizzle-kit check` geçti.
 - CI run `36848139843` ilk commit'te `docs/CHECKPOINT.md` format bulgusu nedeniyle kaldı. Biçim düzeltildikten sonra push run `36855404121` ve PR run `36855689769`, PostgreSQL 18.6 migration/integration ile amd64/arm64 kapılarını başarıyla tamamladı.
-- PR #1 (`feature/faz-1-3-veri-modeli` → `develop`) açık, mergeable ve merge edilmemiş durumda. Faz 1 kabul etiketi PR kabulü/merge sonrasına bırakıldı.
+- PR #1 (`feature/faz-1-3-veri-modeli` → `develop`) kullanıcı tarafından
+  `7149333dfebe9bba5c85c81dd2d7445435c2f902` merge commit'iyle kapatıldı; `faz-1-son`
+  bu commit'i gösteriyor. Üç başarılı run PostgreSQL 18.6, amd64 ve arm64 kapılarını
+  geçti; merge commit'ine bağlı ayrı workflow run'ı yok.
 - Drizzle opsiyonel dialect `.d.ts` hataları nedeniyle yalnız DB paketinde `skipLibCheck: true`; kaynak tip kontrolü açık. Partitioning Drizzle modeliyle temsil edilmediği için ilk SQL migration elle tamamlandı.
 
-GitHub erişim ölçümü: yerel `gh` komutu kurulu değil; bağlı GitHub uygulaması depo okuma/yazma iznini gösterdi. PR aramasından sonra PR #1 açıldı ve doğrulandı. Push çıktısı varsayılan dalda bir orta seviye Dependabot bulgusu bildirdi; anonim API isteği `401 Requires authentication` verdiğinden paket/advisory ayrıntıları ölçülemedi. Bağımlılık güncellemesi yapılmadı.
+GitHub erişim ölçümü: yerel `gh` komutu kurulu değil. PR #1'in merge'i ve faz etiketi yerel Git nesnelerinden doğrulandı. Push çıktısı varsayılan dalda bir orta seviye Dependabot bulgusu bildirmişti; paket/advisory ayrıntıları hâlâ ölçülmedi. Bağımlılık güncellemesi yapılmadı.
+
+---
+
+## 2.1a sağlayıcı omurgası — 01.10.2026
+
+- `packages/data` sağlayıcı sözleşmeleri, registry/öncelik, `ProviderError`, Zod
+  yanıt doğrulaması; Binance Spot WebSocket, CoinGecko Demo (isteğe bağlı) ve
+  TCMB EVDS sağlayıcıları eklendi. Ücret/attribution koşulları ve 30 saniyelik
+  stale politikası `docs/reports/2.1a-saglayici-omurgasi.md` içinde.
+- BullMQ ingest, Redis cache/pubsub/kota/sağlık/backoff ve istemcilere çoğaltılan
+  `/amisostock/api/market-data/events` SSE eklendi. Mevcut varlık sağlayıcı sembolü
+  taşımadığından `asset_provider_symbols` ve `0003` migration'ı eklendi. Worker
+  başlangıçta etkin sembollerin Redis cache'ini Zod ile hydrate eder; yaşlı cache
+  stale olarak yeniden yayımlanır. İki restart/cache testi eklendi.
+- Güncel kalite ölçümü: typecheck 9 paket; lint 67 dosya/114 kural, 0 hata/uyarı;
+  test 17 dosya/288 test; kapsam stmt %94,91, branch %90,76, func %97,11, line
+  %95,76; build 9 paket/9 ESM yüklemesi; arch 38 dosya/0 bulgu; i18n 34 dosyada
+  0 aday; contract taraması 0 dosya; money 34 dosya/13 aday/0 bulgu; freshness
+  34 dosya/6 aday/0 bulgu; format 117 dosya/0 hata.
+- DB: `db:check`, migration ve entegrasyon geçti. Yerel sunucu PostgreSQL 18.6,
+  Redis health `PONG`. Runtime smoke worker bağlantısını ve tek sentetik Redis
+  yayınını iki SSE istemcisine doğruladı. Aktif provider eşlemesi 0 ve gerçek dış
+  servis anahtarı olmadığından canlı sağlayıcı isteği yapılmadı.
+- CoinGecko yedeği kapalı kaldı; demo tazeliği, görünür atıf UI'si ve dış
+  kullanıcılara dönük şartlar hazır olmadan açılmamalı. Serbest piyasa FX 2.1b'de.
+- Faz 2 henüz kapanmadı ve PR açılmadı. Faz 1 feature branch'inin yerel/uzak
+  kopyası ölçümde bulunmadı.
 
 ---
 
@@ -127,4 +163,5 @@ yalnız ölçümde ports override kullanıldı. Ürün kodu veya bağımlılık 
 > **Şablon:** 1. Kapsam · 2. Ne yapıldı · 3. Ölçümler (komut + ham çıktı) · 4. Kabul kriterleri denetimi · 5. Hata günlüğü (sınıf + reçete) · 6. Kırılan/düzelen
 > nöbetçiler · 7. SAPMA/BORÇ eklemeleri · 8. Devredilenler ve hedefleri · 9. Sonraki faza not
 
-_(Henüz faz kapanmadı.)_
+Faz 1, PR #1 merge'i ve `faz-1-son` etiketiyle kapandı. Faz 2 açıktır; 2.1a bitti,
+2.1b/2.2/2.3 tamamlanmadan faz PR'si oluşturulmayacak.

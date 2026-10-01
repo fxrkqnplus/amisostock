@@ -7,9 +7,10 @@ declare const sourceBrand: unique symbol;
 declare const signalBrand: unique symbol;
 
 export type Ticker = string & { readonly [tickerBrand]: true };
-export type IsoCurrency<Code extends string = string> = Code & {
+export type CurrencyCode<Code extends string = string> = Code & {
   readonly [currencyBrand]: true;
 };
+export type IsoCurrency<Code extends string = string> = CurrencyCode<Code>;
 export type ProviderId = string & { readonly [providerBrand]: true };
 export type SourceId = string & { readonly [sourceBrand]: true };
 export type SignalId = string & { readonly [signalBrand]: true };
@@ -22,6 +23,7 @@ const isoCurrencies = new Set([
   'XPT',
   'XPD',
 ]);
+const providerSettlementCurrencies = new Set(['USDT']);
 const uuidSchema = z.uuid();
 
 export const tickerSchema = z
@@ -36,6 +38,15 @@ export const isoCurrencySchema = z
   .regex(/^[A-Z]{3}$/)
   .refine((value) => isoCurrencies.has(value))
   .transform((value): IsoCurrency => value as IsoCurrency);
+
+export const currencyCodeSchema = z
+  .string()
+  .regex(/^[A-Z]{3,5}$/)
+  .refine(
+    (value) =>
+      isoCurrencies.has(value) || providerSettlementCurrencies.has(value),
+  )
+  .transform((value): CurrencyCode => value as CurrencyCode);
 
 export const providerIdSchema = z
   .string()
@@ -64,6 +75,10 @@ export function parseIsoCurrency<const Code extends string>(
 export function parseIsoCurrency(input: unknown): IsoCurrency;
 export function parseIsoCurrency(input: unknown): IsoCurrency {
   return isoCurrencySchema.parse(input);
+}
+
+export function parseCurrencyCode(input: unknown): CurrencyCode {
+  return currencyCodeSchema.parse(input);
 }
 
 export function parseProviderId(input: unknown): ProviderId {

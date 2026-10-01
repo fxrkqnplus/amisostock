@@ -99,6 +99,34 @@ export const assets = pgTable(
   ],
 );
 
+// Provider-specific market symbols belong to the asset reference data so the
+// ingestion layer never has to infer exchange pairs or aggregator IDs.
+export const assetProviderSymbols = pgTable(
+  'asset_provider_symbols',
+  {
+    assetId: uuid('asset_id')
+      .notNull()
+      .references(() => assets.id, { onDelete: 'cascade' }),
+    providerId: text('provider_id').notNull(),
+    providerSymbol: text('provider_symbol').notNull(),
+  },
+  (table) => [
+    primaryKey({ columns: [table.assetId, table.providerId] }),
+    unique('asset_provider_symbols_provider_symbol_unique').on(
+      table.providerId,
+      table.providerSymbol,
+    ),
+    check(
+      'asset_provider_symbols_provider_id_check',
+      sql`${table.providerId} ~ '^[a-z][a-z0-9]*(-[a-z0-9]+)*$'`,
+    ),
+    check(
+      'asset_provider_symbols_symbol_check',
+      sql`length(btrim(${table.providerSymbol})) > 0`,
+    ),
+  ],
+);
+
 export const assetAliases = pgTable(
   'asset_aliases',
   {

@@ -7,6 +7,7 @@ export default defineConfig({
       'scripts/**/*.test.mjs',
       'tools/**/*.test.mjs',
       'packages/**/*.test.ts',
+      'apps/**/*.test.ts',
     ],
     coverage: {
       provider: 'v8',

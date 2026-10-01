@@ -42,6 +42,7 @@ describe('environment schema', () => {
   it('accepts explicit blanks for unused service keys', () => {
     const environment = parseEnv(validEnvironment());
     expect(environment.RESEND_API_KEY).toBe('');
+    expect(environment.COINGECKO_API_KEY).toBe('');
     expect(environment.EVDS_API_KEY).toBe('');
     expect(environment.KAP_API_KEY).toBe('');
     expect(environment.TURNSTILE_SECRET_KEY).toBe('');
@@ -125,6 +126,23 @@ describe('environment schema', () => {
         TURNSTILE_SECRET_KEY: 'configured-secret',
       }),
     ).not.toThrow();
+  });
+
+  it('keeps CoinGecko disabled by default and requires a server key when enabled', () => {
+    expect(parseEnv(validEnvironment()).PROVIDER_CRYPTO_FALLBACK).toBe('');
+    expect(() =>
+      parseEnv({
+        ...validEnvironment(),
+        PROVIDER_CRYPTO_FALLBACK: 'coingecko',
+      }),
+    ).toThrow('COINGECKO_API_KEY');
+    expect(
+      parseEnv({
+        ...validEnvironment(),
+        PROVIDER_CRYPTO_FALLBACK: 'coingecko',
+        COINGECKO_API_KEY: 'server-only-key',
+      }).PROVIDER_CRYPTO_FALLBACK,
+    ).toBe('coingecko');
   });
 
   it('never includes rejected values in the error message', () => {

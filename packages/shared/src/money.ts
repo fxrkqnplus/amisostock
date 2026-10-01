@@ -1,10 +1,10 @@
 import { Decimal } from 'decimal.js';
 import { z } from 'zod';
-import { isoCurrencySchema, type IsoCurrency } from './identifiers.js';
+import { currencyCodeSchema, type CurrencyCode } from './identifiers.js';
 
 export type Money<Code extends string = string> = Readonly<{
   amount: Decimal;
-  currency: IsoCurrency<Code>;
+  currency: CurrencyCode<Code>;
 }>;
 
 // The database stores numeric(20,6): 14 integer and at most 6 fractional digits.
@@ -24,7 +24,7 @@ const numeric20_6Schema = z
 const wireSchema = z
   .object({
     amount: numeric20_6Schema,
-    currency: isoCurrencySchema,
+    currency: currencyCodeSchema,
   })
   .strict();
 
@@ -32,12 +32,12 @@ export { numeric20_6Schema as moneyAmountSchema, wireSchema as moneySchema };
 
 export function createMoney<const Code extends string>(
   amount: string | Decimal,
-  currency: IsoCurrency<Code>,
+  currency: CurrencyCode<Code>,
 ): Money<Code> {
   const text: unknown = Decimal.isDecimal(amount) ? amount.toString() : amount;
   return {
     amount: numeric20_6Schema.parse(text),
-    currency: isoCurrencySchema.parse(currency) as IsoCurrency<Code>,
+    currency: currencyCodeSchema.parse(currency) as CurrencyCode<Code>,
   };
 }
 

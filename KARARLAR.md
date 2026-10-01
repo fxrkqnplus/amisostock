@@ -70,21 +70,23 @@ Bu bölüm teknik değil ama teknik kararların hepsini kilitliyor. Yanlış cev
 
 Bir finans sitesinin gerçek ürünü veridir. Bu bölüm hangi kaynaktan ne alınacağını, kaynak çöktüğünde ne olacağını ve kullanıcının neye baktığını nasıl anlayacağını belirliyor.
 
-| #      | Karar                                             | Kabul edilen                                                                                                    |
-| ------ | ------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| `C-01` | Hisse verisi için sağlayıcı stratejisi?           | **Mimari MarketDataProvider soyutlaması; birincil + yedek olmak üzere iki sağlayıcı**                           |
-| `C-02` | Kripto verisi nereden?                            | **Borsa WebSocket akışı (ör. Binance) + yedek olarak toplayıcı API**                                            |
-| `C-03` | Döviz kuru kaynağı?                               | **TCMB resmî kur (referans) + serbest piyasa için ikinci kaynak; ikisi ayrı etiketle gösterilir**               |
-| `C-04` | Makroekonomik veri kaynağı?                       | **TCMB EVDS (birincil) + TÜİK (tamamlayıcı)**                                                                   |
-| `C-05` | Şirket bildirimleri (KAP) alınacak mı?            | **Evet — resmî KAP veri servisi için başvurulacak; bildirimler varlık sayfasına bağlanacak**                    |
-| `C-06` | Bilanço ve finansal tablo verisi v1'de olacak mı? | **Evet — KAP tablolarından temel oranlar hesaplanır**                                                           |
-| `C-07` | Haber kaynakları?                                 | **Çok kaynaklı RSS + KAP bildirimleri, tekilleştirme ve varlık eşleştirmesi bizde**                             |
-| `C-08` | Analist beklentileri ve hedef fiyatlar?           | **v1'de yok; yerine 'kamuya açık aracı kurum raporlarından derlenen görüşler' bölümü, elle/yarı otomatik**      |
-| `C-09` | Tarihsel veri derinliği?                          | **Sağlayıcının verdiği kadar al, en az 5 yıl hedefle**                                                          |
-| `C-10` | Veri tazeliği ekranda nasıl gösterilecek?         | **Dört sınıf zorunlu: canlı · gecikmeli · kapanış · tahmini + kaynak + zaman damgası, her sayının yanında**     |
-| `C-11` | İki kaynak farklı değer verirse hangisi kazanır?  | **Kaynak önceliği sabit, belgelenmiş ve ekranda görünür; ikinci kaynak yalnız birincisi yoksa devreye girer**   |
-| `C-12` | Sağlayıcı çöktüğünde ne olur?                     | **Son bilinen değer 'bayat' etiketi ve yaşıyla gösterilir + yedek sağlayıcıya geçilir + durum çubuğunda uyarı** |
-| `C-13` | Ham veri arşivlenecek mi?                         | **Evet — kendi zaman serimizi kurarız (mum verisi + gösterge girdileri)**                                       |
+| #      | Karar                                             | Kabul edilen                                                                                                                           |
+| ------ | ------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `C-01` | Hisse verisi için sağlayıcı stratejisi?           | **Mimari MarketDataProvider soyutlaması; birincil + yedek olmak üzere iki sağlayıcı**                                                  |
+| `C-02` | Kripto verisi nereden?                            | **Borsa WebSocket akışı (ör. Binance) + yedek olarak toplayıcı API**                                                                   |
+| `C-03` | Döviz kuru kaynağı?                               | **TCMB resmî günlük referans kuru, bir sonraki resmî günlük yayına dek `close` kalır; serbest piyasa için ayrı kaynak ve ayrı etiket** |
+| `C-04` | Makroekonomik veri kaynağı?                       | **TCMB EVDS (birincil) + TÜİK (tamamlayıcı)**                                                                                          |
+| `C-05` | Şirket bildirimleri (KAP) alınacak mı?            | **Evet — resmî KAP veri servisi için başvurulacak; bildirimler varlık sayfasına bağlanacak**                                           |
+| `C-06` | Bilanço ve finansal tablo verisi v1'de olacak mı? | **Evet — KAP tablolarından temel oranlar hesaplanır**                                                                                  |
+| `C-07` | Haber kaynakları?                                 | **Çok kaynaklı RSS + KAP bildirimleri, tekilleştirme ve varlık eşleştirmesi bizde**                                                    |
+| `C-08` | Analist beklentileri ve hedef fiyatlar?           | **v1'de yok; yerine 'kamuya açık aracı kurum raporlarından derlenen görüşler' bölümü, elle/yarı otomatik**                             |
+| `C-09` | Tarihsel veri derinliği?                          | **Sağlayıcının verdiği kadar al, en az 5 yıl hedefle**                                                                                 |
+| `C-10` | Veri tazeliği ekranda nasıl gösterilecek?         | **Dört sınıf zorunlu: canlı · gecikmeli · kapanış · tahmini + kaynak + zaman damgası, her sayının yanında**                            |
+| `C-11` | İki kaynak farklı değer verirse hangisi kazanır?  | **Kaynak önceliği sabit, belgelenmiş ve ekranda görünür; ikinci kaynak yalnız birincisi yoksa devreye girer**                          |
+| `C-12` | Sağlayıcı çöktüğünde ne olur?                     | **Son bilinen değer 'bayat' etiketi ve yaşıyla gösterilir + yedek sağlayıcıya geçilir + durum çubuğunda uyarı**                        |
+| `C-13` | Ham veri arşivlenecek mi?                         | **Evet — kendi zaman serimizi kurarız (mum verisi + gösterge girdileri)**                                                              |
+
+**C-03 açıklaması — kullanıcı kararı, 01.10.2026:** EVDS gözlemi, sonraki resmî günlük gözlem yayımlanana kadar `close` sınıfında geçerlidir. Serbest piyasa kuru ayrı bir değerdir; iki kaynak birleştirilmez.
 
 ## D — Gerçek zamanlılık ve mimari
 

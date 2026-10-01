@@ -1,8 +1,12 @@
 export const PACKAGE_NAME = '@amisostock/shared' as const;
 
+export { basePath } from './paths.js';
+
 export {
   isoCurrencySchema,
+  currencyCodeSchema,
   parseIsoCurrency,
+  parseCurrencyCode,
   parseProviderId,
   parseSignalId,
   parseSourceId,
@@ -13,6 +17,7 @@ export {
   tickerSchema,
 } from './identifiers.js';
 export type {
+  CurrencyCode,
   IsoCurrency,
   ProviderId,
   SignalId,

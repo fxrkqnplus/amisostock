@@ -19,7 +19,7 @@
 | `KARARLAR.md` | 131 kararın kütüğü. Her şeyin kaynağı. Karar silinmez, üzeri çizilir |
 | `CLAUDE.md` | Bu dosya: anayasa, yığın, repo yapısı, veri/sinyal/AI sözleşmesi, sözlük |
 | `docs/SPEC.md` | Tek dosyalık spesifikasyon — numaralı bölümler, fazlar buraya atıf verir |
-| `docs/ROADMAP.md` | 6 faz, 18 alt görev: kapsam, kabul kriterleri |
+| `docs/ROADMAP.md` | 6 faz, 19 alt görev: kapsam, kabul kriterleri |
 | `PROJECT_MEMORY.md` | Oturumlar arası devir teslim |
 | `docs/CHECKPOINT.md` | Makine için sabit şekilli durum |
 

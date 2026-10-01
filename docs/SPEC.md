@@ -18,13 +18,14 @@ yok** (K9). Zaman alanları `timestamptz`, **UTC saklanır**, gösterim `Europe/
 
 ### 1.1 Referans tabloları
 
-| Tablo             | Anahtar alanlar                                                                                                                                                                                           |
-| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `sources`         | `id` · `kind` (market/news/macro/disclosure) · `name` · `priority` (küçük = öncelikli) · `license_note` · `attribution_text`                                                                              |
-| `markets`         | `id` (BIST, CRYPTO, FX) · `timezone` · `currency` · `session_open` · `session_close` · `has_delay` · `delay_minutes`                                                                                      |
-| `assets`          | `id` · `market_id` · `ticker` · `name` · `asset_class` (equity/crypto/fx/index/fund/commodity) · `sector` · `currency` · `status` (active/suspended/restricted/delisted) · `listed_at` · `free_float_pct` |
-| `asset_aliases`   | `asset_id` · `alias` · `alias_kind` (ticker/former_name/common_name/isin) — arama sözlüğü (§6.5)                                                                                                          |
-| `market_calendar` | `market_id` · `date` · `kind` (full/half/holiday) · `note`                                                                                                                                                |
+| Tablo                    | Anahtar alanlar                                                                                                                                                                                           |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sources`                | `id` · `kind` (market/news/macro/disclosure) · `name` · `priority` (küçük = öncelikli) · `license_note` · `attribution_text`                                                                              |
+| `markets`                | `id` (BIST, CRYPTO, FX) · `timezone` · `currency` · `session_open` · `session_close` · `has_delay` · `delay_minutes`                                                                                      |
+| `assets`                 | `id` · `market_id` · `ticker` · `name` · `asset_class` (equity/crypto/fx/index/fund/commodity) · `sector` · `currency` · `status` (active/suspended/restricted/delisted) · `listed_at` · `free_float_pct` |
+| `asset_provider_symbols` | `asset_id` · `provider_id` · `provider_symbol` — sağlayıcı sembol eşlemesi açıkça saklanır; `(provider_id, provider_symbol)` tektir                                                                       |
+| `asset_aliases`          | `asset_id` · `alias` · `alias_kind` (ticker/former_name/common_name/isin) — arama sözlüğü (§6.5)                                                                                                          |
+| `market_calendar`        | `market_id` · `date` · `kind` (full/half/holiday) · `note`                                                                                                                                                |
 
 ### 1.2 Fiyat tabloları
 
@@ -139,9 +140,13 @@ Aktif kaynak her değerde `source_id` olarak taşınır ve ekranda görünür.
 | `close`    | Piyasa kapalı; değer son seans kapanışı                                |
 | `estimate` | Türetilmiş değer (gösterge, oran, hedef fiyat)                         |
 
-**Bayat:** `now − as_of > staleAfter`. Varsayılanlar: kripto 30 sn · döviz 5 dk ·
-gecikmeli hisse 25 dk · makro 2 gün. Bayat değer **hesaplara, sinyale ve alarmlara
-girmez** (DZ-A2); ekranda değerin **yerine** "güncellenmedi · son: HH:MM" gösterilir.
+**Bayat:** `now − as_of > staleAfter`. Varsayılanlar: kripto 30 sn · serbest piyasa
+döviz 5 dk · gecikmeli hisse 25 dk · makro 2 gün. Bayat değer **hesaplara, sinyale
+ve alarmlara girmez** (DZ-A2); ekranda değerin **yerine** "güncellenmedi · son:
+HH:MM" gösterilir. TCMB EVDS günlük referans kuru istisnadır: `close` sınıfında
+kalır ve yeni resmî günlük gözlem yayımlanana kadar geçerlidir; gözlem tarihi
+`as_of` olarak korunur. Bir sonraki resmî gözlemden sonra yenilenemeyen eski değer
+bayat olur ve sayısal değer gösterilmez.
 
 ### 2.4 Kota, hata ve geri çekilme
 

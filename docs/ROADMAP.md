@@ -1,6 +1,9 @@
 # ROADMAP — Amisostock
 
-> **6 faz, 18 alt görev.** Her alt görev bir oturum, bir commit. Bu sayı tabandır:
+> **6 faz, 19 alt görev.** Her alt görev bir oturum, bir Conventional Commit. Bir
+> fazın alt görevleri aynı feature dalında ilerler; fazın son alt görevi bitmeden PR
+> açılmaz. PR merge edilince sonraki faz dalına geçilir ve eski faz dalı silinir.
+> Bu sayı tabandır:
 > daha aza indirmek tek oturuma sığmayan birimler üretir. Bir alt görev taşarsa
 > `X.Ya` / `X.Yb` diye ikiye bölünür — ROADMAP'e yazılır, sessizce uzatılmaz.
 >
@@ -25,7 +28,7 @@
 
 - [x] **1.1 İskelet.** pnpm workspace + Turborepo; `CLAUDE.md` §2.1'deki her sürüm npm registry'den doğrulanır ve blok **ölçümle yeniden yazılır**; `tsconfig.base.json` + paket başına açık `types`; ESLint flat config + iki yerel kural (`no-hardcoded-path` K6, `no-bare-jsx-text` K5); `.env.example` + Zod ortam şeması (eksikte açılmaz) + `NODE_ENV` yasağı kapısı. Ölçüm: `docs/reports/1.1-iskelet.md` (20.09.2026).
 - [x] **1.2 Kapılar ve CI.** `arch-check` (katman + saflık), `money-check` (float para avı), `freshness-check` (tazeliksiz değer avı), `i18n-check`, `contract-check` iskeleti — **her biri kanaryalı ve iki yönlü** (DZ-12); CI `amd64`+`arm64`, tüm kapılar **maskesiz `run:`** + kablolamayı iddia eden test (DZ-11); `docker-compose` (postgres + redis). Uzak ölçüm: [`docs/reports/1.2-kapilar.md`](reports/1.2-kapilar.md), run `35487311059`.
-- [x] **1.3 Veri modeli ve çekirdek tipler.** `SPEC.md` §1'deki tabloların tamamı + zaman bazlı bölümleme + saklama süreleri; `packages/shared`: `Money`, `Quote`, `Freshness`, markalı tipler — **tazelik alanı olmayan değer arayüze geçemez** (K2), farklı para birimli toplama **derlenmez** (K9). Ayrı ham/düzeltilmiş seri (L-02); PostgreSQL migration ve saklama entegrasyon testi. Yerel kapı zinciri ve GitHub push/PR CI işleri geçti; PR #1 `develop` dalında açık, merge edilmedi. Faz 1 kapanış etiketi PR kabulü/merge sonrasına bırakıldı; ölçüm: [`docs/reports/1.3-veri-modeli.md`](reports/1.3-veri-modeli.md).
+- [x] **1.3 Veri modeli ve çekirdek tipler.** `SPEC.md` §1'deki tabloların tamamı + zaman bazlı bölümleme + saklama süreleri; `packages/shared`: `Money`, `Quote`, `Freshness`, markalı tipler — **tazelik alanı olmayan değer arayüze geçemez** (K2), farklı para birimli toplama **derlenmez** (K9). Ayrı ham/düzeltilmiş seri (L-02); PostgreSQL migration ve saklama entegrasyon testi. PR #1 `7149333` merge commit'iyle `develop`'e alındı, `faz-1-son` etiketi eklendi; üç PR CI run'ının PostgreSQL 18.6, amd64 ve arm64 işleri geçti. Merge commit'ine bağlı ayrı workflow run'ı bulunmadı. Rollup kanıtının sonradan gelen düzeltmelerle geçersiz kılınmaması hakkında açık P1 inceleme bulgusu raporda kayıtlıdır; ölçüm: [`docs/reports/1.3-veri-modeli.md`](reports/1.3-veri-modeli.md).
 
 **Kabul:** tüm kapılar temiz ve kapsamını basıyor · üç nöbetçinin kanaryası gerçek depoda ötüyor · CI'da her kapı `run:` olarak görünüyor · sürüm bloğu ölçümle yazılmış · `K2`/`K9` ihlali derlenmiyor (negatif test).
 **Atıf:** `SPEC.md` §1, §9
@@ -36,11 +39,12 @@
 
 **Amaç:** Bir fiyatın kaynağı, anı ve tazeliğiyle ekrana kadar akması. Ürünün geri kalanı buna bağlanır.
 
-- [ ] **2.1 Omurga + canlı kaynaklar.** `MarketDataProvider` sözleşmesi, registry, **kaynak önceliği** (ortalama/medyan yok); kripto (borsa WebSocket) ve döviz (TCMB EVDS resmî + serbest piyasa ikinci kaynak); ingest worker (BullMQ) + Redis önbellek + hız sınırı + yeniden deneme; **bayat tespiti** (DZ-A2); SSE yayın kanalı (sunucu tek bağlantı kurar).
+- [x] **2.1a Sağlayıcı omurgası, kripto ve resmî kur.** `MarketDataProvider`, Zod doğrulama, öncelik/registry; Binance Spot WebSocket kripto; TCMB EVDS günlük referans kuru (`close`, sonraki günlük yayına dek); BullMQ worker, Redis cache/kota/sağlık ve paylaşımlı SSE. CoinGecko Demo yedeği yalnız açık sunucu ayarı ve anahtarla etkinleşir, 30 saniyeyi aşınca bayat olur ve kullanıcı şartları/atıf gereklidir. Ayrıntı: `docs/reports/2.1a-saglayici-omurgasi.md`.
+- [ ] **2.1b Serbest piyasa FX kaynağı.** Lisansı, kullanım koşulları, atıf ve ücretsizliği ölçülmüş ikinci kur kaynağını resmî EVDS değerinden ayrı etiketle; bu iki değer birleştirilmez.
 - [ ] **2.2 BIST.** Gecikmeli kaynak **taranır, ölçülür, seçilir** ve karar `KARARLAR.md`'ye işlenir (açık belirsizlik #1); hisse ingest; **piyasa takvimi** (tatil, yarım gün) ve işlem durumu (tedbirli, işleme kapalı, sırası kapalı).
 - [ ] **2.3 Olay ve haber.** KAP bildirim hattı + bildirimin varlığa eşleştirilmesi; çok kaynaklı RSS + **tekilleştirme** (parmak izi + zaman penceresi) + kural tabanlı duygu; KAP finansal tablolarından temel oranlar (veri yoksa hesaplanmaz); `NOTICE` + "Veri kaynakları" sayfası.
 
-**Kabul:** kripto ve kur canlı akıyor, sınıf etiketiyle görünüyor · sağlayıcı elle kapatıldığında değer **bayat** etiketine düşüyor, uygulama çökmüyor · bozuk şema `ProviderError` fırlatıyor, sessiz `null` yok · aynı olay beş kaynaktan gelse tek kayıt · piyasa kapalıyken "kapanış" etiketi çıkıyor · `freshness:check` ve `contract:check` temiz.
+**2.1 kabulü:** kripto WebSocket akışı `live`; resmi EVDS kuru günlük `close`; serbest piyasa kuru ayrı kaynak ve etiket · sağlayıcı kesilince son değer yaşına göre **bayat**, sayısal değeri gizli ve hesaplamadan çıkar · bozuk şema `ProviderError`, sessiz `null` veya kısmi yazım yok · tek worker sağlayıcıya bağlanır, Redis SSE'yi istemcilere çoğaltır · `freshness:check` ve `contract:check` temiz.
 **Atıf:** `SPEC.md` §2, §3
 
 ---

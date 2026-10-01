@@ -1,6 +1,6 @@
 import { Decimal } from 'decimal.js';
 import { describe, expect, it } from 'vitest';
-import { parseIsoCurrency } from './identifiers.js';
+import { parseCurrencyCode, parseIsoCurrency } from './identifiers.js';
 import { addMoney, createMoney, parseMoney, subtractMoney } from './money.js';
 
 const tryCurrency = parseIsoCurrency('TRY');
@@ -52,6 +52,11 @@ describe('money', () => {
     expect(() =>
       parseMoney({ amount: '1', currency: 'TRY', ignored: true }),
     ).toThrow();
+  });
+
+  it('preserves provider settlement currency codes without FX conversion', () => {
+    const money = parseMoney({ amount: '1.25', currency: 'USDT' });
+    expect(money.currency).toBe(parseCurrencyCode('USDT'));
   });
 
   it('rejects arithmetic overflow beyond numeric(20,6)', () => {
