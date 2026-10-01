@@ -9,11 +9,18 @@ faz: 1
 faz_adi: Temel
 alt_gorev: 1.3
 alt_gorev_adi: Veri modeli ve çekirdek tipler
-asama: yerel_kapilar_gecti_uzak_ci_duzeltmesi_bekliyor
+asama: teknik_kabul_gecti_pr_acik
 dal: feature/faz-1-3-veri-modeli
 taban_commit: 1829115392a5f4c96304241af7504381eac37ce5
 son_tag: null
-agac: 51d374905ffde287b930694b00b459c115c79e69_uzerine_belge_duzeltmeleri
+agac: feature_dali_origin_ile_esit; yalniz_devir_promptu_kullanici_degisikligi_kaldi
+github:
+  push_run: 36855404121
+  pr: https://github.com/fxrkqnplus/amisostock/pull/1
+  pr_run: 36855689769
+  pr_state: open
+  pr_merged: false
+  pr_mergeable: true
 
 kapi_tabani:
   install: gecti
@@ -30,8 +37,8 @@ kapi_tabani:
   drizzle_check: gecti
   db_migrate_pg18_3: gecti # PGlite tabanlı yerel ölçüm
   db_integration_pg18_3: gecti # PGlite tabanlı yerel ölçüm
-  db_migrate_pg18_6: gecti # GitHub Actions run 36848139843
-  db_integration_pg18_6: gecti # GitHub Actions run 36848139843
+  db_migrate_pg18_6: gecti # GitHub Actions PR run 36855689769
+  db_integration_pg18_6: gecti # GitHub Actions PR run 36855689769
 
 biten:
   - karar kütüğü (131 madde) — KARARLAR.md
@@ -47,18 +54,18 @@ biten:
   - 1.3 şema: SPEC tabloları + ayrı düzeltilmiş mum serisi (35 tablo)
   - 1.3 Money/Quote/Freshness + K2/K9 negatif tip sözleşmeleri
   - PostgreSQL migration, aylık RANGE/LIST bölümleri, rollup korumalı retention
-  - GitHub PostgreSQL 18.6 migration ve integration işi geçti
+  - GitHub push run 36855404121 ve PR run 36855689769: PostgreSQL 18.6, amd64, arm64 geçti
+  - PR #1 develop'e açık, mergeable; merge edilmedi
   - docs/reports/1.3-veri-modeli.md
 
 yarim_kalan:
-  - GitHub Actions run 36848139843 içinde PostgreSQL 18.6 işi geçti; amd64 ve arm64 işleri yalnız format_check nedeniyle kaldı
-  - docs/CHECKPOINT.md biçimi düzeltildi; yerel 10 kapı zinciri ve db:check geçti
-  - Düzeltmeleri push edip GitHub Actions'ı yeniden ölçmek ve CI yeşilse develop hedefli PR açmak gerekiyor; henüz PR yok
+  - PR #1 inceleme/kabulü ve merge kullanıcı kararı bekliyor; resmi Faz 1 etiketi oluşturulmadı
+  - Varsayılan daldaki Dependabot bildiriminin paket ayrıntısı ölçülmedi; push çıktısı 1 orta seviye bulgu bildirdi
 
-siradaki_komut: 'Yalnız faz belgelerini commit edip push et; yeni GitHub Actions sonucunu ölç; CI yeşilse develop PR aç'
+siradaki_komut: 'PR #1 inceleme ve kullanıcı merge kararını bekle; Faz 1 kabulünden sonra ROADMAP 2.1 ile devam et'
 
 acik_karar: null
 
 olculmemis:
-  - 'Belge düzeltmelerinden sonraki GitHub Actions amd64 ve arm64 sonuçları'
+  - 'Varsayılan daldaki Dependabot bulgusunun paket ve advisory ayrıntıları'
 ```

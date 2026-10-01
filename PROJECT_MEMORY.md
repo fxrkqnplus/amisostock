@@ -13,18 +13,18 @@
 ```
 Tarih          : 01.10.2026
 Faz            : 1 — Temel
-Alt görev      : 1.3 — Veri modeli ve çekirdek tipler (yerel tamam)
+Alt görev      : 1.3 — Veri modeli ve çekirdek tipler (CI kabulü, PR açık)
 Aktif klon     : C:\Sistem\Projeler\amisostock-lf
 Dal            : feature/faz-1-3-veri-modeli
 Taban commit   : 1829115392a5f4c96304241af7504381eac37ce5
-Ağaç           : HEAD 51d374905ffde287b930694b00b459c115c79e69; origin feature dalıyla aynı; faz belgeleri değişti
+Ağaç           : origin ile eşit; yalnız kullanıcıya ait PROJE-DEVIR-PROMPTU.md değişikliği commit dışı kaldı
 Son tag        : —
 Yerel kapılar   : typecheck 9/9 paket; lint 50 dosya/114 kural/0 hata; test 12 dosya/257 test, satır %95,70; build 9/9 paket/9 ESM yüklemesi; statik kapılar ve db:check geçti
-Uzak CI        : run 36848139843; PostgreSQL 18.6 işi geçti; amd64/arm64 işleri docs/CHECKPOINT.md format kontrolünde kaldı
-PR             : bulunamadı; düzeltmeler push edildikten ve CI yeşil olduktan sonra açılacak
+Uzak CI        : push run 36855404121 ve PR run 36855689769; PostgreSQL 18.6, amd64, arm64 üç işi de geçti
+PR             : #1, develop tabanlı, açık ve mergeable; merge edilmedi
 Ortam          : Node v24.19.0, pnpm 11.23.0; Docker 29.8.1; compose PostgreSQL 18 sağlıklı, `amisostock_postgres-data` volume'u korunuyor
-Yarım kalan    : Düzeltme sonrası uzak CI ve PR; resmi Faz 1 etiketi PR kabulü/merge sonrasına bırakıldı
-Sıradaki komut : faz belgelerini commit/push et; yeni CI sonucunu ölç; yeşilse PR aç ve merge etmeden dur
+Yarım kalan    : PR inceleme/kabulü; resmi Faz 1 etiketi merge sonrasına bırakıldı
+Sıradaki komut : PR #1 için kullanıcı incelemesini bekle; kabul/merge sonrası ROADMAP 2.1'e geç
 Açık karar     : yok
 ```
 
@@ -107,10 +107,11 @@ Bilinçli ertelenen teknik borç. Her satırın **hedef alt görevi** olmak zoru
 - `Money`, `Quote`, `Freshness`, branded `SourceId`/`ProviderId` ve K2/K9 negatif tip sözleşmeleri eklendi. İlgili üç shared modül %100 kapsam ölçtü; root test toplamı 257.
 - PostgreSQL 18.3 PGlite üzerinde `db:migrate` ve `db:integration` geçti. Bölümleme `RANGE(ts)` ay + `LIST(timeframe)` alt bölüm; retention kanıtsız silmeyi reddediyor ve `1d`'yi koruyor.
 - Root quality gates: typecheck 9 paket; lint 50 dosya; build 9 paket; arch/i18n/contract/money/freshness geçti. `drizzle-kit check` geçti.
-- CI'daki ilk uzak run `36848139843`, `51d374905ffde287b930694b00b459c115c79e69` commit'inde ölçüldü: PostgreSQL 18.6 migration/integration işi geçti; amd64 ve arm64 kapılarında yalnız `docs/CHECKPOINT.md` kaynaklı `format:check` başarısızdı. Biçim düzeltildi ve tam yerel kapı zinciri geçti; düzeltmeler için uzak doğrulama/PR bekleniyor.
+- CI run `36848139843` ilk commit'te `docs/CHECKPOINT.md` format bulgusu nedeniyle kaldı. Biçim düzeltildikten sonra push run `36855404121` ve PR run `36855689769`, PostgreSQL 18.6 migration/integration ile amd64/arm64 kapılarını başarıyla tamamladı.
+- PR #1 (`feature/faz-1-3-veri-modeli` → `develop`) açık, mergeable ve merge edilmemiş durumda. Faz 1 kabul etiketi PR kabulü/merge sonrasına bırakıldı.
 - Drizzle opsiyonel dialect `.d.ts` hataları nedeniyle yalnız DB paketinde `skipLibCheck: true`; kaynak tip kontrolü açık. Partitioning Drizzle modeliyle temsil edilmediği için ilk SQL migration elle tamamlandı.
 
-GitHub erişim ölçümü: yerel `gh` komutu kurulu değil; bağlı GitHub uygulaması depo okuma/yazma iznini gösterdi, PR araması sonuç vermedi. Varsayılan daldaki Dependabot uyarısı anonim API isteğinde `401 Requires authentication` döndüğü için yeniden ölçülemedi.
+GitHub erişim ölçümü: yerel `gh` komutu kurulu değil; bağlı GitHub uygulaması depo okuma/yazma iznini gösterdi. PR aramasından sonra PR #1 açıldı ve doğrulandı. Push çıktısı varsayılan dalda bir orta seviye Dependabot bulgusu bildirdi; anonim API isteği `401 Requires authentication` verdiğinden paket/advisory ayrıntıları ölçülemedi. Bağımlılık güncellemesi yapılmadı.
 
 ---
 
