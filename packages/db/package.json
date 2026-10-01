@@ -11,7 +11,11 @@
   },
   "scripts": {
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "build": "tsc --project tsconfig.json"
+    "build": "tsc --project tsconfig.json",
+    "db:generate": "drizzle-kit generate --dialect postgresql --schema ./src/schema/index.ts --out ./migrations",
+    "db:check": "drizzle-kit check --dialect postgresql --out ./migrations",
+    "db:migrate": "node --env-file-if-exists=../../.env scripts/migrate.mjs",
+    "db:integration": "node scripts/integration.mjs"
   },
   "dependencies": {
     "@amisostock/shared": "workspace:*",

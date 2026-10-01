@@ -11,17 +11,20 @@
 ## ANLIK DURUM
 
 ```
-Tarih          : 20.09.2026
+Tarih          : 01.10.2026
 Faz            : 1 — Temel
-Alt görev      : 1.2 — Kapılar ve CI (yerel tamam; uzak CI ölçülecek)
-Dal            : develop
-Taban commit   : 423c2cc0c1e747888a4cc40470b8e86532eae49d
+Alt görev      : 1.3 — Veri modeli ve çekirdek tipler (CI kabulü, PR açık)
+Aktif klon     : C:\Sistem\Projeler\amisostock-lf
+Dal            : feature/faz-1-3-veri-modeli
+Taban commit   : 1829115392a5f4c96304241af7504381eac37ce5
+Ağaç           : origin ile eşit; yalnız kullanıcıya ait PROJE-DEVIR-PROMPTU.md değişikliği commit dışı kaldı
 Son tag        : —
-Ağaç           : 1.2 teslim commit'i hazırlanıyor
-Kapı tabanı    : install ve on kapı geçti; 206 test, global satır %95,09
-Biten          : beş kanaryalı kapı, CI matrisi/kablolama testi, çalışan veri katmanı, güvenlik ayarları
-Yarım kalan    : push sonrası CI ve uzak dal ölçümü
-Sıradaki komut : commit, push, CI işlerini ölç; sonra DUR
+Yerel kapılar   : typecheck 9/9 paket; lint 50 dosya/114 kural/0 hata; test 12 dosya/257 test, satır %95,70; build 9/9 paket/9 ESM yüklemesi; statik kapılar ve db:check geçti
+Uzak CI        : push run 36855404121 ve PR run 36855689769; PostgreSQL 18.6, amd64, arm64 üç işi de geçti
+PR             : #1, develop tabanlı, açık ve mergeable; merge edilmedi
+Ortam          : Node v24.19.0, pnpm 11.23.0; Docker 29.8.1; compose PostgreSQL 18 sağlıklı, `amisostock_postgres-data` volume'u korunuyor
+Yarım kalan    : PR inceleme/kabulü; resmi Faz 1 etiketi merge sonrasına bırakıldı
+Sıradaki komut : PR #1 için kullanıcı incelemesini bekle; kabul/merge sonrası ROADMAP 2.1'e geç
 Açık karar     : yok
 ```
 
@@ -95,6 +98,20 @@ Bilinçli ertelenen teknik borç. Her satırın **hedef alt görevi** olmak zoru
 - Node preinstall: yanlış tam sürüm pini exit 1, geri alınan `24.19.0` exit 0.
 - CLAUDE.md'nin 11 satırı düzeltildi; §2.1 korundu. Toplu yeniden yazmama talimatı nedeniyle yalnız CLAUDE.md Prettier dışında.
 - Docker daemon sürümü ölçülemedi; yeniden ölçüm ve ARM64/CI zaten 1.2 kapsamı. Yeni teknik borç eklenmedi; 1.2 başlatılmadı.
+
+---
+
+## 1.3 veri modeli ve çekirdek tipler — 01.10.2026
+
+- `SPEC.md §1` tabloları Drizzle ile eklendi; L-02 için ham ve düzeltilmiş mum tabloları ayrıdır (35 tablo).
+- `Money`, `Quote`, `Freshness`, branded `SourceId`/`ProviderId` ve K2/K9 negatif tip sözleşmeleri eklendi. İlgili üç shared modül %100 kapsam ölçtü; root test toplamı 257.
+- PostgreSQL 18.3 PGlite üzerinde `db:migrate` ve `db:integration` geçti. Bölümleme `RANGE(ts)` ay + `LIST(timeframe)` alt bölüm; retention kanıtsız silmeyi reddediyor ve `1d`'yi koruyor.
+- Root quality gates: typecheck 9 paket; lint 50 dosya; build 9 paket; arch/i18n/contract/money/freshness geçti. `drizzle-kit check` geçti.
+- CI run `36848139843` ilk commit'te `docs/CHECKPOINT.md` format bulgusu nedeniyle kaldı. Biçim düzeltildikten sonra push run `36855404121` ve PR run `36855689769`, PostgreSQL 18.6 migration/integration ile amd64/arm64 kapılarını başarıyla tamamladı.
+- PR #1 (`feature/faz-1-3-veri-modeli` → `develop`) açık, mergeable ve merge edilmemiş durumda. Faz 1 kabul etiketi PR kabulü/merge sonrasına bırakıldı.
+- Drizzle opsiyonel dialect `.d.ts` hataları nedeniyle yalnız DB paketinde `skipLibCheck: true`; kaynak tip kontrolü açık. Partitioning Drizzle modeliyle temsil edilmediği için ilk SQL migration elle tamamlandı.
+
+GitHub erişim ölçümü: yerel `gh` komutu kurulu değil; bağlı GitHub uygulaması depo okuma/yazma iznini gösterdi. PR aramasından sonra PR #1 açıldı ve doğrulandı. Push çıktısı varsayılan dalda bir orta seviye Dependabot bulgusu bildirdi; anonim API isteği `401 Requires authentication` verdiğinden paket/advisory ayrıntıları ölçülemedi. Bağımlılık güncellemesi yapılmadı.
 
 ---
 

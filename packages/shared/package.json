@@ -10,7 +10,7 @@
     }
   },
   "scripts": {
-    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "typecheck": "tsc --project tsconfig.json --noEmit && tsc --project type-tests/tsconfig.json --noEmit",
     "build": "tsc --project tsconfig.json"
   },
   "dependencies": {

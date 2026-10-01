@@ -6,6 +6,36 @@ on:
 permissions:
   contents: read
 jobs:
+  database:
+    name: PostgreSQL model and retention
+    runs-on: ubuntu-24.04
+    services:
+      postgres:
+        image: postgres:18.6
+        env:
+          POSTGRES_USER: amisostock
+          POSTGRES_PASSWORD: test-password
+          POSTGRES_DB: amisostock
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U amisostock -d amisostock"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql://amisostock:test-password@localhost:5432/amisostock
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @amisostock/db db:migrate
+      - run: pnpm --filter @amisostock/db db:integration
+
   checks:
     name: Gates (${{ matrix.arch }})
     strategy:
