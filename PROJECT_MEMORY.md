@@ -14,14 +14,17 @@
 Tarih          : 01.10.2026
 Faz            : 1 — Temel
 Alt görev      : 1.3 — Veri modeli ve çekirdek tipler (yerel tamam)
+Aktif klon     : C:\Sistem\Projeler\amisostock-lf
 Dal            : feature/faz-1-3-veri-modeli
 Taban commit   : 1829115392a5f4c96304241af7504381eac37ce5
+Ağaç           : HEAD 51d374905ffde287b930694b00b459c115c79e69; origin feature dalıyla aynı; faz belgeleri değişti
 Son tag        : —
-Ağaç           : 1.3 yerel commit hazır; push bekliyor
-Kapı tabanı    : typecheck/lint/test/build ve tüm statik kapılar geçti; 257 test, global satır %95,70
-Biten          : 1.1 iskelet, 1.2 kapılar ve CI, 1.3 şema/çekirdek tipler/PG18 entegrasyon testi
-Yarım kalan    : GitHub token geçersiz; push sonrası PG18.6 ve amd64/arm64 CI işleri ölçülecek
-Sıradaki komut : erişim düzelince feature dalını push et, CI işlerini ölç; sonra DUR
+Yerel kapılar   : typecheck 9/9 paket; lint 50 dosya/114 kural/0 hata; test 12 dosya/257 test, satır %95,70; build 9/9 paket/9 ESM yüklemesi; statik kapılar ve db:check geçti
+Uzak CI        : run 36848139843; PostgreSQL 18.6 işi geçti; amd64/arm64 işleri docs/CHECKPOINT.md format kontrolünde kaldı
+PR             : bulunamadı; düzeltmeler push edildikten ve CI yeşil olduktan sonra açılacak
+Ortam          : Node v24.19.0, pnpm 11.23.0; Docker 29.8.1; compose PostgreSQL 18 sağlıklı, `amisostock_postgres-data` volume'u korunuyor
+Yarım kalan    : Düzeltme sonrası uzak CI ve PR; resmi Faz 1 etiketi PR kabulü/merge sonrasına bırakıldı
+Sıradaki komut : faz belgelerini commit/push et; yeni CI sonucunu ölç; yeşilse PR aç ve merge etmeden dur
 Açık karar     : yok
 ```
 
@@ -104,8 +107,10 @@ Bilinçli ertelenen teknik borç. Her satırın **hedef alt görevi** olmak zoru
 - `Money`, `Quote`, `Freshness`, branded `SourceId`/`ProviderId` ve K2/K9 negatif tip sözleşmeleri eklendi. İlgili üç shared modül %100 kapsam ölçtü; root test toplamı 257.
 - PostgreSQL 18.3 PGlite üzerinde `db:migrate` ve `db:integration` geçti. Bölümleme `RANGE(ts)` ay + `LIST(timeframe)` alt bölüm; retention kanıtsız silmeyi reddediyor ve `1d`'yi koruyor.
 - Root quality gates: typecheck 9 paket; lint 50 dosya; build 9 paket; arch/i18n/contract/money/freshness geçti. `drizzle-kit check` geçti.
-- CI'ya PostgreSQL 18.6 integration işi eklendi. Bu bulut ortamındaki `GH_TOKEN` geçersiz olduğundan değişiklikler push edilemedi; PostgreSQL 18.6 native CI ve amd64/arm64 uzak sonuçları bekliyor.
+- CI'daki ilk uzak run `36848139843`, `51d374905ffde287b930694b00b459c115c79e69` commit'inde ölçüldü: PostgreSQL 18.6 migration/integration işi geçti; amd64 ve arm64 kapılarında yalnız `docs/CHECKPOINT.md` kaynaklı `format:check` başarısızdı. Biçim düzeltildi ve tam yerel kapı zinciri geçti; düzeltmeler için uzak doğrulama/PR bekleniyor.
 - Drizzle opsiyonel dialect `.d.ts` hataları nedeniyle yalnız DB paketinde `skipLibCheck: true`; kaynak tip kontrolü açık. Partitioning Drizzle modeliyle temsil edilmediği için ilk SQL migration elle tamamlandı.
+
+GitHub erişim ölçümü: yerel `gh` komutu kurulu değil; bağlı GitHub uygulaması depo okuma/yazma iznini gösterdi, PR araması sonuç vermedi. Varsayılan daldaki Dependabot uyarısı anonim API isteğinde `401 Requires authentication` döndüğü için yeniden ölçülemedi.
 
 ---
 
